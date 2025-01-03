@@ -10,24 +10,20 @@ import {
   handleSignUp,
 } from "../../hooks/LoginHooks";
 import {
-  RenderRequestHistory,
-  RenderPTORequests,
-  handlePTO,
   EmployeeButtons,
   RenderEmployeeAppointments,
   RenderEmployeeProfit,
   handleEmployeeCustomization,
 } from "../../hooks/EmployeeHooks";
 import PaginatedButtons from "../../components/Graphs/PaginatedButtons";
-import ImageUpload from "../../components/Cloudinary/Cloudinary.jsx";
-import { toggleDisplay } from "../../hooks/FinanceHooks";
+import { toggleDisplay } from "../../hooks/InventoryHooks";
 import { cacheEmail } from "../../middleware/Cache";
 import { APIContext } from "../../middleware/Context";
 import { User } from "../../middleware/Interfaces";
 import { GetUsers } from "../../hooks/ApiCalls";
 
 export function EmployeeHub() {
-  const { user, purchases, employee, PTORequests } = useContext(APIContext);
+  const { user, purchases, employee } = useContext(APIContext);
 
   const [listOfUsers, setListOfUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -37,14 +33,8 @@ export function EmployeeHub() {
   const [name, setName] = useState<string>("");
   const [showPurchases, setShowPurchases] = useState<boolean>(false);
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [currentPTOPage, setCurrentPTOPage] = useState<number>(1);
   const [salary, setSalary] = useState<string>("");
-  const [PTO, setPTO] = useState<string>("");
-  const [startPTODate, setStartPTODate] = useState<string>("");
-  const [endPTODate, setEndPTODate] = useState<string>("");
   const [position, setPosition] = useState<string>("");
-  const [PTODisplay, setPTODisplay] = useState<boolean>(false);
-  const [PTORequestDisplay, setPTORequestDisplay] = useState<boolean>(false);
 
   const rowsPerPage = 3;
 
@@ -55,21 +45,12 @@ export function EmployeeHub() {
   const start = (currentPage - 1) * rows;
   const end = startIndex + rows;
 
-  const firstIndex = (currentPTOPage - 1) * rows;
-  const lastIndex = firstIndex + rows;
-
   useEffect(() => {
     GetUsers(
       (e: User[]) => setListOfUsers(e),
       (e: boolean) => setLoading(e),
     );
   }, [listOfUsers]);
-
-  // useEffect(()=>{
-  //     AutomaticPTO()
-  // },[])
-
-  //example employee id 649c8a408d41d5c02f5c
 
   const currentDate = new Date();
   const month = currentDate.getMonth() + 1;
@@ -167,18 +148,6 @@ export function EmployeeHub() {
                 </form>
               </section>
 
-              {PTODisplay ? (
-                RenderPTORequests({
-                  currentPTOPage: currentPTOPage,
-                  setCurrentPTOPage: (e: number) => setCurrentPTOPage(e),
-                  rows: rows,
-                  setPTODisplay: (e: boolean) => setPTODisplay(e),
-                  PTODisplay: PTODisplay,
-                  PTORequests: PTORequests,
-                  lastIndex: lastIndex,
-                  firstIndex: firstIndex,
-                })
-              ) : (
                 <section className="flex flex-col">
                   {Input({
                     type: "email",
@@ -198,13 +167,7 @@ export function EmployeeHub() {
                     onChange: (e) => setPosition(e),
                     placeholder: "Set Employees Position",
                   })}
-                  {Input({
-                    type: "text",
-                    name: "PTO",
-                    onChange: (e) => setPTO(e),
-                    placeholder: "Set Employees PTO",
-                  })}
-
+        
                   {ButtonSubmit({
                     handleButtonClick: () =>
                       handleEmployeeCustomization({
@@ -212,22 +175,11 @@ export function EmployeeHub() {
                         email: email,
                         salary: salary,
                         position: position,
-                        PTO: PTO,
                       }),
                     text: "Customize Employee Information",
                   })}
-
-                  {Button({
-                    text: "Manage PTO Requests",
-                    classNames: "PTODisplay",
-                    handleButtonClick: () =>
-                      toggleDisplay(
-                        (e: boolean) => setPTODisplay(e),
-                        PTODisplay,
-                      ),
-                  })}
                 </section>
-              )}
+              )
 
               <section className="flex flex-col alignCenter rightContainer">
                 <PaginatedButtons
@@ -247,17 +199,7 @@ export function EmployeeHub() {
             <section className="flex flex-col">
               <h2 className="flex justifyCenter heading">Employee Hub</h2>
 
-              {/* {PTONotification({requests: employee?.requests})} */}
-
               <section className="flex justifyBetween alignCenter employee">
-                <section className="imgContainer">
-                  <img
-                    src={employee?.image}
-                    className="profileImg"
-                    alt={employee?.fileName}
-                  />
-                  <ImageUpload user={user} />
-                </section>
                 <section className="flex flex-col profile">
                   <h2 className="email">Email: {user.email}</h2>
                   <h2>Start Date: {user.$createdAt.split("T")[0]}</h2>
@@ -266,18 +208,10 @@ export function EmployeeHub() {
                   <h2>Salary: {employee?.salary}</h2>
                 </section>
 
-                {PTODisplay || showPurchases || PTORequestDisplay ? (
+                {showPurchases ? (
                   ""
                 ) : (
                   <section className="flex flex-col alignCenter justifyBetween buttons">
-                    {Button({
-                      text: "Request PTO Hub",
-                      handleButtonClick: () =>
-                        toggleDisplay(
-                          (e: boolean) => setPTODisplay(e),
-                          PTODisplay,
-                        ),
-                    })}
                     {Button({
                       text: "Sales History Hub",
                       handleButtonClick: () =>
@@ -286,92 +220,7 @@ export function EmployeeHub() {
                           showPurchases,
                         ),
                     })}
-                    {Button({
-                      text: "PTO Request History Hub",
-                      handleButtonClick: () =>
-                        toggleDisplay(
-                          (e: boolean) => setPTORequestDisplay(e),
-                          PTORequestDisplay,
-                        ),
-                    })}
                   </section>
-                )}
-
-                {PTODisplay ? (
-                  <section className="flex flex-col alignCenter PTO">
-                    <h2>
-                      PTO Balance: {employee?.PTO ? employee?.PTO : 0} Hours
-                    </h2>
-                    {Input({
-                      type: "text",
-                      value: PTO,
-                      name: "PTO",
-                      onChange: (e) => setPTO(e),
-                      placeholder: "Request PTO hours",
-                    })}
-                    <h2>Vacation Start Date:</h2>
-                    {Input({
-                      value: startPTODate,
-                      type: "date",
-                      name: "datetime-local",
-                      onChange: (e) => setStartPTODate(e),
-                      min: `${currentYear}-${currentMonth}-${currentDay}`,
-                      max: `${currentYear + 20}-${currentMonth}-${currentDay}`,
-                    })}
-                    <h2>Vacation End Date:</h2>
-                    {Input({
-                      value: endPTODate,
-                      type: "date",
-                      name: "datetime-local",
-                      onChange: (e) => setEndPTODate(e),
-                      min: `${currentYear}-${currentMonth}-${currentDay}`,
-                      max: `${currentYear + 20}-${currentMonth}-${currentDay}`,
-                    })}
-
-                    <section className="flex alignCenter">
-                      {Button({
-                        text: "Hide Request PTO Hub",
-                        classNames: "hide",
-                        handleButtonClick: () =>
-                          toggleDisplay(
-                            (e: boolean) => setPTODisplay(e),
-                            PTODisplay,
-                          ),
-                      })}
-                      {ButtonSubmit({
-                        handleButtonClick: () =>
-                          handlePTO(listOfUsers, PTO, startPTODate, endPTODate),
-                        text: "Request PTO",
-                      })}
-                    </section>
-                  </section>
-                ) : (
-                  ""
-                )}
-
-                {PTORequestDisplay ? (
-                  <section className="flex flex-col alignCenter justifyCenter PTO">
-                    {Button({
-                      text: "Hide PTO History Hub",
-                      classNames: "hide",
-                      handleButtonClick: () =>
-                        toggleDisplay(
-                          (e: boolean) => setPTORequestDisplay(e),
-                          PTORequestDisplay,
-                        ),
-                    })}
-
-                    {RenderRequestHistory({
-                      currentPage: currentPTOPage,
-                      setCurrentPage: (e: number) => setCurrentPTOPage(e),
-                      rows: rows,
-                      startIndex: firstIndex,
-                      endIndex: lastIndex,
-                      requests: employee?.requests,
-                    })}
-                  </section>
-                ) : (
-                  ""
                 )}
 
                 {showPurchases ? (

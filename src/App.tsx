@@ -12,25 +12,19 @@ import { EmployeeHub } from "./pages/employee/Employee";
 import { APIContext } from "./middleware/Context";
 import { cacheEmail } from "./middleware/Cache";
 import {
-  ClientFinance,
   Profile,
-  PTO,
   InventoryItem,
   CartItem,
   Appointment,
   PurchasedItem,
-  Estimate,
   User,
 } from "./middleware/Interfaces";
 import {
-  GetClientFinance,
   GetEmployee,
-  GetPTORequests,
   GetInventory,
   GetCart,
   GetAppointmentData,
   GetPurchases,
-  GetEstimates,
   GetAccount,
 } from "./hooks/ApiCalls";
 import {
@@ -38,8 +32,6 @@ import {
   defaultUser,
   Home,
   Employee,
-  Finance,
-  ServiceEstimate,
   Demo,
   AdminDemo,
   Reservation,
@@ -49,9 +41,7 @@ import {
   EmployeeSettings,
   ManageAppointments,
   EditAppointment,
-  Estimates,
   Purchases,
-  Client,
 } from "./Pages";
 
 export default function App() {
@@ -59,11 +49,8 @@ export default function App() {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [appointments, setAppointments] = useState<Appointment[]>([]);
   const [purchases, setPurchases] = useState<PurchasedItem[]>([]);
-  const [estimates, setEstimates] = useState<Estimate[]>([]);
   const [user, setUser] = useState<User>(defaultUser);
-  const [PTORequests, setPTORequests] = useState<PTO[]>([]);
   const [employee, setEmployee] = useState<Profile>(defaultEmployee);
-  const [clientFinance, setClientFinance] = useState<ClientFinance[]>([]);
 
   useEffect(() => {
     if (cacheEmail) {
@@ -71,11 +58,8 @@ export default function App() {
       GetCart((e: CartItem[]) => setCart(e));
       GetAppointmentData((e: Appointment[]) => setAppointments(e));
       GetPurchases((e: PurchasedItem[]) => setPurchases(e));
-      GetEstimates((e: Estimate[]) => setEstimates(e));
       GetAccount((e: User) => setUser(e));
-      GetPTORequests((e: PTO[]) => setPTORequests(e));
       GetEmployee((e: Profile) => setEmployee(e));
-      GetClientFinance((e: ClientFinance[]) => setClientFinance(e));
     }
   }, []);
 
@@ -87,13 +71,8 @@ export default function App() {
         appointments,
         setAppointments,
         purchases,
-        estimates,
-        setEstimates,
         user,
-        PTORequests,
         employee,
-        clientFinance,
-        setClientFinance,
       }}
     >
       <Suspense fallback={<h1>Loading...</h1>}>
@@ -102,15 +81,12 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route element={<PublicRoutes />}>
               <Route path="/employee" element={<Employee />} />
-              <Route path="/finance" element={<Finance />} />
               <Route path="/login" element={<EmployeeHub />} />
-              <Route path="/estimate" element={<ServiceEstimate />} />
               <Route path="/demo" element={<Demo />} />
               <Route path="/adminDemo" element={<AdminDemo />} />
               <Route path="/reservation" element={<Reservation />} />
             </Route>
             <Route element={<PrivateRoutes />}>
-              <Route path="/clientFinance" element={<Client />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/inventory" element={<Inventory />} />
               <Route path="/inventoryShop" element={<InventoryShop />} />
@@ -120,7 +96,6 @@ export default function App() {
                 element={<ManageAppointments />}
               />
               <Route path="/editAppointment" element={<EditAppointment />} />
-              <Route path="/estimates" element={<Estimates />} />
               <Route element={<PurchaseRoutes />}>
                 <Route path="/purchases" element={<Purchases />} />
               </Route>

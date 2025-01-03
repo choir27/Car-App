@@ -6,9 +6,6 @@ import {
   CartItem,
   Appointment,
   Profile,
-  PTO,
-  Estimate,
-  ClientFinance,
   InventoryItem,
   PurchasedItem,
 } from "../middleware/Interfaces";
@@ -76,59 +73,6 @@ export async function GetEmployee(setEmployee: (e: Profile) => void) {
       )[0];
 
       setEmployee(findUser);
-    }
-  } catch (err) {
-    console.error(err);
-    toast.error(`${err}`);
-  }
-}
-
-//Get Employee PTO database data
-export async function GetPTORequests(setPTORequests: (e: PTO[]) => void) {
-  try {
-    const data = await api.listDocuments(
-      import.meta.env.VITE_REACT_APP_DATABASE_ID,
-      import.meta.env.VITE_REACT_APP_PTO_COLLECTION_ID,
-    );
-
-    if (data.documents.length) {
-      setPTORequests(data.documents);
-    }
-  } catch (err) {
-    console.error(err);
-    toast.error(`${err}`);
-  }
-}
-
-//Get Submitted Estimates database data
-export async function GetEstimates(setEstimates: (e: Estimate[]) => void) {
-  try {
-    const data = await api.listDocuments(
-      import.meta.env.VITE_REACT_APP_DATABASE_ID,
-      import.meta.env.VITE_REACT_APP_ESTIMATES_COLLECTION_ID,
-    );
-
-    if (data.documents.length) {
-      setEstimates(data.documents);
-    }
-  } catch (err) {
-    console.error(err);
-    toast.error(`${err}`);
-  }
-}
-
-//Get current clients with finance plans
-export async function GetClientFinance(
-  setClientFinance: (e: ClientFinance[]) => void,
-) {
-  try {
-    const data = await api.listDocuments(
-      import.meta.env.VITE_REACT_APP_CART_DATABASE_ID,
-      import.meta.env.VITE_REACT_APP_FINANCE_PAYMENTS_COLLECTION_ID,
-    );
-
-    if (data.documents.length) {
-      setClientFinance(data.documents);
     }
   } catch (err) {
     console.error(err);

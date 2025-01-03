@@ -36,16 +36,6 @@ export default function EmployeeNav() {
           text: "Shop for Inventory",
           domain: "/inventoryShop",
         })}
-        {ButtonLink({
-          classNames: "goBack",
-          text: "Estimates",
-          domain: "/estimates",
-        })}
-        {ButtonLink({
-          classNames: "goBack",
-          text: "Client Finances",
-          domain: "/clientFinance",
-        })}
         {cacheEmail?.toLowerCase() === "bobthebuilder@gmail.com"
           ? ButtonLink({
               classNames: "goBack",

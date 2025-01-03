@@ -29,24 +29,10 @@ export default function Nav(props: nav) {
         <Link to="/">
           <h1>AutoAligners</h1>
         </Link>
-        <ul className="flex alignCenter">
+        <ul className="flex alignCenter justifyEvenly">
           <li>
             <Link to="/">{cacheEmail ? "Employee Hub" : "Home"}</Link>
           </li>
-          {cacheEmail ? (
-            ""
-          ) : (
-            <li>
-              <Link to="/estimate">Estimate Car Service</Link>
-            </li>
-          )}
-          {cacheEmail ? (
-            ""
-          ) : (
-            <li>
-              <Link to="/finance">Finance</Link>
-            </li>
-          )}
           {cacheEmail ? (
             <li>
               <EmployeeNav />
@@ -73,8 +59,8 @@ export default function Nav(props: nav) {
           ) : (
             ""
           )}
-        </ul>
-        {cacheEmail ? (
+
+{cacheEmail ? (
           <div>
             {ButtonSubmit({
               handleButtonClick: () => handleLogout(),
@@ -91,6 +77,7 @@ export default function Nav(props: nav) {
             {ButtonLink({ domain: "/reservation", text: "Make Reservation" })}
           </div>
         )}
+        </ul>
       </nav>
 
       <h2>{props.pageHeading}</h2>

@@ -1,8 +1,6 @@
 import { createContext } from "react";
 import {
-  ClientFinance,
   Profile,
-  PTO,
   User,
   InventoryItem,
   CartItem,
@@ -17,13 +15,8 @@ type T = {
   appointments: Appointment[];
   setAppointments: (e: Appointment[]) => void;
   purchases: PurchasedItem[];
-  estimates: Estimate[];
-  setEstimates: (e: Estimate[]) => void;
   user: User;
-  PTORequests: PTO[];
   employee: Profile;
-  clientFinance: ClientFinance[];
-  setClientFinance: (e: ClientFinance[]) => void;
 };
 
 export const APIContext = createContext<T>({
@@ -32,8 +25,6 @@ export const APIContext = createContext<T>({
   appointments: [],
   setAppointments: (e: Appointment[]) => e,
   purchases: [],
-  estimates: [],
-  setEstimates: (e: Estimate[]) => e,
   user: {
     $createdAt: "",
     $updatedAt: "",
@@ -48,17 +39,10 @@ export const APIContext = createContext<T>({
     prefs: [],
     registration: "",
   },
-  PTORequests: [],
   employee: {
     $id: "",
     fileName: "",
-    image: "",
     position: "",
-    PTO: "",
     salary: "",
-    requestedPTO: "",
-    requests: [],
   },
-  clientFinance: [],
-  setClientFinance: (e: ClientFinance[]) => e,
 });

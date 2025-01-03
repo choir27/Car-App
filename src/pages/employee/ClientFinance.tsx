@@ -68,7 +68,7 @@ export default function DisplayClientFinance() {
             searchValue: searchValue,
             setSearchValue: (e: string) => setSearchValue(e),
             setData: (e: ClientFinance[]) => setClientFinance(e),
-            database: import.meta.env.VITE_REACT_APP_CART_DATABASE_ID,
+            database: import.meta.env.VITE_REACT_APP_DATABASE_ID,
             collection: import.meta.env
               .VITE_REACT_APP_FINANCE_PAYMENTS_COLLECTION_ID,
             filterArray: filterArray,

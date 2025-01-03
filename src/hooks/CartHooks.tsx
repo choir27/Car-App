@@ -310,7 +310,7 @@ async function handleMakeCartPurchase(props: CartPurchase) {
 
       //add payment info to payment database
       const response = await api.createDocument(
-        import.meta.env.VITE_REACT_APP_CART_DATABASE_ID,
+        import.meta.env.VITE_REACT_APP_DATABASE_ID,
         import.meta.env.VITE_REACT_APP_PAYMENTS_COLLECTION_ID,
         payment,
         [Permission.read(Role.any())],

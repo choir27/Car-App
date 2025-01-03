@@ -13,6 +13,13 @@ import {
   DisplayCurrentInventory,
 } from "../middleware/Interfaces";
 
+export function toggleDisplay(
+  setDisplay: (e: boolean) => void,
+  display: boolean,
+) {
+  setDisplay(!display);
+}
+
 //render quantites of items in inventory
 function renderInventoryQuantityOptions(props: InventoryQuantity) {
   const options = [];

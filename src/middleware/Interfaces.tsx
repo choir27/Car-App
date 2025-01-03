@@ -381,32 +381,7 @@ export interface FinanceDisplay {
   setEmail: (e: string) => void;
 }
 
-export interface ClientFinance {
-  $id: string;
-  $updatedAt: string;
-  $createdAt: string;
-  cardAmount: number;
-  cardNumber: number;
-  email: string;
-  expirationDate: string;
-  financeTotal: string;
-  securityNumber: string;
-  type: string;
-}
-
-export interface EditFinance {
-  display: boolean;
-  setDisplay: (e: boolean) => void;
-  client: string;
-  clientFinance: ClientFinance[];
-  financeTotal: string;
-  setFinanceTotal: (e: string) => void;
-  email: string;
-  setEmail: (e: string) => void;
-}
-
 export interface TableContent {
-  clientFinance: ClientFinance[];
   startIndex: number;
   endIndex: number;
   displayFinance: boolean;
@@ -423,43 +398,8 @@ export interface Profile {
   $id: string;
   email?: string;
   fileName: string;
-  image: string;
   position: string;
-  PTO: string;
   salary: string;
-  requestedPTO: string;
-  requests: string[];
-}
-
-export interface PTO {
-  PTO: string;
-  PTOStartDate: string;
-  PTOEndDate: string;
-  userID: string;
-  $id: string;
-  email: string;
-  name: string;
-}
-
-export interface PTORequests {
-  currentPTOPage: number;
-  setCurrentPTOPage: (e: number) => void;
-  rows: number;
-  setPTODisplay: (e: boolean) => void;
-  PTODisplay: boolean;
-  PTORequests: PTO[];
-  firstIndex: number;
-  lastIndex: number;
-}
-
-export interface Approve {
-  PTO: string;
-  email: string;
-  name: string;
-  userID: string;
-  startDate: string;
-  endDate: string;
-  $id: string;
 }
 
 export interface History {
@@ -476,7 +416,6 @@ export interface Customize {
   email: string;
   salary: string;
   position: string;
-  PTO: string;
 }
 
 export interface Notification {
