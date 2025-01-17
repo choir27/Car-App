@@ -1,6 +1,6 @@
 # AutoAligners
 
-AutoAligners is a web application that allows users to make appointments for various car services, and receive email notifications when their car(s) are ready for pickup. These notifications are sent manually by the employee user(s), who are given admin level access to certain aspects of the application. There are also other additional elements to the application, such as making PTO requests for employees, purchasing a finance plan, and viewing the overall sales made.
+AutoAligners is a web application that allows users to make appointments for various car services, and receive email notifications when their car(s) are ready for pickup. These notifications are sent manually by the employee user(s), who are given admin level access to certain aspects of the application.
 
 <a href = "https://autoaligners.netlify.app/">
 

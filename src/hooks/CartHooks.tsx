@@ -262,8 +262,6 @@ async function handleMakeCartPurchase(props: CartPurchase) {
               cartItem,
             );
 
-            console.log(data);
-
             //Upon purchase, if an items' quantity reaches the reOrderLV, or is below the reOrderLV value, update the appropriate cart items' quantity
             // if(inventoryItem.reOrderLV >= quantity){
 
@@ -289,9 +287,7 @@ async function handleMakeCartPurchase(props: CartPurchase) {
         [Permission.read(Role.any())],
       );
 
-      console.log(data);
-
-      //remove all currently purchased items from the cart database
+      // remove all currently purchased items from the cart database
       for (let i = 0; i < props.cart.length; i++) {
         await api.deleteDocument(
           import.meta.env.VITE_REACT_APP_DATABASE_ID,
@@ -300,25 +296,7 @@ async function handleMakeCartPurchase(props: CartPurchase) {
         );
       }
 
-      const payment = {
-        cardNumber: props.cardInfo?.cardNumber,
-        cardExpiration: props.cardInfo?.expirationDate,
-        cardSecurity: props.cardInfo?.securityNumber,
-        cardType: props.cardInfo?.type,
-        total: props.total,
-      };
-
-      //add payment info to payment database
-      const response = await api.createDocument(
-        import.meta.env.VITE_REACT_APP_DATABASE_ID,
-        import.meta.env.VITE_REACT_APP_PAYMENTS_COLLECTION_ID,
-        payment,
-        [Permission.read(Role.any())],
-      );
-
-      console.log(response);
-
-      if (data && response) {
+      if (data) {
         window.location.reload();
       }
     } else {

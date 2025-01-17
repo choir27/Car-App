@@ -6,7 +6,6 @@ import {
   CartItem,
   Appointment,
   PurchasedItem,
-  Estimate,
 } from "./Interfaces";
 
 type T = {

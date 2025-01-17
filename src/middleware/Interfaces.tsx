@@ -117,41 +117,9 @@ export interface Choose {
   defaultValue: string | undefined;
 }
 
-//interface type for estimates
-export interface ServiceEstimate {
-  carModel: string;
-  carMake: string;
-  carYear: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  zipCode: string;
-  contact: string;
-  comment: string;
-  stayLeave: string;
-  service: string;
-}
-
-export interface Estimate {
-  $id?: string;
-  service: string;
-  carMake: string;
-  carModel: string;
-  carYear: string;
-  stayLeave?: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone?: string;
-  zipCode?: string;
-  contact?: string;
-  comment?: string;
-}
-
 //interface type for appointments
 export interface Appointment {
-  $createdAt: string;
+  $createdAt?: string;
   $id?: string;
   date: string;
   time: string;
@@ -369,16 +337,6 @@ export interface Cart {
   setCardInfo: (e: CardInfo) => void;
   startIndex: number;
   endIndex: number;
-}
-
-export interface FinanceDisplay {
-  text: string;
-  display: boolean;
-  setDisplay: (e: boolean) => void;
-  cardInfo: CardInfo | undefined;
-  setCardInfo: (e: CardInfo) => void;
-  email: string;
-  setEmail: (e: string) => void;
 }
 
 export interface TableContent {

@@ -148,6 +148,8 @@ export async function HandlePurchaseItem(props: Item) {
           : props.inventory.quantity,
       };
 
+      console.log(item)
+
       //create a new inventory object if no duplicate exists
       await api.createDocument(
         import.meta.env.VITE_REACT_APP_DATABASE_ID,

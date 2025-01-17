@@ -19,7 +19,6 @@ export const InventoryShop = lazy(
 );
 export const Cart = lazy(() => import("./pages/employee/Cart"));
 export const Purchases = lazy(() => import("./pages/employee/Purchases"));
-export const Estimates = lazy(() => import("./pages/employee/Estimates"));
 export const AdminDemo = lazy(() => import("./pages/guest/AdminDemo"));
 
 export const defaultUser = {
