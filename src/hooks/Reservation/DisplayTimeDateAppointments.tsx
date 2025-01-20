@@ -84,9 +84,21 @@ export function DisplayTimeDateAppointments(
           clickedClassName: "",
         }),
       );
-      if(CheckHolidays({month: newMonth, day: newDay, dayOfWeek: currentDayOfWeek, year: newYear})){
-        i++
-      }
+    } else if(CheckHolidays({month: newMonth, day: newDay, dayOfWeek: currentDayOfWeek, year: newYear})){
+      calendar.push(
+        CalendarCard({
+          i,
+          currentMonth: newMonth,
+          currentDay: newDay,
+          currentYear: newYear,
+          setSelectedDate: ()=>"",
+          daysOfWeek,
+          currentDayOfWeek,
+          props,
+          clickedClassName: "",
+          disabled: "disabled"
+        }),
+      );      
     }
 
     day++;

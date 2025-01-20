@@ -48,8 +48,12 @@
   background: #112597;
   color: #f0f1f3;
 }
-/* 
-body{
-  background-image: url("../../assets/background.jpg");
-  background-repeat: no-repeat;
-} */
+
+.disabled {
+  opacity: 20%;
+}
+
+.disabled:hover{
+  background: #d0d5f3;
+  cursor: auto;
+}

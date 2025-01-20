@@ -5,8 +5,6 @@
 // if the date matches the holiday date, return true
 // else return false
 
-import { daysOfWeek } from "./DatesStatic";
-
 export function CheckHolidays({
   month,
   day,
@@ -28,10 +26,13 @@ export function CheckHolidays({
     const getFirstMondayDay = new Date(year, month - 1, firstMonday).getDay();
     const secondMonday = day - 7;
     const getSecondMondayDay = new Date(year, month - 1, secondMonday).getDay();
-
+    const fourthMonday = day + 7;
+    const getFourthMondayDay = new Date(year, month - 1, fourthMonday).getDay();
     if (
       firstMonday > 0 &&
       secondMonday > 0 &&
+      fourthMonday < 31 &&
+      getFourthMondayDay === 1 &&
       getFirstMondayDay === 1 &&
       getSecondMondayDay === 1
     ) {
