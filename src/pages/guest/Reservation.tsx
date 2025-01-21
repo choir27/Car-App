@@ -1,23 +1,16 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Button } from "../../components/Button";
 import Nav from "../../components/Nav";
-import {
-  DisplayTimeDateAppointments,
-  SelectCarMakeInput,
-  SelectCarModelInput,
-  ChooseTwoInput,
-  SelectCarYearInput,
-  ChooseCarService,
-  Input,
-  TextBoxInput,
-  handleCreateAppointment,
-} from "../../hooks/ReservationHooks";
+import { DisplayTimeDateAppointments } from "../../hooks/Reservation/Calendar";
+import { ChooseCarService, SelectCarMakeInput, SelectCarModelInput, SelectCarYearInput } from "../../hooks/Reservation/CarInputs";
+import { ChooseTwoInput, Input, TextBoxInput } from "../../hooks/Inputs/Inputs";
+import { handleCreateAppointment } from "../../hooks/Reservation/Submit";
 import Footer from "../../components/Footer";
 import { GetCarData } from "../../hooks/ApiCalls";
 import { APIContext } from "../../middleware/Context";
 
 export default function Reservation() {
-  const [date, setDate] = useState<string>("");
+  const [date, setDate] = useState<Date>();
   const [time, setTime] = useState<string>("");
   const [carModel, setCarModel] = useState<string>("");
   const [carMake, setCarMake] = useState<string>("");
@@ -56,7 +49,7 @@ export default function Reservation() {
       {DisplayTimeDateAppointments({
         setTime: (e: string) => setTime(e),
         appointments: appointments,
-        setDate: (e: string) => setDate(e),
+        setDate: (e: Date) => setDate(e),
       })}
 
       <section className="flex flex-col">
@@ -169,8 +162,8 @@ export default function Reservation() {
         <Button
           text="Reserve Appointment"
           handleButtonClick={() =>
-            handleCreateAppointment(date, time, (e: string) => setDate(e), {
-              service: service,
+            handleCreateAppointment(
+              {service: service,
               firstName: firstName,
               lastName: lastName,
               date: date,

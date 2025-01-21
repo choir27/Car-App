@@ -151,8 +151,6 @@ export interface TimeDateAppointments {
   setTime: (e: string) => void;
   appointments: Appointment[];
   setDate: (e: string) => void;
-  date?: string;
-  time?: string;
 }
 
 export interface ChangeTime {

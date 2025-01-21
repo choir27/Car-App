@@ -5,7 +5,6 @@ import { ButtonSubmit, Button } from "../../components/Button";
 import {
   GenerateNewEmployee,
   handleLogin,
-  DisplayUsers,
   Input,
   handleSignUp,
 } from "../../hooks/LoginHooks";
@@ -33,8 +32,7 @@ export function EmployeeHub() {
   const [name, setName] = useState<string>("");
   const [showPurchases, setShowPurchases] = useState<boolean>(false);
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [salary, setSalary] = useState<string>("");
-  const [position, setPosition] = useState<string>("");
+
 
   const rowsPerPage = 3;
 
@@ -96,7 +94,7 @@ export function EmployeeHub() {
         )}
 
         {user.$id ? (
-          user?.$id === "649c8a408d41d5c02f5c" ||
+          user?.$id === "678ac48e001184a52497" ||
           user?.$id === "64e51b2e84f09ed015ec" ? (
             <section className="admin flex justifyCenter alignCenter">
               <section className="flex flex-col alignCenter leftContainer">
@@ -148,52 +146,6 @@ export function EmployeeHub() {
                 </form>
               </section>
 
-                <section className="flex flex-col">
-                  {Input({
-                    type: "email",
-                    name: "email",
-                    onChange: (e) => setEmail(e),
-                    placeholder: "Employees Email",
-                  })}
-                  {Input({
-                    type: "text",
-                    name: "salary",
-                    onChange: (e) => setSalary(e),
-                    placeholder: "Set Employees Salary",
-                  })}
-                  {Input({
-                    type: "text",
-                    name: "position",
-                    onChange: (e) => setPosition(e),
-                    placeholder: "Set Employees Position",
-                  })}
-        
-                  {ButtonSubmit({
-                    handleButtonClick: () =>
-                      handleEmployeeCustomization({
-                        listOfUsers: listOfUsers,
-                        email: email,
-                        salary: salary,
-                        position: position,
-                      }),
-                    text: "Customize Employee Information",
-                  })}
-                </section>
-              )
-
-              <section className="flex flex-col alignCenter rightContainer">
-                <PaginatedButtons
-                  currentPage={currentPage}
-                  cartLength={listOfUsers.length}
-                  setCurrentPage={(e: number) => setCurrentPage(e)}
-                  rowsPerPage={rows}
-                />
-                {loading ? (
-                  DisplayUsers(listOfUsers, user, start, end)
-                ) : (
-                  <h1>Loading...</h1>
-                )}
-              </section>
             </section>
           ) : (
             <section className="flex flex-col">
@@ -204,8 +156,6 @@ export function EmployeeHub() {
                   <h2 className="email">Email: {user.email}</h2>
                   <h2>Start Date: {user.$createdAt.split("T")[0]}</h2>
                   <h2>Total Sales Made: ${RenderEmployeeProfit(purchases)}</h2>
-                  <h2>Position: {employee?.position}</h2>
-                  <h2>Salary: {employee?.salary}</h2>
                 </section>
 
                 {showPurchases ? (

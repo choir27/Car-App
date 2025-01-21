@@ -1,4 +1,4 @@
-import { Input } from "./ReservationHooks";
+import { Input } from "./Inputs/Inputs";
 import api from "../api/api";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";

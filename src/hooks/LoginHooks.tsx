@@ -29,8 +29,7 @@ export function DisplayUsers(
 ) {
   try {
     if (
-      currentUser.$id === "649c8a408d41d5c02f5c" ||
-      currentUser.$id === "64e51b2e84f09ed015ec"
+      currentUser.$id === "678ac48e001184a52497"
     ) {
       const users = listOfUsers.map((user: User) => {
         const createdAtDate = user.$createdAt.split("T")[0];
@@ -69,8 +68,7 @@ export function DisplayUsers(
               {":" + updatedAtTimeMinutes}
               {updatedAtTimeHours > 12 ? "PM" : "AM"}
             </li>
-            {user.$id === "64e51b2e84f09ed015ec" ||
-            user.$id === "64bb01ec8a97c4136079" ? (
+            {user.$id === "678ac48e001184a52497" ? (
               ""
             ) : (
               <li
