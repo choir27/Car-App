@@ -14,7 +14,7 @@ import {
 import {RenderEmployeeAppointments } from "../../hooks/Employee/RenderEmployeeAppointments"
 import { RenderEmployeeProfit } from "../../hooks/Employee/RenderEmployeeProfit"
 import PaginatedButtons from "../../components/Graphs/PaginatedButtons";
-import { toggleDisplay } from "../../hooks/InventoryHooks";
+import { toggleDisplay } from "../../hooks/ToggleDisplay";
 import { cacheEmail } from "../../middleware/Cache";
 import { APIContext } from "../../middleware/Context";
 import { User } from "../../middleware/Interfaces";
