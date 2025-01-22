@@ -9,11 +9,10 @@ import {
   handleSignUp,
 } from "../../hooks/LoginHooks";
 import {
-  EmployeeButtons,
-  RenderEmployeeAppointments,
-  RenderEmployeeProfit,
-  handleEmployeeCustomization,
-} from "../../hooks/EmployeeHooks";
+  EmployeeButtons
+} from "../../hooks/Employee/EmployeeButtons";
+import {RenderEmployeeAppointments } from "../../hooks/Employee/RenderEmployeeAppointments"
+import { RenderEmployeeProfit } from "../../hooks/Employee/RenderEmployeeProfit"
 import PaginatedButtons from "../../components/Graphs/PaginatedButtons";
 import { toggleDisplay } from "../../hooks/InventoryHooks";
 import { cacheEmail } from "../../middleware/Cache";
@@ -40,8 +39,6 @@ export function EmployeeHub() {
   const endIndex = startIndex + rowsPerPage;
 
   const rows = 2;
-  const start = (currentPage - 1) * rows;
-  const end = startIndex + rows;
 
   useEffect(() => {
     GetUsers(
@@ -49,13 +46,6 @@ export function EmployeeHub() {
       (e: boolean) => setLoading(e),
     );
   }, [listOfUsers]);
-
-  const currentDate = new Date();
-  const month = currentDate.getMonth() + 1;
-  const currentMonth =
-    currentDate.getMonth() + 1 < 10 ? "0" + month.toString() : month;
-  const currentDay = currentDate.getDate();
-  const currentYear = currentDate.getFullYear();
 
   return (
     <main id="auth">

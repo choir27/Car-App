@@ -2,7 +2,7 @@ import api from "../api/api";
 import { Permission, Role } from "appwrite";
 import { items } from "../api/inventory";
 import { Button } from "../components/Button";
-import { handleAddToCart } from "./CartHooks";
+import { handleAddToCart } from "./Cart/HandleAddToCart";
 import {
   DisplayInventory,
   CartItem,
