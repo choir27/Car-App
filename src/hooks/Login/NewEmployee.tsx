@@ -1,10 +1,9 @@
-import {alphabet, symbols} from "../Login/LoginStatic"
+import { alphabet, symbols } from "../Login/LoginStatic";
 
 export function GenerateNewEmployee(
   setPassword: (e: string) => void,
   setGeneratedPassword: (e: string) => void,
 ) {
-
   let password: string[] = [];
 
   for (let i = 0; i <= 5; i++) {
@@ -16,7 +15,6 @@ export function GenerateNewEmployee(
       password[randomIndex] = password[randomIndex].toUpperCase();
     }
   }
-
 
   const randomizeOrder = Math.floor(Math.random() * 3);
 

@@ -1,8 +1,6 @@
 import api from "../../api/api";
 import { toast } from "react-toastify";
-import {
-  CartItem,
-} from "../../middleware/Interfaces";
+import { CartItem } from "../../middleware/Interfaces";
 import { cacheEmail } from "../../middleware/Cache";
 
 //When user changes quantity of item in the cart

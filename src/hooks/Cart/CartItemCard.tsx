@@ -2,7 +2,7 @@ import { Button } from "../../components/Button";
 import { handleMakeCartPurchase } from "./HandleMakeCartPurchase";
 import { Cart } from "../../middleware/Interfaces";
 
-export function CartItemCard({total, props}:{total: string, props: Cart}) {
+export function CartItemCard({ total, props }: { total: string; props: Cart }) {
   return (
     <div className="flex flex-col alignCenter" key="cartTotal">
       <div className="flex justifyCenter cartTotal" key={total}>

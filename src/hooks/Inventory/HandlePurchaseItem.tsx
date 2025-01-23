@@ -1,9 +1,6 @@
 import api from "../../api/api";
 import { Permission, Role } from "appwrite";
-import {
-  InventoryItem,
-  Item,
-} from "../../middleware/Interfaces";
+import { InventoryItem, Item } from "../../middleware/Interfaces";
 
 //when the user adds an item from the store to add to the inventory
 export async function HandlePurchaseItem(props: Item) {
@@ -31,7 +28,7 @@ export async function HandlePurchaseItem(props: Item) {
           : props.inventory.quantity,
       };
 
-      console.log(item)
+      console.log(item);
 
       //create a new inventory object if no duplicate exists
       await api.createDocument(

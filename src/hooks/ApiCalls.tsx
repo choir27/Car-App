@@ -140,10 +140,11 @@ export async function GetAppointmentData(
     if (data.documents.length) {
       setAppointments(
         data.documents.sort((a: Appointment, b: Appointment) => {
-          if(a.$createdAt && b.$createdAt){
-          return (
-            new Date(b.$createdAt).getTime() - new Date(a.$createdAt).getTime()
-          );
+          if (a.$createdAt && b.$createdAt) {
+            return (
+              new Date(b.$createdAt).getTime() -
+              new Date(a.$createdAt).getTime()
+            );
           }
         }),
       );

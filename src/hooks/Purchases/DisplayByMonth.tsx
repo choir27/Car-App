@@ -1,15 +1,10 @@
 import PaginatedButtons from "../../components/Graphs/PaginatedButtons";
-import {
-  DisplayBy,
-  DisplayDate,
-} from "../../middleware/Interfaces";
-import {getYear, getMonth} from "../Reservation/DatesStatic"
-import {GetPurchasedDates} from "./PurchasedDates"
+import { DisplayBy, DisplayDate } from "../../middleware/Interfaces";
+import { getYear, getMonth } from "../Reservation/DatesStatic";
+import { GetPurchasedDates } from "./PurchasedDates";
 
 export function DisplayByMonth(props: DisplayBy) {
-
   const filteredDates = GetPurchasedDates(props.purchases).filter(
-    
     (date: DisplayDate | undefined) =>
       date?.date.split("-")[0].includes(getYear().toString()) &&
       date?.date.split("-")[1].includes(getMonth().toString()),

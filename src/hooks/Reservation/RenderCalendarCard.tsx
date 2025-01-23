@@ -1,17 +1,27 @@
 import { TimeDateAppointments } from "../../middleware/Interfaces";
-import { handleRenderCalendar } from "./HandleRenderCalendar"
+import { handleRenderCalendar } from "./HandleRenderCalendar";
 import { checkAppointmentDate } from "./CheckAppointmentDate";
 
-export default function CalendarCard({i, currentMonth, currentDay, currentYear, setSelectedDate, daysOfWeek, currentDayOfWeek, props, clickedClassName}:{
-i: number,
-currentMonth: number,
-currentDay: number,
-currentYear: number,
-setSelectedDate: (e:string) => void,
-daysOfWeek: string[],
-currentDayOfWeek: number,
-props: TimeDateAppointments,
-clickedClassName: string
+export default function CalendarCard({
+  i,
+  currentMonth,
+  currentDay,
+  currentYear,
+  setSelectedDate,
+  daysOfWeek,
+  currentDayOfWeek,
+  props,
+  clickedClassName,
+}: {
+  i: number;
+  currentMonth: number;
+  currentDay: number;
+  currentYear: number;
+  setSelectedDate: (e: string) => void;
+  daysOfWeek: string[];
+  currentDayOfWeek: number;
+  props: TimeDateAppointments;
+  clickedClassName: string;
 }) {
   return (
     <div
@@ -21,8 +31,8 @@ clickedClassName: string
         const date = `${currentMonth}/${currentDay}/${currentYear}`;
         checkAppointmentDate({
           date: date,
-          setDate: (e:string) => props.setDate(e)
-        })
+          setDate: (e: string) => props.setDate(e),
+        });
         setSelectedDate(date);
         handleRenderCalendar({
           currentMonth: currentMonth,

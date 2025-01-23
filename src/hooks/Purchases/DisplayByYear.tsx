@@ -1,9 +1,6 @@
 import PaginatedButtons from "../../components/Graphs/PaginatedButtons";
-import {
-  DisplayBy,
-  DisplayDate,
-} from "../../middleware/Interfaces";
-import {getYear} from "../Reservation/DatesStatic"
+import { DisplayBy, DisplayDate } from "../../middleware/Interfaces";
+import { getYear } from "../Reservation/DatesStatic";
 import { GetPurchasedDates } from "./PurchasedDates";
 
 export function DisplayByYear(props: DisplayBy) {

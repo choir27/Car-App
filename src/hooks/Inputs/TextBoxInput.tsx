@@ -1,6 +1,4 @@
-import {
-    TextBox
-  } from "../../middleware/Interfaces";
+import { TextBox } from "../../middleware/Interfaces";
 
 export function TextBoxInput(props: TextBox): React.JSX.Element {
   return (

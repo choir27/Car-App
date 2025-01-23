@@ -7,12 +7,10 @@ import {
   handleLogin,
   handleSignUp,
 } from "../../hooks/LoginHooks";
-import {  Input} from "../../hooks/Inputs/GeneralInput";
-import {
-  EmployeeButtons
-} from "../../hooks/Employee/EmployeeButtons";
-import {RenderEmployeeAppointments } from "../../hooks/Employee/RenderEmployeeAppointments"
-import { RenderEmployeeProfit } from "../../hooks/Employee/RenderEmployeeProfit"
+import { Input } from "../../hooks/Inputs/GeneralInput";
+import { EmployeeButtons } from "../../hooks/Employee/EmployeeButtons";
+import { RenderEmployeeAppointments } from "../../hooks/Employee/RenderEmployeeAppointments";
+import { RenderEmployeeProfit } from "../../hooks/Employee/RenderEmployeeProfit";
 import PaginatedButtons from "../../components/Graphs/PaginatedButtons";
 import { toggleDisplay } from "../../hooks/ToggleDisplay";
 import { cacheEmail } from "../../middleware/Cache";
@@ -31,7 +29,6 @@ export function EmployeeHub() {
   const [name, setName] = useState<string>("");
   const [showPurchases, setShowPurchases] = useState<boolean>(false);
   const [currentPage, setCurrentPage] = useState<number>(1);
-
 
   const rowsPerPage = 3;
 
@@ -135,7 +132,6 @@ export function EmployeeHub() {
                   })}
                 </form>
               </section>
-
             </section>
           ) : (
             <section className="flex flex-col">

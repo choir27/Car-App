@@ -60,23 +60,23 @@ export default function Nav(props: nav) {
             ""
           )}
 
-{cacheEmail ? (
-          <div>
-            {ButtonSubmit({
-              handleButtonClick: () => handleLogout(),
-              text: "Logout",
-            })}
-          </div>
-        ) : (
-          ""
-        )}
-        {cacheEmail ? (
-          ""
-        ) : (
-          <div>
-            {ButtonLink({ domain: "/reservation", text: "Make Reservation" })}
-          </div>
-        )}
+          {cacheEmail ? (
+            <div>
+              {ButtonSubmit({
+                handleButtonClick: () => handleLogout(),
+                text: "Logout",
+              })}
+            </div>
+          ) : (
+            ""
+          )}
+          {cacheEmail ? (
+            ""
+          ) : (
+            <div>
+              {ButtonLink({ domain: "/reservation", text: "Make Reservation" })}
+            </div>
+          )}
         </ul>
       </nav>
 

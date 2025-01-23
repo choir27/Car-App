@@ -1,7 +1,4 @@
-import {
-  renderCartQuantity,
-  InventoryItem,
-} from "../../middleware/Interfaces";
+import { renderCartQuantity, InventoryItem } from "../../middleware/Interfaces";
 
 //render select element with option elements from 1 to quantity value
 export function RenderCartQuantity(props: renderCartQuantity) {

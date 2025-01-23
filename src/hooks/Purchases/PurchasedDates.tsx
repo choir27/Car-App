@@ -1,6 +1,4 @@
-import {
-  PurchasedItem
-} from "../../middleware/Interfaces";
+import { PurchasedItem } from "../../middleware/Interfaces";
 
 //return array that returns a list of the date of the purchase
 export function GetPurchasedDates(purchases: PurchasedItem[]) {

@@ -4,7 +4,7 @@ import {
   ButtonProps,
   ButtonSubmitProps,
   ButtonLinkProps,
-} from "../middleware/Interfaces";
+} from "../hooks/Inputs/Interfaces";
 
 export function ButtonSubmit(props: ButtonSubmitProps) {
   return (

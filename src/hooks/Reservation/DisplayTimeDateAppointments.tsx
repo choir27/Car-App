@@ -1,14 +1,11 @@
 import React, { useState } from "react";
-import {
-  Appointment,
-  TimeDateAppointments,
-} from "../../middleware/Interfaces";
+import { Appointment, TimeDateAppointments } from "../../middleware/Interfaces";
 import {
   daysOfWeek,
   getMonth,
   getDay,
   getYear,
-  getDayOfWeek
+  getDayOfWeek,
 } from "./DatesStatic";
 import { calendarLogic } from "./DateLogic";
 import CalendarCard from "./RenderCalendarCard";
@@ -108,9 +105,7 @@ export function DisplayTimeDateAppointments(
 
   //render clear buttons of appointment dates
   const renderTimeButtons = miliaryTimes.map((time, i) => {
-      return (
-RenderTimeCard({i, time, props})
-      );
+    return RenderTimeCard({ i, time, props });
   });
 
   return (

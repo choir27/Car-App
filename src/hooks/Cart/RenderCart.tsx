@@ -1,14 +1,11 @@
 import React from "react";
 import { Button } from "../../components/Button";
-import {
-  CartItem,
-  Cart,
-} from "../../middleware/Interfaces";
-import {handleMakeCartPurchase} from "./HandleMakeCartPurchase"
-import {CartItemCard} from "./CartItemCard"
-import RenderCartItem from "./RenderCartItem"
-import RenderMultipleCartItems from "./RenderMultipleCartItems"
-import RenderFinalCartItem from './RenderFinalCartItem'
+import { CartItem, Cart } from "../../middleware/Interfaces";
+import { handleMakeCartPurchase } from "./HandleMakeCartPurchase";
+import { CartItemCard } from "./CartItemCard";
+import RenderCartItem from "./RenderCartItem";
+import RenderMultipleCartItems from "./RenderMultipleCartItems";
+import RenderFinalCartItem from "./RenderFinalCartItem";
 
 //render cart, cart total, item totals, and item quantities
 export function RenderCart(props: Cart) {
@@ -50,16 +47,23 @@ export function RenderCart(props: Cart) {
       total = Number(total).toFixed(2);
 
       if (props.cart.length === 1) {
-        totalOfCart.push(
-          CartItemCard({total, props})
-        );
+        totalOfCart.push(CartItemCard({ total, props }));
 
-       return RenderCartItem({i, item, props, checkCartQuantity, itemPriceTotal});
-
+        return RenderCartItem({
+          i,
+          item,
+          props,
+          checkCartQuantity,
+          itemPriceTotal,
+        });
       } else if (props.cart.length > 1 && i !== props.cart.length - 1) {
-
-       return RenderMultipleCartItems({i, item, props, checkCartQuantity, itemPriceTotal});
-
+        return RenderMultipleCartItems({
+          i,
+          item,
+          props,
+          checkCartQuantity,
+          itemPriceTotal,
+        });
       } else if (i === props.cart.length - 1) {
         totalOfCart.push(
           <div className="flex flex-col alignCenter" key="cartTotal">
@@ -80,8 +84,13 @@ export function RenderCart(props: Cart) {
           </div>,
         );
 
-        return RenderFinalCartItem({i, item, props, checkCartQuantity, itemPriceTotal})
-        
+        return RenderFinalCartItem({
+          i,
+          item,
+          props,
+          checkCartQuantity,
+          itemPriceTotal,
+        });
       }
     })
     .slice(props.startIndex, props.endIndex);

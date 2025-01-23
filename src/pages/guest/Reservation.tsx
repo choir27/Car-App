@@ -2,7 +2,12 @@ import React, { useState, useEffect, useContext } from "react";
 import { Button } from "../../components/Button";
 import Nav from "../../components/Nav";
 import { DisplayTimeDateAppointments } from "../../hooks/Reservation/DisplayTimeDateAppointments";
-import { ChooseCarService, SelectCarMakeInput, SelectCarModelInput, SelectCarYearInput } from "../../hooks/Reservation/CarInputs";
+import {
+  ChooseCarService,
+  SelectCarMakeInput,
+  SelectCarModelInput,
+  SelectCarYearInput,
+} from "../../hooks/Reservation/CarInputs";
 import { ChooseTwoInput } from "../../hooks/Inputs/ChooseTwoInput";
 import { TextBoxInput } from "../../hooks/Inputs/TextBoxInput";
 import { Input } from "../../hooks/Inputs/GeneralInput";
@@ -164,8 +169,8 @@ export default function Reservation() {
         <Button
           text="Reserve Appointment"
           handleButtonClick={() =>
-            handleCreateAppointment(
-              {service: service,
+            handleCreateAppointment({
+              service: service,
               firstName: firstName,
               lastName: lastName,
               date: date,

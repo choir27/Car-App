@@ -5,18 +5,18 @@ import { handleDeleteCartItem } from "./HandleDeleteCartItem";
 import { CartItem, Cart } from "../../middleware/Interfaces";
 
 export default function RenderMultipleCartItems({
-    i,
-    item,
-    props,
-    checkCartQuantity,
-    itemPriceTotal,
-  }: {
-    i: number;
-    item: CartItem;
-    props: Cart;
-    checkCartQuantity: string;
-    itemPriceTotal: number;
-  }) {
+  i,
+  item,
+  props,
+  checkCartQuantity,
+  itemPriceTotal,
+}: {
+  i: number;
+  item: CartItem;
+  props: Cart;
+  checkCartQuantity: string;
+  itemPriceTotal: number;
+}) {
   return (
     <section className="flex flex-col" key={i}>
       <div className="flex justifyBetween">

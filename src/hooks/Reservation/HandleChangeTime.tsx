@@ -1,6 +1,4 @@
-import {
-    ChangeTime,
-  } from "../../middleware/Interfaces";
+import { ChangeTime } from "../../middleware/Interfaces";
 
 export function handleChangeTime(props: ChangeTime) {
   props.e.preventDefault();

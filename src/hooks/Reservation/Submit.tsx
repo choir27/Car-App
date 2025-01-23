@@ -1,9 +1,7 @@
 import { toast } from "react-toastify";
 import api from "../../api/api.jsx";
 import { Permission, Role } from "appwrite";
-import {
-  Appointment,
-} from "../../middleware/Interfaces";
+import { Appointment } from "../../middleware/Interfaces";
 
 export async function handleSubmitData(props: Appointment): Promise<void> {
   const formData = {
