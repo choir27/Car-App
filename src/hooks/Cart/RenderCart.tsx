@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "../../components/Button";
-import { CartItem, Cart } from "../../middleware/Interfaces";
+import { CartItem, Cart } from "../../middleware/Interfaces/Cart";
 import { handleMakeCartPurchase } from "./HandleMakeCartPurchase";
 import { CartItemCard } from "./CartItemCard";
 import RenderCartItem from "./RenderCartItem";

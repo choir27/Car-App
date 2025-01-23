@@ -4,8 +4,8 @@ import { toast } from "react-toastify";
 import {
   CartItem,
   CartPurchase,
-  InventoryItem,
-} from "../../middleware/Interfaces";
+} from "../../middleware/Interfaces/Cart";
+import {  InventoryItem,} from "../../middleware/Interfaces/Inventory"
 
 //When the user sells the items in the cart
 export async function handleMakeCartPurchase(props: CartPurchase) {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-import { SelectOptions } from "../../middleware/Interfaces";
+import { SelectOptions } from "../../middleware/Interfaces/Reservation";
 
 export function SelectCarMakeInput(props: SelectOptions): React.JSX.Element {
   //sets value for previously selected car make

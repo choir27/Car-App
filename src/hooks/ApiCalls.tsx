@@ -2,13 +2,13 @@ import api from "../api/api.jsx";
 import {
   Car,
   CarSelectData,
-  User,
-  CartItem,
   Appointment,
-  Profile,
-  InventoryItem,
-  PurchasedItem,
-} from "../middleware/Interfaces";
+} from "../middleware/Interfaces/Reservation";
+import {  CartItem} from "../middleware/Interfaces/Cart"
+import { InventoryItem} from "../middleware/Interfaces/Inventory"
+import { PurchasedItem } from "../middleware/Interfaces/Purchases.js";
+import { Profile } from "../middleware/Interfaces/General.js";
+import {User} from "../middleware/Interfaces/Auth"
 import { toast } from "react-toastify";
 import {
   cacheEmail,

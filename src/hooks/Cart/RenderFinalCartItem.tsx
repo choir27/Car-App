@@ -2,7 +2,7 @@ import { Button } from "../../components/Button";
 import { EditCart } from "./EditCart";
 import { RenderCartQuantity } from "./RenderCartQuantity";
 import { handleDeleteCartItem } from "./HandleDeleteCartItem";
-import { CartItem, Cart } from "../../middleware/Interfaces";
+import { CartItem, Cart } from "../../middleware/Interfaces/Cart";
 
 export default function RenderFinalCartItem({
   i,

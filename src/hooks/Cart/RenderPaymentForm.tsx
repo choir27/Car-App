@@ -1,5 +1,5 @@
 import Assets from "../../components/Assets";
-import { CardInfo } from "../../middleware/Interfaces";
+import { CardInfo } from "../../middleware/Interfaces/Cart";
 
 export function RenderPaymentForm(
   cardInfo: CardInfo | undefined,

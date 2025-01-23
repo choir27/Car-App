@@ -3,7 +3,7 @@ import { Button } from "../../components/Button";
 import {
   InventoryItem,
   DefaultInventoryDisplay,
-} from "../../middleware/Interfaces";
+} from "../../middleware/Interfaces/Inventory";
 import { HandlePurchaseItem } from "../Inventory/HandlePurchaseItem";
 import { renderQuantityOptions } from "../Inventory/RenderQuantityOptions";
 

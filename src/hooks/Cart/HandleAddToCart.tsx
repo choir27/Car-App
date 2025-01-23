@@ -4,8 +4,10 @@ import { toast } from "react-toastify";
 import {
   CartItem,
   AddToCart,
+} from "../../middleware/Interfaces/Cart";
+import {
   InventoryItem,
-} from "../../middleware/Interfaces";
+} from "../../middleware/Interfaces/Inventory";
 import { cacheEmail } from "../../middleware/Cache";
 
 //When user add an item to the cart

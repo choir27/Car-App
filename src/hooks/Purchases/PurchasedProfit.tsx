@@ -1,4 +1,4 @@
-import { PurchasedItem } from "../../middleware/Interfaces";
+import { PurchasedItem } from "../../middleware/Interfaces/Purchases";
 
 //return array that returns a list of the total profit of items sold per purchase
 export function GetPurchasedProfit(purchases: PurchasedItem[]) {

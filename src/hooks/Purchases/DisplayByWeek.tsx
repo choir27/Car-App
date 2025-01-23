@@ -1,4 +1,4 @@
-import { DisplayBy } from "../../middleware/Interfaces";
+import { DisplayBy } from "../../middleware/Interfaces/Purchases";
 import {
   getYear,
   getMonth,

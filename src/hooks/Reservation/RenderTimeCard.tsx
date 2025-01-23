@@ -1,5 +1,5 @@
 import { handleChangeTime } from "./HandleChangeTime";
-import { TimeDateAppointments } from "../../middleware/Interfaces";
+import { TimeDateAppointments } from "../../middleware/Interfaces/Reservation";
 
 export default function RenderTimeButton({
   i,

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Appointment } from "../../middleware/Interfaces";
+import { Appointment } from "../../middleware/Interfaces/Reservation";
 import { SetCacheID } from "../../middleware/Cache";
 import { handleDeleteAppointment } from "./HandleDeleteAppointment";
 import { NotifyClient } from "./NotifyClient";

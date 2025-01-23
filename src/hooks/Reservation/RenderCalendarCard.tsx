@@ -1,4 +1,4 @@
-import { TimeDateAppointments } from "../../middleware/Interfaces";
+import { TimeDateAppointments } from "../../middleware/Interfaces/Reservation";
 import { handleRenderCalendar } from "./HandleRenderCalendar";
 import { checkAppointmentDate } from "./CheckAppointmentDate";
 

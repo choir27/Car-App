@@ -1,4 +1,5 @@
-import { DisplayBy, DisplayDate } from "../../middleware/Interfaces";
+import { DisplayBy } from "../../middleware/Interfaces/Purchases";
+import { DisplayDate } from "../../middleware/Interfaces/Reservation"
 import { getYear, getMonth } from "../Reservation/DatesStatic";
 import { GetPurchasedDates } from "./PurchasedDates";
 import PaginatedButtons from "../../components/Graphs/PaginatedButtons";

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Appointment, TimeDateAppointments } from "../../middleware/Interfaces";
+import { Appointment, TimeDateAppointments } from "../../middleware/Interfaces/Reservation";
 import {
   daysOfWeek,
   getMonth,

@@ -1,4 +1,5 @@
-import { CartItem, InventoryQuantity } from "../../middleware/Interfaces";
+import { InventoryQuantity } from "../../middleware/Interfaces/Inventory";
+import {CartItem} from "../../middleware/Interfaces/Cart"
 
 //render quantites of items in inventory
 export function renderInventoryQuantityOptions(props: InventoryQuantity) {

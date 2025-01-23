@@ -1,4 +1,4 @@
-import { ChooseInput } from "../../middleware/Interfaces";
+import { ChooseInput } from "../../middleware/Interfaces/Inputs";
 
 export function ChooseTwoInput(props: ChooseInput) {
   return (

@@ -1,10 +1,10 @@
 import { Button } from "../../components/Button";
 import { handleAddToCart } from "../Cart/HandleAddToCart";
 import {
-  CartItem,
   InventoryItem,
   DisplayCurrentInventory,
-} from "../../middleware/Interfaces";
+} from "../../middleware/Interfaces/Inventory";
+import {CartItem} from "../../middleware/Interfaces/Cart"
 import { renderInventoryQuantityOptions } from "../Inventory/RenderInventoryQuantityOptions";
 
 //Render the current inventory avaiable, checking for duplicates in the cart
@@ -45,7 +45,7 @@ export function CurrentInventory(props: DisplayCurrentInventory) {
           ? renderInventoryQuantityOptions({
               itemName: inventoryItems.name,
               cart: props.cart,
-              setItemQuantity: (e) => props.setItemQuantity(e),
+              setItemQuantity: (e:number) => props.setItemQuantity(e),
               quantity: inventoryItems.quantity,
             })
           : ""}

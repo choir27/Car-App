@@ -1,10 +1,10 @@
 import React, { useState, useContext } from "react";
 import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
-import { displayAppointments } from "../../hooks/ManageAppointmentHooks";
+import { displayAppointments } from "../../hooks/ManageAppointments/DisplayAppointments";
 import PaginatedButtons from "../../components/Graphs/PaginatedButtons";
 import { SearchBar } from "../../components/Search";
-import { Appointment } from "../../middleware/Interfaces";
+import { Appointment } from "../../middleware/Interfaces/Reservation";
 import { APIContext } from "../../middleware/Context";
 
 export default function ManageAppointments() {

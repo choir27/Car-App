@@ -1,6 +1,6 @@
 import { Button } from "../../components/Button";
 import { handleMakeCartPurchase } from "./HandleMakeCartPurchase";
-import { Cart } from "../../middleware/Interfaces";
+import { Cart } from "../../middleware/Interfaces/Cart";
 
 export function CartItemCard({ total, props }: { total: string; props: Cart }) {
   return (

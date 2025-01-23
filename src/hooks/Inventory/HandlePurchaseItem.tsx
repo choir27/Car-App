@@ -1,6 +1,6 @@
 import api from "../../api/api";
 import { Permission, Role } from "appwrite";
-import { InventoryItem, Item } from "../../middleware/Interfaces";
+import { InventoryItem, Item } from "../../middleware/Interfaces/Inventory";
 
 //when the user adds an item from the store to add to the inventory
 export async function HandlePurchaseItem(props: Item) {

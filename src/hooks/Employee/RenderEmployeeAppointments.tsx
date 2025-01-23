@@ -1,4 +1,4 @@
-import { PurchasedItem } from "../../middleware/Interfaces";
+import { PurchasedItem } from "../../middleware/Interfaces/Purchases";
 import { cacheEmail } from "../../middleware/Cache";
 
 export function RenderEmployeeAppointments(

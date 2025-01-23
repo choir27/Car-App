@@ -1,4 +1,4 @@
-import { RenderCalendar } from "../../middleware/Interfaces";
+import { RenderCalendar } from "../../middleware/Interfaces/Reservation";
 
 export function handleRenderCalendar(props: RenderCalendar) {
   const date = `${props.currentMonth}/${props.currentDay}/${

@@ -1,4 +1,4 @@
-import { GeneralInput } from "../../middleware/Interfaces";
+import { GeneralInput } from "../../middleware/Interfaces/Inputs";
 
 export function Input(props: GeneralInput): React.JSX.Element {
   return (
