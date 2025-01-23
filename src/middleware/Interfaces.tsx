@@ -92,6 +92,8 @@ export interface TextBox {
 
 //interface type for general inputs
 export interface GeneralInput {
+  disabled?: boolean;
+  name?: string;
   type: string;
   onChange: (e: any) => void;
   placeholder?: string;

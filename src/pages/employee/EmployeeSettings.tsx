@@ -7,8 +7,8 @@ import {
   handleDeleteAccount,
   updateAccountName,
   updateAccountPassword,
-  Input,
 } from "../../hooks/LoginHooks";
+import {  Input } from "../../hooks/Inputs/GeneralInput"
 import { APIContext } from "../../middleware/Context";
 
 export default function EmployeeSettings(): React.JSX.Element {

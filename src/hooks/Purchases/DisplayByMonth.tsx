@@ -4,7 +4,7 @@ import {
   DisplayDate,
 } from "../../middleware/Interfaces";
 import {getYear, getMonth} from "../Reservation/DatesStatic"
-import {GetPurchasedDates} from "./GetPurchasedDates"
+import {GetPurchasedDates} from "./PurchasedDates"
 
 export function DisplayByMonth(props: DisplayBy) {
 

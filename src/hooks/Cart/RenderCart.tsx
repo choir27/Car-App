@@ -54,11 +54,11 @@ export function RenderCart(props: Cart) {
           CartItemCard({total, props})
         );
 
-       RenderCartItem({i, item, props, checkCartQuantity, itemPriceTotal});
+       return RenderCartItem({i, item, props, checkCartQuantity, itemPriceTotal});
 
       } else if (props.cart.length > 1 && i !== props.cart.length - 1) {
 
-       RenderMultipleCartItems({i, item, props, checkCartQuantity, itemPriceTotal});
+       return RenderMultipleCartItems({i, item, props, checkCartQuantity, itemPriceTotal});
 
       } else if (i === props.cart.length - 1) {
         totalOfCart.push(
@@ -80,7 +80,7 @@ export function RenderCart(props: Cart) {
           </div>,
         );
 
-        RenderFinalCartItem({i, item, props, checkCartQuantity, itemPriceTotal})
+        return RenderFinalCartItem({i, item, props, checkCartQuantity, itemPriceTotal})
         
       }
     })

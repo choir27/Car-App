@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
-import { CurrentInventory } from "../../hooks/InventoryHooks";
+import { CurrentInventory } from "../../hooks/Inventory/CurrentInventory";
 import { APIContext } from "../../middleware/Context";
 
 export default function Inventory() {

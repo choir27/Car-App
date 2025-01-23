@@ -6,21 +6,6 @@ import { Client, Account, ID } from "appwrite";
 import { InputTypes, User, Login, SignUp } from "../middleware/Interfaces";
 import { SetCacheEmail } from "../middleware/Cache";
 
-export function Input(props: InputTypes): React.JSX.Element {
-  return (
-    <input
-      type={props.type}
-      name={props.name}
-      disabled={props.disabled}
-      value={props.value}
-      onChange={(e) => props.onChange(e.target.value)}
-      placeholder={props.placeholder}
-      min={props.min}
-      max={props.max}
-    />
-  );
-}
-
 export function DisplayUsers(
   listOfUsers: User[],
   currentUser: User,

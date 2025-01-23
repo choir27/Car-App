@@ -18,5 +18,5 @@ export function DisplayByWeek(props: DisplayBy) {
     currentWeekLogic({currentWeek, currentMonth: getMonth(), currentDay: getDay(), currentYear: getYear(), i})
   }
   
-  RenderDisplayByWeek({props, currentWeek})
+  return RenderDisplayByWeek({props, currentWeek})
 }

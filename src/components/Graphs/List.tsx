@@ -1,9 +1,9 @@
 import { useState, useContext } from "react";
+import {DisplayByMonth} from "../../hooks/Purchases/DisplayByMonth"
+import {DisplayByWeek} from "../../hooks/Purchases/DisplayByWeek"
 import {
-  DisplayByMonth,
-  DisplayByWeek,
   DisplayByYear,
-} from "../../hooks/PurchasesHooks";
+} from "../../hooks/Purchases/DisplayByYear";
 import { Button } from "../../components/Button";
 import { ListLabels } from "../../middleware/Interfaces";
 import { APIContext } from "../../middleware/Context";

@@ -5,9 +5,9 @@ import { ButtonSubmit, Button } from "../../components/Button";
 import {
   GenerateNewEmployee,
   handleLogin,
-  Input,
   handleSignUp,
 } from "../../hooks/LoginHooks";
+import {  Input} from "../../hooks/Inputs/GeneralInput";
 import {
   EmployeeButtons
 } from "../../hooks/Employee/EmployeeButtons";

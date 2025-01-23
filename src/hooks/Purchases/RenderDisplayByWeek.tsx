@@ -1,6 +1,6 @@
 import { DisplayBy, DisplayDate } from "../../middleware/Interfaces";
 import { getYear, getMonth } from "../Reservation/DatesStatic";
-import { GetPurchasedDates } from "./GetPurchasedDates";
+import { GetPurchasedDates } from "./PurchasedDates";
 import PaginatedButtons from "../../components/Graphs/PaginatedButtons";
 
 export function RenderDisplayByWeek({

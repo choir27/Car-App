@@ -4,7 +4,7 @@ import {
   DisplayDate,
 } from "../../middleware/Interfaces";
 import {getYear} from "../Reservation/DatesStatic"
-import { GetPurchasedDates } from "./GetPurchasedDates";
+import { GetPurchasedDates } from "./PurchasedDates";
 
 export function DisplayByYear(props: DisplayBy) {
   const currentYear = getYear();

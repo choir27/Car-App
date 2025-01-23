@@ -40,7 +40,6 @@ import {
   InventoryShop,
   EmployeeSettings,
   ManageAppointments,
-  EditAppointment,
   Purchases,
 } from "./Pages";
 
@@ -95,7 +94,6 @@ export default function App() {
                 path="/manageAppointments"
                 element={<ManageAppointments />}
               />
-              <Route path="/editAppointment" element={<EditAppointment />} />
               <Route element={<PurchaseRoutes />}>
                 <Route path="/purchases" element={<Purchases />} />
               </Route>

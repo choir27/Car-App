@@ -6,10 +6,10 @@ import LineGraph from "../../components/Graphs/LineGraph";
 import HorizontalBarGraph from "../../components/Graphs/HorizontalBarGraph";
 import List from "../../components/Graphs/List";
 import {
-  GetPurchasedProfit,
-  GetPurchasedQuantities,
-  GetPurchasedDates,
-} from "../../hooks/PurchasesHooks";
+  GetPurchasedProfit
+} from "../../hooks/Purchases/PurchasedProfit";
+import {  GetPurchasedQuantities } from "../../hooks/Purchases/PurchasedQuantities"
+import {  GetPurchasedDates,} from "../../hooks/Purchases/PurchasedDates"
 import { Button } from "../../components/Button";
 import { PurchasedItem } from "../../middleware/Interfaces";
 import { GetPurchases } from "../../hooks/ApiCalls";
