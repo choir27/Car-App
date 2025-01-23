@@ -1,10 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {
-  ButtonProps,
+import {  ButtonProps,
   ButtonSubmitProps,
-  ButtonLinkProps,
-} from "../hooks/Inputs/Interfaces";
+  ButtonLinkProps,} from "../middleware/Interfaces/Inputs"
 
 export function ButtonSubmit(props: ButtonSubmitProps) {
   return (

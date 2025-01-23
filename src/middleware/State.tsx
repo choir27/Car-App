@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { produce } from "immer";
 import { State, Action, defaultCardInfo } from "./Types";
-import { CardInfo } from "../middleware/Interfaces";
+import { CardInfo } from "../middleware/Interfaces/Cart";
 
 export const useStore = create<State & Action>((set) => ({
   cardInfo: defaultCardInfo,

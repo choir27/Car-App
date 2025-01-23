@@ -10,7 +10,8 @@ import {
 import { Bar } from "react-chartjs-2";
 import PaginatedButtons from "./PaginatedButtons";
 import Query_Offset from "./Query_Offset";
-import { DisplayDate, GraphLabels } from "../../middleware/Interfaces";
+import { GraphLabels } from "../../middleware/Interfaces/Purchases";
+import { DisplayDate } from "../../middleware/Interfaces/Reservation";
 
 ChartJS.register(
   CategoryScale,

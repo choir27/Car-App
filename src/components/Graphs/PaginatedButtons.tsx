@@ -1,4 +1,4 @@
-import { buttons } from "../../middleware/Interfaces";
+import { buttons } from "../../middleware/Interfaces/General";
 
 export default function PaginatedButtons(props: buttons) {
   const handlePageChange = (newPage: number) => {

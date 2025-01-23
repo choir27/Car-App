@@ -9,7 +9,8 @@ import {
   Legend,
 } from "chart.js";
 import PaginatedButtons from "./PaginatedButtons";
-import { DisplayDate, GraphLabels } from "../../middleware/Interfaces";
+import { GraphLabels } from "../../middleware/Interfaces/Purchases";
+import { DisplayDate } from "../../middleware/Interfaces/Reservation"
 import Query_Offset from "./Query_Offset";
 
 // array of number elements are being passed through for the values of the datasets

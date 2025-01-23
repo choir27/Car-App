@@ -22,3 +22,12 @@ export interface Search {
     rowsPerPage: number;
     className?: string;
   }
+
+  export interface Profile {
+    $id: string;
+    email?: string;
+    fileName: string;
+    position: string;
+    salary: string;
+  }
+  

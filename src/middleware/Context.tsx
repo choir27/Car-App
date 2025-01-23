@@ -1,12 +1,18 @@
 import { createContext } from "react";
+import { Profile } from "./Interfaces/General"
 import {
-  Profile,
   User,
-  InventoryItem,
+} from "./Interfaces/Auth";
+import {  
   CartItem,
-  Appointment,
+} from "./Interfaces/Cart"
+import {
   PurchasedItem,
-} from "./Interfaces";
+} from "./Interfaces/Purchases"
+import {
+  InventoryItem,
+} from "./Interfaces/Inventory"
+import {Appointment} from "./Interfaces/Reservation"
 
 type T = {
   inventory: InventoryItem[];

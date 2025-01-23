@@ -3,8 +3,8 @@ import { DisplayByMonth } from "../../hooks/Purchases/DisplayByMonth";
 import { DisplayByWeek } from "../../hooks/Purchases/DisplayByWeek";
 import { DisplayByYear } from "../../hooks/Purchases/DisplayByYear";
 import { Button } from "../../components/Button";
-import { ListLabels } from "../../middleware/Interfaces";
 import { APIContext } from "../../middleware/Context";
+import { ListLabels } from "../../middleware/Interfaces/Purchases";
 
 export default function List(props: ListLabels) {
   const [display, setDisplay] = useState<string>("week");

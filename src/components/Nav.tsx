@@ -1,9 +1,10 @@
 import { useState, useEffect, useContext } from "react";
 import { ButtonLink, ButtonSubmit } from "../components/Button";
-import { handleLogout } from "../hooks/LoginHooks";
+import { handleLogout } from "../hooks/Login/Logout";
 import { Link } from "react-router-dom";
 import EmployeeNav from "./EmployeeNav";
-import { CartItem, nav } from "../middleware/Interfaces";
+import { CartItem } from "../middleware/Interfaces/Cart";
+import { nav } from "../middleware/Interfaces/General";
 import { cacheEmail } from "../middleware/Cache";
 import { APIContext } from "../middleware/Context";
 

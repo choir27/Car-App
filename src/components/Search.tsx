@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import api from "../api/api.jsx";
 import { Button } from "../components/Button";
-import { Search } from "../middleware/Interfaces";
+import { Search } from "../middleware/Interfaces/General";
 
 //search
 //enter value into search

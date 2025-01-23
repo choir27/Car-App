@@ -1,4 +1,4 @@
-import { CardInfo } from "./Interfaces";
+import { CardInfo } from "./Interfaces/Cart";
 
 export type State = {
   cardInfo: CardInfo;

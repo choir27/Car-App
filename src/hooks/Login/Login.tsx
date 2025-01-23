@@ -1,6 +1,6 @@
 import api from "../../api/api";
 import { toast } from "react-toastify";
-import { Login } from "../../middleware/Interfaces";
+import { Login } from "../../middleware/Interfaces/Auth";
 import { SetCacheEmail } from "../../middleware/Cache";
 
 export async function handleLogin(props: Login): Promise<void> {
