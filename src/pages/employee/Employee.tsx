@@ -4,9 +4,9 @@ import { useState, useContext, useEffect } from "react";
 import { ButtonSubmit, Button } from "../../components/Button";
 import {
   GenerateNewEmployee,
-  handleLogin,
-  handleSignUp,
-} from "../../hooks/LoginHooks";
+} from "../../hooks/Login/NewEmployee";
+import {  handleLogin } from "../../hooks/Login/Login"
+import { handleSignUp} from "../../hooks/Login/Signup"
 import { Input } from "../../hooks/Inputs/GeneralInput";
 import { EmployeeButtons } from "../../hooks/Employee/EmployeeButtons";
 import { RenderEmployeeAppointments } from "../../hooks/Employee/RenderEmployeeAppointments";
@@ -15,7 +15,7 @@ import PaginatedButtons from "../../components/Graphs/PaginatedButtons";
 import { toggleDisplay } from "../../hooks/ToggleDisplay";
 import { cacheEmail } from "../../middleware/Cache";
 import { APIContext } from "../../middleware/Context";
-import { User } from "../../middleware/Interfaces";
+import { User } from "../../middleware/Interfaces/Auth";
 import { GetUsers } from "../../hooks/ApiCalls";
 
 export function EmployeeHub() {

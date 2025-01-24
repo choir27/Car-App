@@ -4,7 +4,7 @@ import Footer from "../../components/Footer";
 import { RenderPaymentForm } from "../../hooks/Cart/RenderPaymentForm";
 import { RenderCart } from "../../hooks/Cart/RenderCart";
 import PaginatedButtons from "../../components/Graphs/PaginatedButtons";
-import { CardInfo } from "../../middleware/Interfaces";
+import { CardInfo } from "../../middleware/Interfaces/Cart";
 import { APIContext } from "../../middleware/Context";
 
 export default function Cart() {

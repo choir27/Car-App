@@ -8,17 +8,17 @@ import {
 import { Suspense, useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { EmployeeHub } from "./pages/employee/Employee";
+import { EmployeeHub } from "./pages/employee/Employee/Employee.js";
 import { APIContext } from "./middleware/Context";
 import { cacheEmail } from "./middleware/Cache";
 import {
-  Profile,
-  InventoryItem,
-  CartItem,
-  Appointment,
-  PurchasedItem,
   User,
-} from "./middleware/Interfaces";
+} from "./middleware/Interfaces/Auth";
+import {  Profile } from "./middleware/Interfaces/General"
+import {InventoryItem} from "./middleware/Interfaces/Inventory"
+import {CartItem} from "./middleware/Interfaces/Cart"
+import {Appointment} from "./middleware/Interfaces/Reservation"
+import { PurchasedItem } from "./middleware/Interfaces/Purchases"
 import {
   GetEmployee,
   GetInventory,

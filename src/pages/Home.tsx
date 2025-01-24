@@ -2,7 +2,7 @@ import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import { ButtonLink } from "../components/Button";
 import Assets from "../components/Assets.jsx";
-import Employee from "./employee/Employee";
+import Employee from "./employee/Employee/Employee";
 import { cacheEmail } from "../middleware/Cache";
 
 export default function Home() {

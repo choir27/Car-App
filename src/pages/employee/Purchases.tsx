@@ -9,7 +9,7 @@ import { GetPurchasedProfit } from "../../hooks/Purchases/PurchasedProfit";
 import { GetPurchasedQuantities } from "../../hooks/Purchases/PurchasedQuantities";
 import { GetPurchasedDates } from "../../hooks/Purchases/PurchasedDates";
 import { Button } from "../../components/Button";
-import { PurchasedItem } from "../../middleware/Interfaces";
+import { PurchasedItem } from "../../middleware/Interfaces/Purchases";
 import { GetPurchases } from "../../hooks/ApiCalls";
 
 export default function Purchases() {
