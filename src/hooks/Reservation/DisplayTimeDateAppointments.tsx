@@ -9,7 +9,7 @@ import {
 } from "./DatesStatic";
 import { calendarLogic } from "./DateLogic";
 import CalendarCard from "./RenderCalendarCard";
-import { miliaryTimeConversion } from "./MilitaryTime";
+import { militaryTimeConversion } from "./MilitaryTime";
 import RenderTimeCard from "./RenderTimeCard";
 
 export function DisplayTimeDateAppointments(
@@ -101,7 +101,7 @@ export function DisplayTimeDateAppointments(
     }
   }
 
-  const miliaryTimes = miliaryTimeConversion(properTimeDisplay);
+  const miliaryTimes = militaryTimeConversion(properTimeDisplay);
 
   //render clear buttons of appointment dates
   const renderTimeButtons = miliaryTimes.map((time, i) => {

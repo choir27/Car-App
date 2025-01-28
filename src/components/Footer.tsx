@@ -1,8 +1,10 @@
+import { getYear } from "../hooks/ReservationHooks";
+
 const Footer = () => {
   return (
-    <footer className="flex justifyCenter">
-      <nav className="flex justifyBetween">
-        <ul className="flex justifyAround">
+    <footer className="w-full">
+      <nav className="flex justify-between w-full">
+        <ul className="flex justify-between w-10">
           <li>
             <a
               rel="noreferrer"
@@ -10,7 +12,7 @@ const Footer = () => {
               href="https://twitter.com/choir241"
               className="fa-brands fa-twitter"
             >
-              <p className="displayNone">Twitter</p>
+              <p className="hidden">Twitter</p>
             </a>
           </li>
 
@@ -21,7 +23,7 @@ const Footer = () => {
               href="https://www.linkedin.com/in/richard-choir/"
               className="fa-brands fa-linkedin"
             >
-              <p className="displayNone">LinkedIn</p>
+              <p className="hidden">LinkedIn</p>
             </a>
           </li>
 
@@ -32,7 +34,7 @@ const Footer = () => {
               href="https://www.instagram.com/225kh_drw/?hl=en"
               className="fa-brands fa-instagram"
             >
-              <p className="displayNone">Instagram</p>
+              <p className="hidden">Instagram</p>
             </a>
           </li>
 
@@ -43,12 +45,12 @@ const Footer = () => {
               href="https://github.com/choir27"
               className="fa-brands fa-github"
             >
-              <p className="displayNone">Github</p>
+              <p className="hidden">Github</p>
             </a>
           </li>
         </ul>
 
-        <small>AutoAligners &copy; 2023. All rights are reserved</small>
+        <small>AutoAligners &copy; {getYear()}. All rights are reserved</small>
       </nav>
     </footer>
   );

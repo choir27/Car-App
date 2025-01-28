@@ -25,36 +25,36 @@ export default function Nav(props: nav) {
   }, [cart]);
 
   return (
-    <header>
-      <nav className="flex justifyBetween alignCenter">
-        <Link to="/">
+    <header className="w-full m-2">
+      <nav className="flex w-full justify-between">
+        <Link to="/" className="w-full">
           <h1>AutoAligners</h1>
         </Link>
-        <ul className="flex alignCenter justifyEvenly">
-          <li>
+        <ul className="flex w-80 justify-between">
+          <li className="items-center flex">
             <Link to="/">{cacheEmail ? "Employee Hub" : "Home"}</Link>
           </li>
           {cacheEmail ? (
-            <li>
+            <li className="items-center flex">
               <EmployeeNav />
             </li>
           ) : (
-            <li>
+            <li className="items-center flex">
               <Link to="/employee">Login/Demo</Link>
             </li>
           )}
           {cacheEmail ? (
-            <li>
+            <li className="items-center flex">
               <Link to="/manageAppointments">Manage Appointments</Link>
             </li>
           ) : (
             ""
           )}
           {cacheEmail ? (
-            <li className="cart">
+            <li className="items-center flex">
               {cart?.length && cartQuantity ? <span>{cartQuantity}</span> : ""}
               <Link to="/cart">
-                <i className="fa-solid fa-cart-shopping button"></i>
+                <i className="fa-solid fa-cart-shopping"></i>
               </Link>
             </li>
           ) : (
@@ -62,7 +62,7 @@ export default function Nav(props: nav) {
           )}
 
           {cacheEmail ? (
-            <div>
+            <div className="items-center flex">
               {ButtonSubmit({
                 handleButtonClick: () => handleLogout(),
                 text: "Logout",
@@ -74,7 +74,7 @@ export default function Nav(props: nav) {
           {cacheEmail ? (
             ""
           ) : (
-            <div>
+            <div className="items-center flex">
               {ButtonLink({ domain: "/reservation", text: "Make Reservation" })}
             </div>
           )}
