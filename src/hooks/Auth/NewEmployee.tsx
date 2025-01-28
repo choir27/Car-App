@@ -1,4 +1,4 @@
-import { alphabet, symbols } from "../Login/LoginStatic";
+import { alphabet, symbols } from "./LoginStatic";
 
 export function GenerateNewEmployee(
   setPassword: (e: string) => void,

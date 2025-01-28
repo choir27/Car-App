@@ -7,7 +7,7 @@ export const ManageAppointments = lazy(
   () => import("./pages/employee/ManageAppointments"),
 );
 
-export const Employee = lazy(() => import("./pages/employee/Employee/Employee"));
+export const Employee = lazy(() => import("./pages/employee/Employee"));
 export const EmployeeSettings = lazy(
   () => import("./pages/employee/EmployeeSettings"),
 );

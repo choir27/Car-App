@@ -1,5 +1,5 @@
 import { Button } from "../../components/Button";
-import { handleMakeCartPurchase } from "./HandleMakeCartPurchase";
+import { handleMakeCartPurchase } from "../CartHooks";
 import { Cart } from "../../middleware/Interfaces/Cart";
 
 export function CartItemCard({ total, props }: { total: string; props: Cart }) {

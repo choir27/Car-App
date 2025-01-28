@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { ButtonLink, ButtonSubmit } from "../components/Button";
-import { handleLogout } from "../hooks/Login/Logout";
+import { handleLogout } from "../hooks/AuthHooks";
 import { Link } from "react-router-dom";
 import EmployeeNav from "./EmployeeNav";
 import { CartItem } from "../middleware/Interfaces/Cart";

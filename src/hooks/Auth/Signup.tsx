@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 import { Client, Account, ID } from "appwrite";
-import { SignUp } from "../../middleware/Interfaces";
+import { SignUp } from "../../middleware/Interfaces/Auth";
 
 export async function handleSignUp(props: SignUp): Promise<void> {
   try {

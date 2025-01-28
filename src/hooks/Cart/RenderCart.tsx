@@ -1,11 +1,7 @@
 import React from "react";
 import { Button } from "../../components/Button";
 import { CartItem, Cart } from "../../middleware/Interfaces/Cart";
-import { handleMakeCartPurchase } from "./HandleMakeCartPurchase";
-import { CartItemCard } from "./CartItemCard";
-import RenderCartItem from "./RenderCartItem";
-import RenderMultipleCartItems from "./RenderMultipleCartItems";
-import RenderFinalCartItem from "./RenderFinalCartItem";
+import { RenderFinalCartItem, RenderMultipleCartItems, RenderCartItem, handleMakeCartPurchase, CartItemCard } from "../CartHooks";
 
 //render cart, cart total, item totals, and item quantities
 export function RenderCart(props: Cart) {

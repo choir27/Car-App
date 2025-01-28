@@ -4,13 +4,11 @@ import { useState, useContext, useEffect } from "react";
 import { ButtonSubmit, Button } from "../../components/Button";
 import {
   GenerateNewEmployee,
-} from "../../hooks/Login/NewEmployee";
-import {  handleLogin } from "../../hooks/Login/Login"
-import { handleSignUp} from "../../hooks/Login/Signup"
-import { Input } from "../../hooks/Inputs/GeneralInput";
-import { EmployeeButtons } from "../../hooks/Employee/EmployeeButtons";
-import { RenderEmployeeAppointments } from "../../hooks/Employee/RenderEmployeeAppointments";
-import { RenderEmployeeProfit } from "../../hooks/Employee/RenderEmployeeProfit";
+  handleLogin,
+  handleSignUp
+} from "../../hooks/AuthHooks"
+import { Input } from "../../hooks/InputHooks";
+import { EmployeeButtons, RenderEmployeeAppointments, RenderEmployeeProfit } from "../../hooks/EmployeeHooks";
 import PaginatedButtons from "../../components/Graphs/PaginatedButtons";
 import { toggleDisplay } from "../../hooks/ToggleDisplay";
 import { cacheEmail } from "../../middleware/Cache";

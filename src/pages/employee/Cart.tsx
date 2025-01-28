@@ -1,8 +1,7 @@
 import { useState, useContext } from "react";
 import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
-import { RenderPaymentForm } from "../../hooks/Cart/RenderPaymentForm";
-import { RenderCart } from "../../hooks/Cart/RenderCart";
+import { RenderPaymentForm, RenderCart } from "../../hooks/CartHooks";
 import PaginatedButtons from "../../components/Graphs/PaginatedButtons";
 import { CardInfo } from "../../middleware/Interfaces/Cart";
 import { APIContext } from "../../middleware/Context";

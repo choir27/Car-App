@@ -1,4 +1,4 @@
-export function miliaryTimeConversion(properTimeDisplay: string[]) {
+export function militaryTimeConversion(properTimeDisplay: string[]) {
   return properTimeDisplay.map((time: string) => {
     const hours = parseInt(time.split(":")[0]);
 

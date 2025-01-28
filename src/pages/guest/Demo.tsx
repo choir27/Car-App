@@ -1,6 +1,6 @@
 import Nav from "../../components/Nav";
-import { handleLogin } from "../../hooks/Login/Login";
-import { Input } from "../../hooks/Inputs/GeneralInput";
+import { handleLogin } from "../../hooks/AuthHooks";
+import { Input } from "../../hooks/InputHooks";
 import { ButtonSubmit } from "../../components/Button";
 import Footer from "../../components/Footer";
 

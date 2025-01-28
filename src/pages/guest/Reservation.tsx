@@ -1,17 +1,15 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Button } from "../../components/Button";
 import Nav from "../../components/Nav";
-import { DisplayTimeDateAppointments } from "../../hooks/Reservation/DisplayTimeDateAppointments";
 import {
+  DisplayTimeDateAppointments,
   ChooseCarService,
   SelectCarMakeInput,
   SelectCarModelInput,
   SelectCarYearInput,
-} from "../../hooks/Reservation/CarInputs";
-import { ChooseTwoInput } from "../../hooks/Inputs/ChooseTwoInput";
-import { TextBoxInput } from "../../hooks/Inputs/TextBoxInput";
-import { Input } from "../../hooks/Inputs/GeneralInput";
-import { handleCreateAppointment } from "../../hooks/Reservation/Submit";
+  handleCreateAppointment,
+} from "../../hooks/ReservationHooks";
+import { ChooseTwoInput, TextBoxInput, Input } from "../../hooks/InputHooks";
 import Footer from "../../components/Footer";
 import { GetCarData } from "../../hooks/ApiCalls";
 import { APIContext } from "../../middleware/Context";
