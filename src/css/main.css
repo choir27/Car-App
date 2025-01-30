@@ -1,113 +1,193 @@
+/****************/
+/**** Font ****/
+/****************/
+
 a {
   text-decoration: none;
   color: black;
 }
 
-a, h1, h2, h3, h4, h5, h6, p, span, button, input, i, li{
+a:hover{
+  text-decoration: underline;
+}
+
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+small,
+p,
+span,
+button,
+.button,
+input,
+select,
+textarea,
+li {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-html{
+html {
   font-size: 62.5%;
 }
 
-h1{
+h1 {
   font-size: 5rem;
 }
 
-h2{
+h2 {
   font-size: 4rem;
 }
 
-p, a{
+h3{
+  font-size: 2.2rem;
+}
+
+p,
+a,
+input,
+select,
+textarea {
   font-size: 2rem;
+}
+
+small {
+  font-size: 1.2rem;
+}
+
+label{
+  font-size: 2.5rem;
+}
+
+.icons{
+  font-size: 3rem;
 }
 
 /****************/
 /**** Spacing ****/
 /****************/
 
-.w-full{
+.w-full {
   width: 100%;
 }
 
-.p-2{
+.p-2 {
   padding: 2rem;
 }
 
-.m-2{
+.p-4{
+  padding: 4rem;
+}
+
+.mr-2 {
+  margin-right: 2rem;
+}
+
+.m-2 {
   margin: 2rem;
 }
 
-.mb-2{
+.my-1 {
+  margin: 1rem;
+}
+
+.my-2 {
+  margin: 2rem;
+}
+
+.mb-2 {
   margin-bottom: 2rem;
 }
 
-.mb-4{
+.mb-4 {
   margin-bottom: 4rem;
 }
 
-.minh-screen{
+.mt-2{
+  margin-top: 2rem;
+}
+
+.mt-6 {
+  margin-top: 6rem;
+}
+
+.minh-screen {
   min-height: 100vh;
 }
 
-.maxw-full{
+.maxw-full {
   max-width: 100%;
 }
 
-.w-10{
+.w-10 {
   width: 10%;
 }
 
-.w-20{
+.w-20 {
   width: 20%;
 }
 
-.w-40{
+.w-40 {
   width: 40%;
 }
 
-.w-80{
+.w-60 {
+  width: 60%;
+}
+
+.w-80 {
   width: 80%;
+}
+
+.w-90 {
+  width: 90%;
 }
 
 /****************/
 /**** Layout ****/
 /****************/
 
-.flex{
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.flex {
   display: flex;
 }
 
-.flex-row{
+.flex-row {
   flex-direction: row;
 }
 
-.flex-col{
+.flex-col {
   flex-direction: column;
 }
 
-.justify-center{
+.justify-center {
   justify-content: center;
 }
 
-.justify-between{
+.justify-between {
   justify-content: space-between;
 }
 
-.justify-around{
+.justify-around {
   justify-content: space-around;
 }
 
-.justify-evenly{
+.justify-evenly {
   justify-content: space-evenly;
 }
 
-.items-center{
+.items-center {
   align-items: center;
 }
 
-.items-start{
+.items-start {
   align-items: start;
 }
 
@@ -115,17 +195,41 @@ p, a{
 /**** Components ****/
 /****************/
 
-.button{
+.button {
+  font-size: 2rem;
   background: #141937;
-  color: #E5ECFC;
+  color: #e5ecfc;
   padding: 1.5rem 2.5rem;
   border-radius: 25px;
+}
+
+.button:hover {
+  background: #323e84;
 }
 
 /****************/
 /**** Display ****/
 /****************/
 
-.hidden{
+.hidden {
   display: none;
+}
+
+/****************/
+/**** Form ****/
+/****************/
+
+input,
+select {
+  padding: 1rem 2rem;
+  border-radius: 25px;
+}
+
+.radio {
+  margin-right: 2rem;
+  font-size: 5rem;
+}
+
+textarea {
+  resize: none;
 }

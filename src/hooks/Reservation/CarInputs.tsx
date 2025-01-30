@@ -8,6 +8,7 @@ export function SelectCarMakeInput(props: SelectOptions): React.JSX.Element {
 
   return (
     <select
+      className="my-2"
       defaultValue={props.defaultValue}
       onChange={(e) => {
         props.onChange(e.target.value);
@@ -43,6 +44,7 @@ export function SelectCarModelInput(props: SelectOptions): React.JSX.Element {
 
   return (
     <select
+    className="my-2"
       defaultValue={props.defaultValue}
       onChange={(e) => {
         props.onChange(e.target.value);
@@ -71,6 +73,7 @@ export function SelectCarYearInput(props: SelectOptions): React.JSX.Element {
   return (
     //changing year value does not directly effect carMake and/or carModel, so there is no need to check if value has changed
     <select
+    className="my-2"
       defaultValue={props.defaultValue}
       onChange={(e) => props.onChange(e.target.value)}
     >
@@ -81,8 +84,10 @@ export function SelectCarYearInput(props: SelectOptions): React.JSX.Element {
 }
 
 export function ChooseCarService(
-  onChange: (e: string) => void,
+  {onChange, defaultValue, className}:
+  {onChange: (e: string) => void,
   defaultValue?: string,
+  className?: string,}
 ) {
   try {
     //list of all available car services
@@ -112,7 +117,7 @@ export function ChooseCarService(
     );
 
     return (
-      <select onChange={(e) => onChange(e.target.value)}>
+      <select className={className} onChange={(e) => onChange(e.target.value)}>
         <option defaultValue={defaultValue || "default"}>
           {defaultValue || `Choose Service For Your Car`}
         </option>

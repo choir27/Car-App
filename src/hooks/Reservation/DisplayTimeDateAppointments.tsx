@@ -109,10 +109,15 @@ export function DisplayTimeDateAppointments(
   });
 
   return (
-    <section className="appointmentHub">
-      <section className="calendarHub flex">{calendar}</section>
+    <section className="flex items-center justify-around flex-col w-full">
 
-      <section className="appointmentTimes flex">{renderTimeButtons}</section>
+      <section className="calendarContainer grid mr-2">
+        {calendar}
+        </section>
+
+      <section className="timeContainer grid">
+        {renderTimeButtons}
+        </section>
     </section>
   );
 }

@@ -40,6 +40,7 @@ export interface GeneralInput {
   value?: string;
   defaultValue?: string;
   id?: string;
+  className?: string;
 }
 
 export interface ChooseInput {
@@ -47,6 +48,7 @@ export interface ChooseInput {
   text2: string;
   name: string;
   onChange: (e: string) => void;
+  className?: string;
 }
 
 export interface Choose {

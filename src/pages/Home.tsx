@@ -12,15 +12,15 @@ export default function Home() {
       {cacheEmail ? (
         <Employee />
       ) : (
-        <main className="minh-screen m-2 flex flex-col items-center justify-between">
+        <main id = 'hero' className="minh-screen m-2 flex flex-col items-center justify-between">
           <Nav pageHeading="" />
           <section className="flex justify-between">
 
-            <section className="w-40 flex flex-col items-start justify-between">
+            <section className="w-60 flex flex-col items-start justify-between">
               <div>
-              <h2 className="mb-2">Say Goodbye to Car Repair Hassles</h2>
+              <h2 className="mb-4">Say Goodbye to Car Repair Hassles</h2>
 
-              <p className="w-80">
+              <p className="w-80 hero-paragraph">
                 For over a century, dating back to 1892, we have been steadfast
                 in providing exceptional service. Our commitment to delivering
                 the finest quality service has been instrumental in establishing
@@ -36,7 +36,7 @@ export default function Home() {
                   })}
             </section>
 
-            <div className="w-40">
+            <div className="w-60">
               <img src={Assets.whiteCar} alt="white car" className="maxw-full"/>
             </div>
           </section>

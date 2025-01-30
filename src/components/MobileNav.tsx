@@ -8,7 +8,7 @@ import { nav } from "../middleware/Interfaces/General";
 import { cacheEmail } from "../middleware/Cache";
 import { APIContext } from "../middleware/Context";
 
-export default function Nav(props: nav) {
+export default function MobileNav(props: nav) {
   const [cartQuantity, setCartQuantity] = useState<number>();
   const { cart } = useContext(APIContext);
 
@@ -25,12 +25,12 @@ export default function Nav(props: nav) {
   }, [cart]);
 
   return (
-    <header className="w-full">
+    <header className="w-full m-2">
       <nav className="flex w-full justify-between">
-        <Link to="/" className="p-2">
+        <Link to="/" className="w-full">
           <h1>AutoAligners</h1>
         </Link>
-        <ul className="flex w-40 justify-between">
+        <ul className="flex w-80 justify-between">
           <li className="items-center flex">
             <Link to="/">{cacheEmail ? "Employee Hub" : "Home"}</Link>
           </li>
@@ -74,14 +74,14 @@ export default function Nav(props: nav) {
           {cacheEmail ? (
             ""
           ) : (
-            <div className="items-center flex p-2">
+            <div className="items-center flex">
               {ButtonLink({ domain: "/reservation", text: "Make Reservation" })}
             </div>
           )}
         </ul>
       </nav>
 
-      <h2 className="p-4">{props.pageHeading}</h2>
+      <h2>{props.pageHeading}</h2>
     </header>
   );
 }

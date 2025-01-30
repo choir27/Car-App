@@ -12,7 +12,7 @@ export default function RenderTimeButton({
 }) {
   return (
     <button
-      className={`clearButton t-${i} time`}
+      className={`t-${i} time`}
       key={i}
       onClick={(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
         handleChangeTime({

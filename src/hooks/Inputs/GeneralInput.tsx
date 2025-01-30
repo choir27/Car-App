@@ -3,6 +3,7 @@ import { GeneralInput } from "../../middleware/Interfaces/Inputs";
 export function Input(props: GeneralInput): React.JSX.Element {
   return (
     <input
+      className={props.className}
       id={props.id}
       value={props.value}
       defaultValue={props.defaultValue}

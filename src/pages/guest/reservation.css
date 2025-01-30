@@ -1,0 +1,63 @@
+.calendar {
+  margin: 1.5rem;
+  padding: 3rem;
+  background: #d0d5f3;
+  border-radius: 25px;
+  text-align: center;
+}
+
+.calendar-inactive {
+  opacity: 40;
+}
+
+.calendar h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.time {
+  margin: 1rem;
+  border-radius: 25px;
+  border: none;
+  color: #141a38;
+  background: #a3b1ff;
+  padding: 1rem 2rem;
+  font-size: 2rem;
+}
+
+.time:hover,
+.button:hover,
+.calendar:hover {
+  cursor: pointer;
+}
+
+.time:hover {
+  background: #5461ab;
+}
+
+.calendar:hover {
+  background: #f0f1f3;
+}
+
+.calendarContainer,
+.timeContainer {
+  flex-wrap: wrap;
+}
+
+.calendarContainer {
+  max-width: 60%;
+}
+
+.timeContainer {
+  max-width: 40%;
+}
+
+.clicked {
+  background: #112597;
+  color: #f0f1f3;
+}
+/* 
+body{
+  background-image: url("../../assets/background.jpg");
+  background-repeat: no-repeat;
+} */

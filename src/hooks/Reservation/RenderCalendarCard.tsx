@@ -25,7 +25,7 @@ export default function CalendarCard({
 }) {
   return (
     <div
-      className={`calendar clearButton c-${i} ${clickedClassName}`}
+      className={`calendar c-${i} ${clickedClassName}`}
       key={`c-${i}`}
       onClick={() => {
         const date = `${currentMonth}/${currentDay}/${currentYear}`;
