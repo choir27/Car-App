@@ -18,7 +18,7 @@ export function DisplayTimeDateAppointments(
   let month: number = getMonth();
   let day: number = getDay();
   let year: number = getYear();
-  let dayOfWeek: number = getDayOfWeek();
+  let week: number = getDayOfWeek();
 
   const [selectedDate, setSelectedDate] = useState<string>(
     `${month}/${day}/${year}`,
@@ -27,34 +27,40 @@ export function DisplayTimeDateAppointments(
   const calendar: React.JSX.Element[] = [];
 
   for (let i = 0; i < 8; i++) {
+    let currentMonth = month;
+    let currentDay = day;
+    let currentYear = year;
+    let dayOfWeek = week;  
+
     let currentDayOfWeek = dayOfWeek;
 
-    const { currentMonth, currentDay, currentYear } = calendarLogic({
-      day,
-      month,
-      year,
+    const { newMonth, newDay, newYear } = calendarLogic({
+      month: currentMonth, day: currentDay, year: currentYear
     });
+
+    day = newDay
+    month = newMonth
+    year = newYear
     //have the current date as the default value
     //set a state called selectedDate and save the current date to its value
     //if a different date is selected, change the selected date as the current value of setSelectedDate
     //use the selectedDate value to show the different appointment times that are avaiable for the respective date
-
-    if (currentDayOfWeek > 6) {
+    
+    if (dayOfWeek > 6) {
       dayOfWeek = 0;
-      currentDayOfWeek = 0;
     }
 
     // if it's the current date
     if (
       `${getMonth()}/${getDay()}/${getYear()}` ===
-      `${currentMonth}/${currentDay}/${currentYear}`
-    ) {
+      `${newMonth}/${newDay}/${newYear}`
+    ) {      
       calendar.push(
         CalendarCard({
           i,
-          currentMonth,
-          currentDay,
-          currentYear,
+          currentMonth: newMonth,
+          currentDay: newDay,
+          currentYear: newYear,
           setSelectedDate,
           daysOfWeek,
           currentDayOfWeek,
@@ -66,9 +72,9 @@ export function DisplayTimeDateAppointments(
       calendar.push(
         CalendarCard({
           i,
-          currentMonth,
-          currentDay,
-          currentYear,
+          currentMonth: newMonth,
+          currentDay: newDay,
+          currentYear: newYear,
           setSelectedDate,
           daysOfWeek,
           currentDayOfWeek,
@@ -109,7 +115,7 @@ export function DisplayTimeDateAppointments(
   });
 
   return (
-    <section className="flex items-center justify-around flex-col w-full">
+    <section className="flex items-center justify-around flex-col m-2">
 
       <section className="calendarContainer grid mr-2">
         {calendar}

@@ -1,15 +1,16 @@
 export function calendarLogic({
   month,
   day,
-  year,
+  year
 }: {
   month: number;
   day: number;
   year: number;
+
 }) {
-  let currentMonth = month;
-  let currentDay = day;
-  let currentYear = year;
+  let newMonth = month;
+  let newDay = day;
+  let newYear = year;
 
   switch (month) {
     case 1:
@@ -18,43 +19,44 @@ export function calendarLogic({
     case 7:
     case 8:
     case 10:
-      if (currentDay > 31) {
+      if (newDay >= 31) {
         day = 1;
-        currentDay = 1;
-        currentMonth++;
+        newDay = 1;
+        newMonth++;
         month++;
+        console.log(day)
       }
       break;
     case 4:
     case 6:
     case 9:
     case 11:
-      if (currentDay > 30) {
+      if (newDay >= 30) {
         day = 1;
-        currentDay = 1;
-        currentMonth++;
+        newDay = 1;
+        newMonth++;
         month++;
       }
       break;
     case 2:
-      if (currentDay > 28) {
+      if (newDay >= 28) {
         day = 1;
-        currentDay = 1;
-        currentMonth++;
+        newDay = 1;
+        newMonth++;
         month++;
       }
       break;
     case 12:
-      if (currentDay > 31) {
+      if (newDay >= 31) {
         day = 1;
-        currentDay = 1;
-        currentMonth = 1;
+        newDay = 1;
+        newMonth = 1;
         month++;
         year++;
-        currentYear++;
+        newYear++;
       }
       break;
   }
 
-  return { currentDay, currentMonth, currentYear };
+  return { newDay, newMonth, newYear};
 }

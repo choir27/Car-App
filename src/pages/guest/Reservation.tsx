@@ -52,16 +52,16 @@ export default function Reservation() {
     <main id="reservation">
       <Nav pageHeading={"Make Reservation"} />
 
-      <section className="flex items-center justify-around">
+      <section className="m-2 w-full flex items-center justify-around">
 
-        <section className="flex items-center justify-around flex-col w-full">
+        <section className="flex items-center flex-col w-full">
           {DisplayTimeDateAppointments({
             setTime: (e: string) => setTime(e),
             appointments: appointments,
             setDate: (e: string) => setDate(e),
           })}
 
-          <section className="flex items-center justify-around w-full">
+          <section className="flex items-center">
             {ChooseTwoInput({
               text1: "Drop off car",
               text2: "Wait for car",

@@ -44,14 +44,6 @@
   flex-wrap: wrap;
 }
 
-.calendarContainer {
-  max-width: 60%;
-}
-
-.timeContainer {
-  max-width: 40%;
-}
-
 .clicked {
   background: #112597;
   color: #f0f1f3;
