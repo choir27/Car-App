@@ -11,6 +11,7 @@ import { calendarLogic } from "./DateLogic";
 import CalendarCard from "./RenderCalendarCard";
 import { militaryTimeConversion } from "./MilitaryTime";
 import RenderTimeCard from "./RenderTimeCard";
+import { CheckHolidays } from "./CheckHolidays";
 
 export function DisplayTimeDateAppointments(
   props: TimeDateAppointments,
@@ -18,7 +19,7 @@ export function DisplayTimeDateAppointments(
   let month: number = getMonth();
   let day: number = getDay();
   let year: number = getYear();
-  let week: number = getDayOfWeek();
+  let week: number = getDayOfWeek()
 
   const [selectedDate, setSelectedDate] = useState<string>(
     `${month}/${day}/${year}`,
@@ -30,9 +31,7 @@ export function DisplayTimeDateAppointments(
     let currentMonth = month;
     let currentDay = day;
     let currentYear = year;
-    let dayOfWeek = week;  
-
-    let currentDayOfWeek = dayOfWeek;
+    let currentDayOfWeek = week;  
 
     const { newMonth, newDay, newYear } = calendarLogic({
       month: currentMonth, day: currentDay, year: currentYear
@@ -46,8 +45,11 @@ export function DisplayTimeDateAppointments(
     //if a different date is selected, change the selected date as the current value of setSelectedDate
     //use the selectedDate value to show the different appointment times that are avaiable for the respective date
     
-    if (dayOfWeek > 6) {
-      dayOfWeek = 0;
+    CheckHolidays({month: 10, day: 13, dayOfWeek: 1, year: 2025})
+
+    if (currentDayOfWeek > 6) {
+      currentDayOfWeek = 0;
+      week = 0
     }
 
     // if it's the current date
@@ -68,7 +70,7 @@ export function DisplayTimeDateAppointments(
           clickedClassName: "clicked",
         }),
       );
-    } else {
+    } else if(!CheckHolidays({month: newMonth, day: newDay, dayOfWeek: currentDayOfWeek, year: newYear})) {
       calendar.push(
         CalendarCard({
           i,
@@ -82,10 +84,13 @@ export function DisplayTimeDateAppointments(
           clickedClassName: "",
         }),
       );
+      if(CheckHolidays({month: newMonth, day: newDay, dayOfWeek: currentDayOfWeek, year: newYear})){
+        i++
+      }
     }
 
     day++;
-    dayOfWeek++;
+    week++;
   }
 
   const filterAppointmentTimes = props.appointments.filter(

@@ -19,19 +19,18 @@ export function calendarLogic({
     case 7:
     case 8:
     case 10:
-      if (newDay >= 31) {
+      if (newDay > 31) {
         day = 1;
         newDay = 1;
         newMonth++;
         month++;
-        console.log(day)
       }
       break;
     case 4:
     case 6:
     case 9:
     case 11:
-      if (newDay >= 30) {
+      if (newDay > 30) {
         day = 1;
         newDay = 1;
         newMonth++;
@@ -39,7 +38,7 @@ export function calendarLogic({
       }
       break;
     case 2:
-      if (newDay >= 28) {
+      if (newDay > 28) {
         day = 1;
         newDay = 1;
         newMonth++;
@@ -47,7 +46,7 @@ export function calendarLogic({
       }
       break;
     case 12:
-      if (newDay >= 31) {
+      if (newDay > 31) {
         day = 1;
         newDay = 1;
         newMonth = 1;
