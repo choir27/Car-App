@@ -12,9 +12,9 @@ export default function Home() {
       {cacheEmail ? (
         <Employee />
       ) : (
-        <main id = 'hero' className="minh-screen m-2 flex flex-col items-center justify-between">
+        <main id = 'hero' className="flex flex-col items-center justify-between">
           <Nav pageHeading="" />
-          <section className="flex justify-between">
+          <section className="p-4 flex justify-between bg-white">
 
             <section className="w-60 flex flex-col items-start justify-between">
               <div>
@@ -36,9 +36,7 @@ export default function Home() {
                   })}
             </section>
 
-            <div className="w-60">
               <img src={Assets.whiteCar} alt="white car" className="maxw-full"/>
-            </div>
           </section>
           <Footer />
         </main>

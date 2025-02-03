@@ -7,6 +7,7 @@ import { CartItem } from "../middleware/Interfaces/Cart";
 import { nav } from "../middleware/Interfaces/General";
 import { cacheEmail } from "../middleware/Cache";
 import { APIContext } from "../middleware/Context";
+import { current } from "immer";
 
 export default function Nav(props: nav) {
   const [cartQuantity, setCartQuantity] = useState<number>();
@@ -24,15 +25,19 @@ export default function Nav(props: nav) {
     }
   }, [cart]);
 
+  const url = window.location.href;
+  const splitUrl = url.split("/");
+  const currentUrl = splitUrl[splitUrl.length-1]
+
   return (
     <header className="w-full">
-      <nav className="flex w-full justify-between">
-        <Link to="/" className="p-2">
+      <nav className="bg-nav flex w-full justify-between">
+        <Link to="/" className = "p-2">
           <h1>AutoAligners</h1>
         </Link>
         <ul className="flex w-40 justify-between">
           <li className="items-center flex">
-            <Link to="/">{cacheEmail ? "Employee Hub" : "Home"}</Link>
+            <Link to="/" className={`${currentUrl === "" ? "current-link" : "" }`}>{cacheEmail ? "Employee Hub" : "Home"}</Link>
           </li>
           {cacheEmail ? (
             <li className="items-center flex">
@@ -40,7 +45,7 @@ export default function Nav(props: nav) {
             </li>
           ) : (
             <li className="items-center flex">
-              <Link to="/employee">Login/Demo</Link>
+              <Link to="/employee" className={`${currentUrl === "employee" ? "current-link" : "" }`}>Login/Demo</Link>
             </li>
           )}
           {cacheEmail ? (
@@ -75,7 +80,7 @@ export default function Nav(props: nav) {
             ""
           ) : (
             <div className="items-center flex p-2">
-              {ButtonLink({ domain: "/reservation", text: "Make Reservation" })}
+              {ButtonLink({ classNames: `${currentUrl === "reservation" ? "current-link" : "" }` ,domain: "/reservation", text: "Make Reservation" })}
             </div>
           )}
         </ul>

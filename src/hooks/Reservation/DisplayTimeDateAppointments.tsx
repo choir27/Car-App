@@ -117,7 +117,7 @@ export function DisplayTimeDateAppointments(
   let properTimeDisplay = [];
 
   //times at :00 mark
-  for (let time = 7; time <= 17; time++) {
+  for (let time = 7; time <= 18; time++) {
     const timeDisplay = time.toString() + ":00";
     if (!appointmentTimes.includes(timeDisplay)) {
       properTimeDisplay[time - 7] = timeDisplay;
@@ -132,7 +132,7 @@ export function DisplayTimeDateAppointments(
   });
 
   return (
-    <section className="flex items-center justify-around flex-col m-2">
+    <section className="flex items-center justify-around flex-col">
 
       <section className="calendarContainer grid mr-2">
         {calendar}

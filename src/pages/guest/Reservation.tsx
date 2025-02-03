@@ -52,7 +52,7 @@ export default function Reservation() {
     <main id="reservation">
       <Nav pageHeading={"Make Reservation"} />
 
-      <section className="m-2 w-full flex items-center justify-around">
+      <section className="flex items-start justify-around bg-white p-4">
 
         <section className="flex items-center flex-col w-full">
           {DisplayTimeDateAppointments({
@@ -110,9 +110,11 @@ export default function Reservation() {
         </section>
 
 
-        <section className="w-full mt-6 flex flex-col items-center justify-around">
+        <section className="w-full flex flex-col items-center justify-around">
           <div className="flex flex-col">
-            {ChooseCarService({ onChange: (e: string) => setService(e) })}
+
+            <div className="flex flex-col mb-4">
+            {ChooseCarService({ onChange: (e: string) => setService(e), className: "mb-2" })}
 
             {SelectCarMakeInput({
               defaultValue: "Car Make",
@@ -149,7 +151,9 @@ export default function Reservation() {
               resetYear: (e: string) => setCarYear(e),
               resetMake: (e: string) => setCarMake(e),
             })}
+            </div>
 
+            <div className="flex flex-col">
             <label className="my-1">First Name</label>
             {Input({
               className: "mb-2",
@@ -192,6 +196,8 @@ export default function Reservation() {
               minlength: 5,
               maxlength: 5,
             })}
+            </div>
+
           </div>
         </section>
       </section>
