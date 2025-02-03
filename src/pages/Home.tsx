@@ -22,21 +22,24 @@ export default function Home() {
 
               <p className="w-80 hero-paragraph">
                 For over a century, dating back to 1892, we have been steadfast
-                in providing exceptional service. Our commitment to delivering
-                the finest quality service has been instrumental in establishing
-                a strong reputation. We are determined to continue building on
+                in providing exceptional service. We are determined to continue building on
                 this legacy with your support.
               </p>
               </div>
               {cacheEmail
-                ? ButtonLink({ domain: "/employee", text: "Employee Hub" })
+                ? ButtonLink({                    classNames: "mt-6",
+                  domain: "/employee", text: "Employee Hub" })
                 : ButtonLink({
+                    classNames: "mt-6",
                     domain: "/reservation",
                     text: "Make Reservation",
                   })}
             </section>
+                  
+                  <div className="w-60">
+                  <img src={Assets.whiteCar} alt="white car" className="maxw-full"/>
+                  </div>
 
-              <img src={Assets.whiteCar} alt="white car" className="maxw-full"/>
           </section>
           <Footer />
         </main>

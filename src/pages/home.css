@@ -1,6 +1,5 @@
 .hero-paragraph{
-    font-size: 3rem;
-    line-height: 4rem;
+    line-height: 3rem;
 }
 
 @media (max-width: 1000px){

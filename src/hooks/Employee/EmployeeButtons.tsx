@@ -8,9 +8,8 @@ export function EmployeeButtons() {
     <main className="flex flex-col justifyBetween">
       <Nav pageHeading={cacheEmail ? "Employee Hub" : "Login/Demo"} />
 
-      <section className="flex flex-col alignCenter" id="employee">
-        <nav>
-          <ul className="flex justifyBetween flex-col">
+      <section className="flex flex-col items-center justify-between" id="employee">
+          <ul className="flex justify-between items-center flex-col mt-6 h-24vh">
             {cacheEmail ? (
               ""
             ) : (
@@ -33,7 +32,6 @@ export function EmployeeButtons() {
               </li>
             )}
           </ul>
-        </nav>
       </section>
 
       <Footer />

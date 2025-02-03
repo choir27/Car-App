@@ -1,6 +1,9 @@
 /****************/
 /**** Font ****/
 /****************/
+header li a{
+  font-weight: 700;
+}
 
 #root *{
   font-family: Arial, Helvetica, sans-serif;
@@ -8,7 +11,6 @@
 
 main {
   min-height: 100vh;
-  margin: 2rem;
 }
 
 a {
@@ -84,7 +86,11 @@ label{
 }
 
 .my-2 {
-  margin: 2rem;
+  margin: 2rem 0rem;
+}
+
+.mx-2{
+  margin: 0rem 2rem;
 }
 
 .mb-2 {
@@ -101,6 +107,10 @@ label{
 
 .mt-6 {
   margin-top: 6rem;
+}
+
+.h-24vh {
+  min-height: 24vh;
 }
 
 .minh-screen {
@@ -224,6 +234,7 @@ body{
 }
 
 .current-link{
+  text-decoration: underline;
   color: #323E84;
 }
 /****************/

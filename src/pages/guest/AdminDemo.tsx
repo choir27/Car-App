@@ -13,8 +13,7 @@ export default function AdminDemo() {
     <main id="auth">
       <Nav pageHeading={"Admin Demo Account Login"} />
 
-      <section className="flex flex-col alignCenter justifyCenter">
-        <form className="flex flex-col alignCenter">
+      <form className="flex flex-col alignCenter">
           {Input({
             type: "email",
             onChange: (e: string) => e,
@@ -42,8 +41,7 @@ export default function AdminDemo() {
               handleLogin({ email: email, name: name, password: password }),
             text: "Login",
           })}
-        </form>
-      </section>
+      </form>
 
       <Footer />
     </main>

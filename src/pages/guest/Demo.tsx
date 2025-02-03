@@ -13,8 +13,7 @@ export default function Demo() {
     <main id="auth">
       <Nav pageHeading={"Demo Account Login"} />
 
-      <section className="flex flex-col alignCenter justifyCenter">
-        <form className="flex flex-col alignCenter">
+        <form className="flex flex-col items-center">
           {Input({
             type: "email",
             onChange: (e: string) => e,
@@ -43,7 +42,6 @@ export default function Demo() {
             text: "Login",
           })}
         </form>
-      </section>
 
       <Footer />
     </main>

@@ -46,11 +46,11 @@ export function EmployeeHub() {
     <main id="auth">
       <Nav pageHeading={user ? `Welcome ${user.name}` : "Login"} />
 
-      <section className="flex flex-col alignCenter justifyBetween">
+      <section className="flex flex-col items-center">
         {user.$id ? (
           ""
         ) : (
-          <form className="flex flex-col alignCenter">
+          <form className="flex flex-col items-center">
             {Input({
               type: "email",
               name: "email",
