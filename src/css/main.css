@@ -1,6 +1,10 @@
 /****************/
 /**** Font ****/
 /****************/
+.text-right{
+  text-align:right;
+}
+
 header li a{
   font-weight: 700;
 }
@@ -190,6 +194,15 @@ label{
   align-items: start;
 }
 
+.align-end{
+  align-self: flex-end;
+}
+
+.justify-end{
+  justify-content: flex-end;
+}
+
+
 /****************/
 /**** Components ****/
 /****************/
@@ -258,4 +271,34 @@ textarea {
 
 footer nav ul li:hover{
   opacity: 70%;
+}
+
+/****************/
+/**** Border ****/
+/****************/
+
+.shadow-2xs{
+  box-shadow: 10px 5px 5px rgb(61, 53, 53);
+}
+
+.cursor-pointer{
+  cursor: pointer;
+}
+
+/****************/
+/**** Mode ****/
+/****************/
+
+.dark{
+  background-color: black;
+  color: white;
+}
+
+.light{
+  background-color: white;
+}
+
+.lightBtn{
+  background-color: #d0d5f3;
+  color: black;
 }

@@ -7,7 +7,7 @@ import { CartItem } from "../middleware/Interfaces/Cart";
 import { nav } from "../middleware/Interfaces/General";
 import { cacheEmail } from "../middleware/Cache";
 import { APIContext } from "../middleware/Context";
-import { current } from "immer";
+import { DarkMode  } from "../hooks/DarkMode";
 
 export default function Nav(props: nav) {
   const [cartQuantity, setCartQuantity] = useState<number>();
@@ -32,9 +32,14 @@ export default function Nav(props: nav) {
   return (
     <header className="w-full">
       <nav className="bg-nav flex w-full justify-between">
+        <div className="flex items-center">
         <Link to="/" className = "p-2">
           <h1>AutoAligners</h1>
         </Link>
+        {DarkMode()}
+        </div>
+ 
+
         <ul className="flex w-40 justify-between">
           <li className="items-center flex">
             <Link to="/" className={`${currentUrl === "" ? "current-link" : "" }`}>{cacheEmail ? "Employee Hub" : "Home"}</Link>

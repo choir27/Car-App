@@ -12,7 +12,7 @@ import {
 import { ChooseTwoInput, TextBoxInput, Input } from "../../hooks/InputHooks";
 import Footer from "../../components/Footer";
 import { GetCarData } from "../../hooks/ApiCalls";
-import { APIContext } from "../../middleware/Context";
+import { APIContext, DarkModeContext } from "../../middleware/Context";
 import "./reservation.css";
 
 export default function Reservation() {
@@ -37,6 +37,7 @@ export default function Reservation() {
   const [carYearOptions, setCarYearOptions] = useState<React.JSX.Element[]>([]);
   const [stayLeave, setStay_Leave] = useState<string>("");
   const [service, setService] = useState<string>("");
+  const { toggleDarkMode } = useContext(DarkModeContext);
 
   useEffect(() => {
     GetCarData({
@@ -52,7 +53,7 @@ export default function Reservation() {
     <main id="reservation">
       <Nav pageHeading={"Make Reservation"} />
 
-      <section className="flex items-start justify-around bg-white p-4">
+      <section className={`mx-2 flex items-start justify-around bg-white p-4 shadow-2xs ${toggleDarkMode === "dark" ? "light" : "dark"}`}>
 
         <section className="flex items-center flex-col w-full">
           {DisplayTimeDateAppointments({
@@ -86,7 +87,7 @@ export default function Reservation() {
           })}
 
           <Button
-          classNames="mt-2"
+          classNames={`mt-2 ${toggleDarkMode === "light" ? "lightBtn" : "darkBtn"}`}
             text="Reserve Appointment"
             handleButtonClick={() =>
               handleCreateAppointment({

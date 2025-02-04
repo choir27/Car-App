@@ -16,6 +16,11 @@ type T = {
   employee: Profile;
 };
 
+type L = {
+  toggleDarkMode: string,
+  setToggleDarkMode: (e: string) => void
+}
+
 export const APIContext = createContext<T>({
   inventory: [],
   cart: [],
@@ -42,4 +47,9 @@ export const APIContext = createContext<T>({
     position: "",
     salary: "",
   },
+});
+
+export const DarkModeContext = createContext<L>({
+  toggleDarkMode: '',
+  setToggleDarkMode: (e: string) => e
 });

@@ -1,5 +1,6 @@
 import { getYear } from "../hooks/ReservationHooks";
 import {FaLinkedin, FaTwitter, FaInstagram, FaGithub} from "react-icons/fa";
+import { DarkMode  } from "../hooks/DarkMode";
 
 const Footer = () => {
   return (
@@ -49,6 +50,7 @@ const Footer = () => {
               <p className="hidden">Github</p>
             </a>
           </li>
+
         </ul>
 
         <small className="p-2">AutoAligners &copy; {getYear()}. All rights are reserved</small>

@@ -9,7 +9,7 @@ import { Suspense, useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { EmployeeHub } from "./pages/employee/Employee.js";
-import { APIContext } from "./middleware/Context";
+import { APIContext, DarkModeContext } from "./middleware/Context";
 import { cacheEmail } from "./middleware/Cache";
 import { User } from "./middleware/Interfaces/Auth";
 import { Profile } from "./middleware/Interfaces/General";
@@ -48,6 +48,7 @@ export default function App() {
   const [purchases, setPurchases] = useState<PurchasedItem[]>([]);
   const [user, setUser] = useState<User>(defaultUser);
   const [employee, setEmployee] = useState<Profile>(defaultEmployee);
+  const [toggleDarkMode, setToggleDarkMode] = useState<string>("light");
 
   useEffect(() => {
     if (cacheEmail) {
@@ -61,6 +62,7 @@ export default function App() {
   }, []);
 
   return (
+    <DarkModeContext.Provider value={{setToggleDarkMode, toggleDarkMode}}>
     <APIContext.Provider
       value={{
         inventory,
@@ -101,5 +103,6 @@ export default function App() {
         <ToastContainer />
       </Suspense>
     </APIContext.Provider>
+    </DarkModeContext.Provider>
   );
 }

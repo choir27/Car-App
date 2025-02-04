@@ -1,6 +1,8 @@
 import { TimeDateAppointments } from "../../middleware/Interfaces/Reservation";
 import { handleRenderCalendar } from "./HandleRenderCalendar";
 import { checkAppointmentDate } from "./CheckAppointmentDate";
+import { DarkModeContext } from "../../middleware/Context";
+import { useContext } from "react";
 
 export default function CalendarCard({
   i,
@@ -25,9 +27,12 @@ export default function CalendarCard({
   clickedClassName: string;
   disabled?: string
 }) {
+
+  const { toggleDarkMode } = useContext(DarkModeContext);
+
   return (
     <div
-      className={`calendar c-${i} ${clickedClassName} ${disabled}`}
+      className={`${toggleDarkMode === "light" ? "lightBtn" : "darkBtn"} calendar c-${i} ${clickedClassName} ${disabled}`}
       key={`c-${i}`}
       onClick={() => {
         if(disabled !== "disabled"){

@@ -33,10 +33,12 @@
 
 .time:hover {
   background: #5461ab;
+  color: white;
 }
 
 .calendar:hover {
   background: #f0f1f3;
+  color: black;
 }
 
 .calendarContainer,
