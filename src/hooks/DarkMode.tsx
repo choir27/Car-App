@@ -10,7 +10,7 @@ export function DarkMode(){
         <div>
             {
             toggleDarkMode === "light"  ? 
-            <MdWbSunny className="button cursor-pointer" onClick={()=>setToggleDarkMode("dark")}/>
+            <MdWbSunny className={`button cursor-pointer ${toggleDarkMode === "light" ? "lightBtn" : "darkBtn"}`} onClick={()=>setToggleDarkMode("dark")}/>
             :
             <FaMoon className="button cursor-pointer" onClick={()=>setToggleDarkMode("light")}/>
             }

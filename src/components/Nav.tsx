@@ -33,7 +33,7 @@ export default function Nav(props: nav) {
 
   return (
     <header className="w-full">
-      <nav className={`${toggleDarkMode === "dark" ? "bg-nav" : "dark"} bg-nav flex w-full justify-between`}>
+      <nav className={`${toggleDarkMode === "dark" ? "bg-nav" : "darkNav"} bg-nav flex w-full justify-between`}>
         <div className="flex items-center">
         <Link to="/" className = "p-2">
           <h1>AutoAligners</h1>

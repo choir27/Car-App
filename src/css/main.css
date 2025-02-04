@@ -302,7 +302,16 @@ footer nav ul li:hover{
   background-color: white;
 }
 
+.darkNav{
+  background-color: #141937;
+}
+
 .lightBtn{
   background-color: #d0d5f3;
+  color: black;
+}
+
+
+nav .lightBtn *{
   color: black;
 }
