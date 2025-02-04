@@ -1,10 +1,13 @@
 import { getYear } from "../hooks/ReservationHooks";
 import {FaLinkedin, FaTwitter, FaInstagram, FaGithub} from "react-icons/fa";
-import { DarkMode  } from "../hooks/DarkMode";
+import { DarkModeContext } from "../middleware/Context";
+import { useContext } from "react";
 
 const Footer = () => {
+  const { toggleDarkMode } = useContext(DarkModeContext);
+
   return (
-    <footer className="w-full mt-6 bg-nav">
+    <footer className={`w-full mt-6 bg-nav ${toggleDarkMode === "dark" ? "bg-nav" : "dark"}`}>
       <nav className="flex justify-between items-center w-full">
         <ul className="flex justify-between w-20 p-2">
           <li>

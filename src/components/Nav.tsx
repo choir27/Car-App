@@ -6,12 +6,14 @@ import EmployeeNav from "./EmployeeNav";
 import { CartItem } from "../middleware/Interfaces/Cart";
 import { nav } from "../middleware/Interfaces/General";
 import { cacheEmail } from "../middleware/Cache";
-import { APIContext } from "../middleware/Context";
-import { DarkMode  } from "../hooks/DarkMode";
+import { APIContext, DarkModeContext } from "../middleware/Context";
+import { DarkMode } from "../hooks/DarkMode";
 
 export default function Nav(props: nav) {
   const [cartQuantity, setCartQuantity] = useState<number>();
   const { cart } = useContext(APIContext);
+  const { toggleDarkMode } = useContext(DarkModeContext);
+  const toggleButton = toggleDarkMode === "light" ? "lightBtn" : "darkBtn"
 
   useEffect(() => {
     if (cacheEmail && cart?.length) {
@@ -31,7 +33,7 @@ export default function Nav(props: nav) {
 
   return (
     <header className="w-full">
-      <nav className="bg-nav flex w-full justify-between">
+      <nav className={`${toggleDarkMode === "dark" ? "bg-nav" : "dark"} bg-nav flex w-full justify-between`}>
         <div className="flex items-center">
         <Link to="/" className = "p-2">
           <h1>AutoAligners</h1>
@@ -85,7 +87,7 @@ export default function Nav(props: nav) {
             ""
           ) : (
             <div className="items-center flex p-2">
-              {ButtonLink({ classNames: `${currentUrl === "reservation" ? "current-link" : "" }` ,domain: "/reservation", text: "Make Reservation" })}
+              {ButtonLink({ classNames: `${toggleButton} ${currentUrl === "reservation" ? "current-link" : "" }` ,domain: "/reservation", text: "Make Reservation" })}
             </div>
           )}
         </ul>

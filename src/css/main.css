@@ -298,6 +298,10 @@ footer nav ul li:hover{
   background-color: white;
 }
 
+.lightNav{
+  background-color: white;
+}
+
 .lightBtn{
   background-color: #d0d5f3;
   color: black;
