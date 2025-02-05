@@ -53,8 +53,11 @@ export default function Reservation() {
     <main id="reservation">
       <Nav pageHeading={"Make Reservation"} />
 
-      <section className={`mx-2 flex items-start justify-around bg-white p-4 shadow-2xs ${toggleDarkMode === "dark" ? "light" : "dark"}`}>
-
+      <section
+        className={`mx-2 flex items-start justify-around bg-white p-4 shadow-2xs ${
+          toggleDarkMode === "dark" ? "light" : "dark"
+        }`}
+      >
         <section className="flex items-center flex-col w-full">
           {DisplayTimeDateAppointments({
             setTime: (e: string) => setTime(e),
@@ -87,7 +90,9 @@ export default function Reservation() {
           })}
 
           <Button
-          classNames={`mt-2 ${toggleDarkMode === "light" ? "lightBtn" : "darkBtn"}`}
+            classNames={`mt-2 ${
+              toggleDarkMode === "light" ? "lightBtn" : "darkBtn"
+            }`}
             text="Reserve Appointment"
             handleButtonClick={() =>
               handleCreateAppointment({
@@ -110,95 +115,104 @@ export default function Reservation() {
           />
         </section>
 
-
         <section className="w-full flex flex-col items-center justify-around">
           <div className="flex flex-col">
-
             <div className="flex flex-col mb-4">
-            {ChooseCarService({ onChange: (e: string) => setService(e), className: "mb-2" })}
+              <label className="my-1 text-left">
+                Choose Service For Your Car
+              </label>
+              {ChooseCarService({
+                onChange: (e: string) => setService(e),
+                className: "mb-2",
+              })}
 
-            {SelectCarMakeInput({
-              defaultValue: "Car Make",
-              options: carMakeOptions,
-              onChange: (e: string) => setCarMake(e),
-              carMake: carMake,
-              carYear: carYear,
-              carModel: carModel,
-              resetModel: (e: string) => setCarModel(e),
-              resetYear: (e: string) => setCarYear(e),
-              resetMake: (e: string) => setCarMake(e),
-            })}
+              <label className="my-1 text-left">Select Car Make</label>
+              {SelectCarMakeInput({
+                className: "mb-2",
+                defaultValue: "Car Make",
+                options: carMakeOptions,
+                onChange: (e: string) => setCarMake(e),
+                carMake: carMake,
+                carYear: carYear,
+                carModel: carModel,
+                resetModel: (e: string) => setCarModel(e),
+                resetYear: (e: string) => setCarYear(e),
+                resetMake: (e: string) => setCarMake(e),
+              })}
 
-            {SelectCarModelInput({
-              defaultValue: "Car Model",
-              options: carModelOptions,
-              onChange: (e: string) => setCarModel(e),
-              carMake: carMake,
-              carModel: carModel,
-              carYear: carYear,
-              resetModel: (e: string) => setCarModel(e),
-              resetYear: (e: string) => setCarYear(e),
-              resetMake: (e: string) => setCarMake(e),
-            })}
+              <label className="my-1 text-left">Select Car Model</label>
+              {SelectCarModelInput({
+                className: "mb-2",
+                defaultValue: "Car Model",
+                options: carModelOptions,
+                onChange: (e: string) => setCarModel(e),
+                carMake: carMake,
+                carModel: carModel,
+                carYear: carYear,
+                resetModel: (e: string) => setCarModel(e),
+                resetYear: (e: string) => setCarYear(e),
+                resetMake: (e: string) => setCarMake(e),
+              })}
 
-            {SelectCarYearInput({
-              defaultValue: "Car Year",
-              options: carYearOptions,
-              onChange: (e: string) => setCarYear(e),
-              carMake: carMake,
-              carModel: carModel,
-              carYear: carYear,
-              resetModel: (e: string) => setCarModel(e),
-              resetYear: (e: string) => setCarYear(e),
-              resetMake: (e: string) => setCarMake(e),
-            })}
+              <label className="my-1 text-left">Select Car Year</label>
+              {SelectCarYearInput({
+                className: "mb-2",
+                defaultValue: "Car Year",
+                options: carYearOptions,
+                onChange: (e: string) => setCarYear(e),
+                carMake: carMake,
+                carModel: carModel,
+                carYear: carYear,
+                resetModel: (e: string) => setCarModel(e),
+                resetYear: (e: string) => setCarYear(e),
+                resetMake: (e: string) => setCarMake(e),
+              })}
             </div>
 
             <div className="flex flex-col">
-            <label className="my-1">First Name</label>
-            {Input({
-              className: "mb-2",
-              type: "text",
-              onChange: (e: string) => setFirstName(e),
-              placeholder: "First Name",
-            })}
+              <label className="my-1">First Name</label>
+              {Input({
+                className: "mb-2",
+                type: "text",
+                onChange: (e: string) => setFirstName(e),
+                placeholder: "First Name",
+              })}
 
-            <label className="my-1">Last Name</label>
-            {Input({
-              className: "mb-2",
-              type: "text",
-              onChange: (e: string) => setLastName(e),
-              placeholder: "Last Name",
-            })}
+              <label className="my-1">Last Name</label>
+              {Input({
+                className: "mb-2",
+                type: "text",
+                onChange: (e: string) => setLastName(e),
+                placeholder: "Last Name",
+              })}
 
-            <label className="my-1">Email Address</label>
-            {Input({
-              className: "mb-2",
-              type: "text",
-              onChange: (e: string) => setEmail(e),
-              placeholder: "Email Address",
-            })}
+              <label className="my-1">Email Address</label>
+              {Input({
+                className: "mb-2",
+                type: "text",
+                onChange: (e: string) => setEmail(e),
+                placeholder: "Email Address",
+              })}
 
-            <label className="my-1">Phone Number</label>
-            {Input({
-              className: "mb-2",
-              type: "tel",
-              onChange: (e: string) => setPhone(e),
-              placeholder: "###-###-####",
-              minlength: 10,
-              maxlength: 10,
-            })}
+              <label className="my-1">Phone Number</label>
+              {Input({
+                className: "mb-2",
+                type: "tel",
+                onChange: (e: string) => setPhone(e),
+                placeholder: "###-###-####",
+                minlength: 10,
+                maxlength: 10,
+              })}
 
-            <label className="my-1">Zip Code</label>
-            {Input({
-              type: "text",
-              onChange: (e: string) => setZipCode(e),
-              placeholder: "Postal/Zip Code",
-              minlength: 5,
-              maxlength: 5,
-            })}
+              <label className="my-1">Zip Code</label>
+              {Input({
+                type: "text",
+                onChange: (e: string) => setZipCode(e),
+                placeholder: "Postal/Zip Code",
+                minlength: 5,
+                maxlength: 5,
+              })}
             </div>
-
           </div>
         </section>
       </section>

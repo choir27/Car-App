@@ -5,19 +5,24 @@ import { ButtonSubmit, Button } from "../../components/Button";
 import {
   GenerateNewEmployee,
   handleLogin,
-  handleSignUp
-} from "../../hooks/AuthHooks"
+  handleSignUp,
+} from "../../hooks/AuthHooks";
 import { Input } from "../../hooks/InputHooks";
-import { EmployeeButtons, RenderEmployeeAppointments, RenderEmployeeProfit } from "../../hooks/EmployeeHooks";
+import {
+  EmployeeButtons,
+  RenderEmployeeAppointments,
+  RenderEmployeeProfit,
+} from "../../hooks/EmployeeHooks";
 import PaginatedButtons from "../../components/Graphs/PaginatedButtons";
 import { toggleDisplay } from "../../hooks/ToggleDisplay";
 import { cacheEmail } from "../../middleware/Cache";
-import { APIContext } from "../../middleware/Context";
+import { APIContext, DarkModeContext } from "../../middleware/Context";
 import { User } from "../../middleware/Interfaces/Auth";
 import { GetUsers } from "../../hooks/ApiCalls";
 
 export function EmployeeHub() {
   const { user, purchases, employee } = useContext(APIContext);
+  const { toggleDarkMode } = useContext(DarkModeContext);
 
   const [listOfUsers, setListOfUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -50,32 +55,44 @@ export function EmployeeHub() {
         {user.$id ? (
           ""
         ) : (
-          <form className="flex flex-col items-center">
-            {Input({
-              type: "email",
-              name: "email",
-              onChange: (e) => setEmail(e),
-              placeholder: "Your Email",
-            })}
-            {Input({
-              type: "text",
-              name: "name",
-              onChange: (e) => setName(e),
-              placeholder: "Your Full Name",
-            })}
-            {Input({
-              type: "password",
-              name: "password",
-              onChange: (e) => setPassword(e),
-              placeholder: "Your Password",
-            })}
+          <section
+            className={`h-36vh mx-2 p-6 flex flex-col shadow-2xs ${
+              toggleDarkMode === "dark" ? "light" : "dark"
+            }`}
+          >
+            <form className="flex flex-col items-center justify-between">
+              {Input({
+                type: "email",
+                name: "email",
+                onChange: (e) => setEmail(e),
+                placeholder: "Your Email",
+                className: "mb-4",
+              })}
+              {Input({
+                type: "text",
+                name: "name",
+                onChange: (e) => setName(e),
+                placeholder: "Your Full Name",
+                className: "mb-4",
+              })}
+              {Input({
+                type: "password",
+                name: "password",
+                onChange: (e) => setPassword(e),
+                placeholder: "Your Password",
+                className: "mb-4",
+              })}
 
-            {ButtonSubmit({
-              handleButtonClick: () =>
-                handleLogin({ email: email, name: name, password: password }),
-              text: "Login",
-            })}
-          </form>
+              {ButtonSubmit({
+                handleButtonClick: () =>
+                  handleLogin({ email: email, name: name, password: password }),
+                text: "Login",
+                className: `mt-2 ${
+                  toggleDarkMode === "light" ? "lightBtn" : "darkBtn"
+                }`,
+              })}
+            </form>
+          </section>
         )}
 
         {user.$id ? (

@@ -33,6 +33,7 @@ export interface SelectOptions {
   carYear: string;
   carMake: string;
   carModel: string;
+  className?: string;
 }
 
 //interface type for appointments

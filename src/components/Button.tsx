@@ -7,7 +7,7 @@ import {  ButtonProps,
 export function ButtonSubmit(props: ButtonSubmitProps) {
   return (
     <button
-      className="button"
+      className={`button ${props.className}`}
       onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault();
         props.handleButtonClick(e);

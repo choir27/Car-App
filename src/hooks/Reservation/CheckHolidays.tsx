@@ -59,7 +59,6 @@ export function CheckHolidays({
     if (
       firstMonday > 0 &&
       getFirstMondayDay === 1) {
-        console.log('test')
       return true;
     }
   } else if (month === 11 && day === 11) {

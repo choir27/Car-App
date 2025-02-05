@@ -8,6 +8,7 @@ export interface ButtonProps {
 }
 
 export interface ButtonSubmitProps {
+  className?: string;
   text: string;
   handleButtonClick: (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,

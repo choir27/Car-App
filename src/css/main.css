@@ -5,6 +5,14 @@
   text-align:right;
 }
 
+.text-left{
+  text-align:left;
+}
+
+.text-center{
+  text-align: center;
+}
+
 header li a{
   font-weight: 700;
 }
@@ -77,6 +85,10 @@ label{
   padding: 4rem;
 }
 
+.p-6{
+  padding: 6rem;
+}
+
 .mr-2 {
   margin-right: 2rem;
 }
@@ -115,6 +127,14 @@ label{
 
 .h-24vh {
   min-height: 24vh;
+}
+
+.h-36vh {
+  min-height: 36vh;
+}
+
+.h-48vh {
+  min-height: 48vh;
 }
 
 .minh-screen {
@@ -216,6 +236,7 @@ label{
 }
 
 .button:hover {
+  cursor: pointer;
   background: #323e84;
   color: #e5ecfc;
 }
@@ -310,7 +331,6 @@ footer nav ul li:hover{
   background-color: #d0d5f3;
   color: black;
 }
-
 
 nav .lightBtn *{
   color: black;

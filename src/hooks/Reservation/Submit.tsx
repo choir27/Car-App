@@ -21,13 +21,14 @@ export async function handleSubmitData(props: Appointment): Promise<void> {
     comment: props.comment,
   };
 
-  await api.createDocument(
+  const test = await api.createDocument(
     import.meta.env.VITE_REACT_APP_DATABASE_ID,
     import.meta.env.VITE_REACT_APP_COLLECTION_ID,
     formData,
     [Permission.read(Role.any())],
   );
 
+  toast.success("Appointment Made!");
   window.location.reload();
 }
 
@@ -83,8 +84,6 @@ export function handleCreateAppointment(props: Appointment): false | undefined {
     toast.error("Please input a valid email");
     return false;
   }
-
-  toast.success("Appointment Made!");
 
   handleSubmitData({
     service: props.service,

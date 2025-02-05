@@ -30,7 +30,6 @@ export async function handleLogin(props: Login): Promise<void> {
     await api.createSession(props.email, props.password);
     const response = await api.getAccount();
     if (response) {
-      console.log(response);
       SetCacheEmail(props.email);
       window.location.reload();
     }

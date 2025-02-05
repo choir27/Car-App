@@ -2,37 +2,44 @@ import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
 import { ButtonLink } from "../../components/Button";
 import { cacheEmail } from "../../middleware/Cache";
+import { DarkModeContext } from "../../middleware/Context";
+import { useContext } from "react";
 
 export function EmployeeButtons() {
+  const { toggleDarkMode } = useContext(DarkModeContext);
+  const toggleButton = toggleDarkMode === "light" ? "lightBtn" : "darkBtn"
+
   return (
-    <main className="flex flex-col justifyBetween">
+    <main className="flex flex-col justify-between">
       <Nav pageHeading={cacheEmail ? "Employee Hub" : "Login/Demo"} />
 
-      <section className="flex flex-col items-center justify-between" id="employee">
-          <ul className="flex justify-between items-center flex-col mt-6 h-24vh">
+      <div className="flex flex-col items-center">
+        <section className={`w-20 h-36vh mx-2 p-6 flex flex-col shadow-2xs ${toggleDarkMode === "dark" ? "light" : "dark"}`} id="employee">
+          <ul className="flex justify-between items-center flex-col h-36vh">
             {cacheEmail ? (
               ""
             ) : (
               <li className="textAlignCenter">
-                {ButtonLink({ domain: "/adminDemo", text: "Admin Demo" })}
+                {ButtonLink({ classNames: toggleButton, domain: "/adminDemo", text: "Admin Demo" })}
               </li>
             )}
             {cacheEmail ? (
               ""
             ) : (
               <li className="textAlignCenter">
-                {ButtonLink({ domain: "/demo", text: "Demo" })}
+                {ButtonLink({ classNames: toggleButton, domain: "/demo", text: "Demo" })}
               </li>
             )}
             {cacheEmail ? (
               ""
             ) : (
               <li className="textAlignCenter">
-                {ButtonLink({ domain: "/login", text: "Login" })}
+                {ButtonLink({ classNames: toggleButton, domain: "/login", text: "Login" })}
               </li>
             )}
           </ul>
-      </section>
+        </section>
+      </div>
 
       <Footer />
     </main>
