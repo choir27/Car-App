@@ -8,6 +8,7 @@ import { nav } from "../middleware/Interfaces/General";
 import { cacheEmail } from "../middleware/Cache";
 import { APIContext, DarkModeContext } from "../middleware/Context";
 import { DarkMode } from "../hooks/DarkMode";
+import { FaShoppingCart } from "react-icons/fa";
 
 export default function Nav(props: nav) {
   const [cartQuantity, setCartQuantity] = useState<number>();
@@ -44,7 +45,7 @@ export default function Nav(props: nav) {
 
         <ul className="flex w-40 justify-between">
           <li className="items-center flex">
-            <Link to="/" className={`${currentUrl === "" ? "current-link" : "" }`}>{cacheEmail ? "Employee Hub" : "Home"}</Link>
+            <Link to="/" className={`${currentUrl === "" ? "current-link" : "" }`}>Home</Link>
           </li>
           {cacheEmail ? (
             <li className="items-center flex">
@@ -55,18 +56,12 @@ export default function Nav(props: nav) {
               <Link to="/employee" className={`${currentUrl === "employee" ? "current-link" : "" }`}>Login/Demo</Link>
             </li>
           )}
-          {cacheEmail ? (
-            <li className="items-center flex">
-              <Link to="/manageAppointments">Manage Appointments</Link>
-            </li>
-          ) : (
-            ""
-          )}
+
           {cacheEmail ? (
             <li className="items-center flex">
               {cart?.length && cartQuantity ? <span>{cartQuantity}</span> : ""}
               <Link to="/cart">
-                <i className="fa-solid fa-cart-shopping"></i>
+                <FaShoppingCart />
               </Link>
             </li>
           ) : (
@@ -74,8 +69,9 @@ export default function Nav(props: nav) {
           )}
 
           {cacheEmail ? (
-            <div className="items-center flex">
+            <div className="items-center flex p-2">
               {ButtonSubmit({
+                className: `${toggleDarkMode === "light" ? "lightBtn" : "darkBtn"}`,
                 handleButtonClick: () => handleLogout(),
                 text: "Logout",
               })}
@@ -83,6 +79,7 @@ export default function Nav(props: nav) {
           ) : (
             ""
           )}
+          
           {cacheEmail ? (
             ""
           ) : (

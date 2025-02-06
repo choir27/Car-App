@@ -4,29 +4,39 @@ import { Appointment } from "../../middleware/Interfaces/Reservation";
 import { SetCacheID } from "../../middleware/Cache";
 import { handleDeleteAppointment } from "./HandleDeleteAppointment";
 import { NotifyClient } from "./NotifyClient";
+import { FaEdit, FaTrash, FaExclamationTriangle } from "react-icons/fa";
+import {getMonth, getDay, getYear, getHours} from "../Reservation/DatesStatic";
+import { Button } from "../../components/Button";
 
 export function displayAppointments(
+  {
+    appointments, classNameContainer, startIndex, endIndex, toggleDetails, setToggleDetails, toggleDarkMode
+  }:
+  {
   appointments: Appointment[],
   classNameContainer: string,
   startIndex: number,
   endIndex: number,
+  toggleDetails: boolean,
+  setToggleDetails: (e:boolean) => void,
+  toggleDarkMode: string
+  }
 ): React.JSX.Element[] {
+  
+    const currentMonth = getMonth();
+    const currentDay = getDay();
+    const currentYear = getYear();
+    const currentHours = getHours();
+
   return appointments
     .map((appointment: Appointment, i: number) => {
       const appointmentDate = appointment.date.split("D")[0];
       const appointmentDayoFWeek = appointment.date.split("D")[1];
       const appointmentTime = parseInt(appointment.time);
 
-      const currentDate = new Date();
-      const currentMonth = currentDate.getMonth() + 1;
-      const currentDay = currentDate.getDate();
-      const currentYear = currentDate.getFullYear();
-
-      const currentHours = currentDate.getHours();
-
       const apptMonth = parseInt(appointmentDate.split("/")[0]);
       const apptDate = parseInt(appointmentDate.split("/")[1]);
-      const apptYear = parseInt(appointmentDate.split("/")[2]);
+      const apptYear = parseInt(appointmentDate.split("/")[2]);      
 
       function checkExpired() {
         if (apptYear < currentYear) {
@@ -47,46 +57,40 @@ export function displayAppointments(
       return (
         <div
           key={i}
-          className={`${classNameContainer} ${
+          className={`
+            apptCard
+            ${toggleDarkMode === "light" ? "lightBtn" : "darkBtn"}
+            ${classNameContainer} ${
             checkExpired() && appointmentTime <= currentHours ? "" : "expired"
           }`}
         >
-          <section
-            className={
-              classNameContainer === "appointmentContainer"
-                ? "flex flex-col"
-                : "flex justifyBetween"
-            }
-          >
-            <div className="flex alignCenter">
-              <h1>
-                {appointment.firstName} {appointment.lastName}
-              </h1>
-              <i
-                className="fa-regular fa-trash-can button"
-                onClick={() => handleDeleteAppointment(appointment.$id)}
-              ></i>
+            <section className="flex items-start justify-between">
+            
+            <section className="flex flex-col items-start w-full">
+            <h3 className="mb-1">{appointmentDate}</h3>
+            <h3 className="mb-1">{appointmentDayoFWeek}</h3>
+            <h3>{appointmentTime > 12
+                  ? (appointmentTime - 12).toString() + ":00PM"
+                  : appointmentTime + ":00AM"}</h3>
+            </section>
+ 
+              <div className="flex items-start justify-between w-full pl-2">
               <Link
                 to="/editAppointment"
-                className="fa-regular fa-pen-to-square button"
                 onClick={() => SetCacheID(appointment.$id || "")}
-              ></Link>
-            </div>
+              >
+                <FaEdit className="button"/>
+              </Link>
+              <div>
+              <FaTrash
+                className="button"
+                onClick={() => handleDeleteAppointment(appointment.$id)}
+              />
+              </div>
+     
+              </div>
 
-            <div className="flex">
-              <h1>{appointmentDate}</h1>
-              {classNameContainer === "appointmentContainer" ? (
-                ""
-              ) : (
-                <h1>{appointmentDayoFWeek}</h1>
-              )}
-              <h1>
-                {appointmentTime > 12
-                  ? (appointmentTime - 12).toString() + ":00PM"
-                  : appointmentTime + ":00AM"}
-              </h1>
-            </div>
-          </section>
+            </section>
 
           <section
             className={
@@ -95,15 +99,32 @@ export function displayAppointments(
                 : "flex justifyBetween"
             }
           >
-            <h2>{appointment.service}</h2>
-            <div className="flex">
-              <h2>{appointment.carMake}</h2>
-              <h2>{appointment.carModel}</h2>
-              <h2>{appointment.carYear}</h2>
+         <h3 className="capitalize text-3_5xl mt-2">{appointment.firstName} {appointment.lastName}</h3>
+
+            {toggleDetails?
+            ""
+            :
+            Button({text:"Show Details", handleButtonClick: ()=>setToggleDetails(true), classNames: "my-2"})}
+
+            <div className="flex flex-col items-start">
+              {
+                toggleDetails?
+                <>
+                {Button({text:"Hide Details", handleButtonClick: ()=>setToggleDetails(false), classNames:"w-full my-2"})}
+                <ul>
+                <li className="mb-2">{appointment.service}</li>
+                <li className="mb-2">{appointment.carMake}</li>
+                <li className="mb-2">{appointment.carModel}</li>
+                <li>{appointment.carYear}</li>
+                </ul>
+                </>
+              :
+                ""
+              }
             </div>
           </section>
 
-          <div className="flex alignCenter">
+          <div className="flex alignCenter mt-2">
             {checkExpired() && appointmentTime <= currentHours ? (
               <button
                 className="button"
@@ -118,18 +139,11 @@ export function displayAppointments(
                   )
                 }
               >
-                Notify client that Car is ready
+                Notify client
               </button>
             ) : (
-              <h2>Expired Apppointment</h2>
+              <h3 className="text-4xl my-1">Expired <FaExclamationTriangle className="expired text-3xl" /></h3>
             )}
-            <i
-              className={
-                checkExpired() && appointmentTime <= currentHours
-                  ? ""
-                  : "fa-solid fa-triangle-exclamation"
-              }
-            ></i>
           </div>
         </div>
       );

@@ -22,10 +22,10 @@ export function RenderEmployeeAppointments(
 
       return (
         <section
-          key={`${cart.$createdAt}-${i}`}
-          className="flex justifyEvenly cartItem"
+         key={`${cart.$createdAt}-${i}`}
+          className="flex justify-between w-full mb-4"
         >
-          <h2>Items Sold: {cart.cartItems.length}</h2>
+          <h2>Items: {cart.cartItems.length}</h2>
           <h2>Total: ${cartTotal.toFixed(2)}</h2>
         </section>
       );

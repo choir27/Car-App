@@ -149,35 +149,41 @@ export function EmployeeHub() {
               </section>
             </section>
           ) : (
-            <section className="flex flex-col">
-              <h2 className="flex justifyCenter heading">Employee Hub</h2>
+            <section className={`mx-2 p-4 flex w-70 justify-around shadow-2xs ${toggleDarkMode === "dark" ? "light" : "dark"}`}>
+              <div className="flex flex-col items-start justify-between w-full">
+                  <h2 className="flex justifyCenter heading">Employee Hub</h2>
 
-              <section className="flex justifyBetween alignCenter employee">
-                <section className="flex flex-col profile">
-                  <h2 className="email">Email: {user.email}</h2>
-                  <h2>Start Date: {user.$createdAt.split("T")[0]}</h2>
-                  <h2>Total Sales Made: ${RenderEmployeeProfit(purchases)}</h2>
-                </section>
+                  <div className="mt-6">
+                  <h2 className="mb-2">Email:</h2>
+                  <h3>{user.email}</h3>
+                  </div>
 
-                {showPurchases ? (
-                  ""
-                ) : (
-                  <section className="flex flex-col alignCenter justifyBetween buttons">
+                  <div className="mt-6">
+                  <h2 className="mb-2">Start Date:</h2>
+                  <h3>{user.$createdAt.split("T")[0]}</h3>
+                  </div>
+
+                  <div className="mt-6">
+                  <h2 className="mb-2">Total Sales Made:</h2>
+                  <h3>${RenderEmployeeProfit(purchases)}</h3>
+                  </div>
+                 
+              </div>
+
+              {showPurchases ? (
+                  <section className="flex flex-col align-center w-full">
                     {Button({
-                      text: "Sales History Hub",
+                      classNames: `mb-2 ${toggleDarkMode === "light" ? "lightBtn" : "darkBtn"}`,
+                      text: "Hide Sales History Hub",
                       handleButtonClick: () =>
                         toggleDisplay(
                           (e: boolean) => setShowPurchases(e),
                           showPurchases,
                         ),
                     })}
-                  </section>
-                )}
 
-                {showPurchases ? (
-                  <section className="flex flex-col alignCenter purchases">
                     <PaginatedButtons
-                      className={"flex"}
+                      className={"flex mb-4"}
                       currentPage={currentPage}
                       cartLength={purchases.length}
                       setCurrentPage={(e: number) => setCurrentPage(e)}
@@ -189,20 +195,26 @@ export function EmployeeHub() {
                       startIndex,
                       endIndex,
                     )}
+                  </section>
+                ) : (
+                  ""
+                )}
 
+                {showPurchases ? (
+                  ""
+                ) : (
+                  <section className="w-full flex-col flex">
                     {Button({
-                      text: "Hide Sales History Hub",
+                      text: "Show Sales History",
                       handleButtonClick: () =>
                         toggleDisplay(
                           (e: boolean) => setShowPurchases(e),
                           showPurchases,
                         ),
+                        classNames: `align-end w-full ${toggleDarkMode === "light" ? "lightBtn" : "darkBtn"}`
                     })}
                   </section>
-                ) : (
-                  ""
                 )}
-              </section>
             </section>
           )
         ) : (

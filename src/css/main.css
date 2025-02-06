@@ -30,7 +30,7 @@ a {
   color: black;
 }
 
-a:hover{
+a:hover, .employeeLink:hover{
   text-decoration: underline;
 }
 
@@ -54,7 +54,8 @@ p,
 a,
 input,
 select,
-textarea {
+textarea,
+li {
   font-size: 2rem;
 }
 
@@ -68,6 +69,26 @@ label{
 
 .icons{
   font-size: 3rem;
+}
+
+.text-2xl{
+  font-size: 2rem;
+}
+
+.text-3xl{
+  font-size: 3rem;
+}
+
+.text-3_5xl{
+  font-size: 3.5rem;
+}
+
+.text-4xl{
+  font-size: 4rem;
+}
+
+.capitalize{
+  text-transform: capitalize;
 }
 /****************/
 /**** Spacing ****/
@@ -89,6 +110,14 @@ label{
   padding: 6rem;
 }
 
+.pl-2{
+  padding-left: 2rem;
+}
+
+.pl-1{
+  padding-left: 1rem;
+}
+
 .mr-2 {
   margin-right: 2rem;
 }
@@ -98,8 +127,9 @@ label{
 }
 
 .my-1 {
-  margin: 1rem;
+  margin: 1rem 0rem;
 }
+
 
 .my-2 {
   margin: 2rem 0rem;
@@ -107,6 +137,10 @@ label{
 
 .mx-2{
   margin: 0rem 2rem;
+}
+
+.mb-1 {
+  margin-bottom: 1rem;
 }
 
 .mb-2 {
@@ -123,6 +157,10 @@ label{
 
 .mt-6 {
   margin-top: 6rem;
+}
+
+.h-12vh {
+  min-height: 12vh;
 }
 
 .h-24vh {
@@ -159,6 +197,10 @@ label{
 
 .w-60 {
   width: 60%;
+}
+
+.w-70 {
+  width: 70%;
 }
 
 .w-80 {
@@ -218,10 +260,13 @@ label{
   align-self: flex-end;
 }
 
+.align-start{
+  align-self: flex-start;
+}
+
 .justify-end{
   justify-content: flex-end;
 }
-
 
 /****************/
 /**** Components ****/
@@ -239,6 +284,17 @@ label{
   cursor: pointer;
   background: #323e84;
   color: #e5ecfc;
+}
+
+.employeeNav{
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  flex-direction: column;
+  padding: 2rem;
+  background: #d0d5f3;
+  border-radius: 10px;
 }
 
 
@@ -270,6 +326,10 @@ body{
 .current-link{
   text-decoration: underline;
   color: #323E84;
+}
+
+.border-radius-10px{
+  border-radius: 10px;
 }
 /****************/
 /**** Form ****/

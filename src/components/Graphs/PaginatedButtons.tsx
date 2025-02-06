@@ -1,9 +1,12 @@
 import { buttons } from "../../middleware/Interfaces/General";
+import { DarkModeContext } from "../../middleware/Context";
+import { useContext } from "react";
 
 export default function PaginatedButtons(props: buttons) {
   const handlePageChange = (newPage: number) => {
     props.setCurrentPage(newPage);
   };
+  const { toggleDarkMode } = useContext(DarkModeContext);
 
   return (
     <div className={props.className} key="buttons">
@@ -13,7 +16,10 @@ export default function PaginatedButtons(props: buttons) {
             (_, i) => (
               <button
                 key={`button-${i}`}
-                className={`clearButton ${
+                className={`button
+                  my-2 
+                  ${toggleDarkMode === "light" ? "lightBtn" : "darkBtn"}
+                  ${
                   props.currentPage === i + 1 ? "selectedPage" : ""
                 }`}
                 onClick={() => handlePageChange(i + 1)}
@@ -34,7 +40,10 @@ export default function PaginatedButtons(props: buttons) {
                 return (
                   <button
                     key={`button-${i}`}
-                    className={`clearButton ${
+                    className={`button
+                      my-2
+                      ${toggleDarkMode === "light" ? "lightBtn" : "darkBtn"}
+                      ${
                       props.currentPage === i + 1 ? "selectedPage" : ""
                     }`}
                     onClick={() => handlePageChange(i + 1)}

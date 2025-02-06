@@ -1,11 +1,12 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
 import { displayAppointments } from "../../hooks/ManageAppointments/DisplayAppointments";
 import PaginatedButtons from "../../components/Graphs/PaginatedButtons";
 import { SearchBar } from "../../components/Search";
 import { Appointment } from "../../middleware/Interfaces/Reservation";
-import { APIContext } from "../../middleware/Context";
+import { APIContext, DarkModeContext } from "../../middleware/Context";
+import "./manageappts.css";
 
 export default function ManageAppointments() {
   const { appointments, setAppointments } = useContext(APIContext);
@@ -16,6 +17,7 @@ export default function ManageAppointments() {
   const [currentPage, setCurrentPage] = useState(1);
   const rowsPerPage = 4;
 
+  const [toggleDetails, setToggleDetails] = useState<boolean>(false);
   const [searchValue, setSearchValue] = useState<string>("");
   const [suggestions, setSuggestions] = useState<
     React.JSX.Element | undefined
@@ -34,52 +36,62 @@ export default function ManageAppointments() {
     "lastName",
     "time",
   ];
+  const { toggleDarkMode } = useContext(DarkModeContext);
 
   return (
     <main>
       <Nav pageHeading="Manage Appointments" />
 
-      <section className="flex justifyCenter">
-        <i
-          className="fa-solid fa-list appointmentContainer"
-          onClick={() => setClassNameContainer("listAppointmentContainer")}
-        ></i>
-        <i
-          className="fa-solid fa-grip appointmentContainer"
-          onClick={() => setClassNameContainer("appointmentContainer")}
-        ></i>
-        <PaginatedButtons
-          currentPage={currentPage}
-          setCurrentPage={(e: number) => setCurrentPage(e)}
-          rowsPerPage={rowsPerPage}
-          cartLength={appointments.length}
-        />
-      </section>
+      <section
+        className={`mx-2 p-4 flex flex-col tems-start justify-between shadow-2xs ${
+          toggleDarkMode === "dark" ? "light" : "dark"
+        }`}
+      >
+        {SearchBar({
+          hidden: hidden,
+          setHidden: (e: boolean) => setHidden(e),
+          suggestions: suggestions,
+          setSuggestions: (e: React.JSX.Element) => setSuggestions(e),
+          searchValue: searchValue,
+          setSearchValue: (e: string) => setSearchValue(e),
+          setData: (e: Appointment[]) => setAppointments(e),
+          filterArray: filterArray,
+          database: import.meta.env.VITE_REACT_APP_DATABASE_ID,
+          collection: import.meta.env.VITE_REACT_APP_COLLECTION_ID,
+        })}
 
-      {SearchBar({
-        hidden: hidden,
-        setHidden: (e: boolean) => setHidden(e),
-        suggestions: suggestions,
-        setSuggestions: (e: React.JSX.Element) => setSuggestions(e),
-        searchValue: searchValue,
-        setSearchValue: (e: string) => setSearchValue(e),
-        setData: (e: Appointment[]) => setAppointments(e),
-        filterArray: filterArray,
-        database: import.meta.env.VITE_REACT_APP_DATABASE_ID,
-        collection: import.meta.env.VITE_REACT_APP_COLLECTION_ID,
-      })}
+        <section className="flex justifyCenter">
+          <i
+            className="fa-solid fa-list appointmentContainer"
+            onClick={() => setClassNameContainer("listAppointmentContainer")}
+          ></i>
+          <i
+            className="fa-solid fa-grip appointmentContainer"
+            onClick={() => setClassNameContainer("appointmentContainer")}
+          ></i>
+          <PaginatedButtons
+            currentPage={currentPage}
+            setCurrentPage={(e: number) => setCurrentPage(e)}
+            rowsPerPage={rowsPerPage}
+            cartLength={appointments.length}
+          />
+        </section>
 
-      <section className="appointments flex">
-        {appointments.length ? (
-          displayAppointments(
-            appointments,
-            classNameContainer,
-            startIndex,
-            endIndex,
-          )
-        ) : (
-          <h1>No results match your search, try again.</h1>
-        )}
+        <section className="apptGrid">
+          {appointments.length ? (
+            displayAppointments({
+              appointments,
+              classNameContainer,
+              startIndex,
+              endIndex,
+              toggleDetails,
+              setToggleDetails: (e: boolean)=> setToggleDetails(e),
+              toggleDarkMode,
+            })
+          ) : (
+            <h1>No results match your search, try again.</h1>
+          )}
+        </section>
       </section>
 
       <Footer />

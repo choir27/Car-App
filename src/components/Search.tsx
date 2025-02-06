@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import api from "../api/api.jsx";
 import { Button } from "../components/Button";
 import { Search } from "../middleware/Interfaces/General";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
 //search
 //enter value into search
@@ -246,16 +247,17 @@ export function SearchBar(props: Search) {
   }
 
   return (
-    <form className="flex justifyCenter">
-      <section className="flex flex-col alignCenter search">
+    <form className="flex w-full">
+      <section className="flex justify-between w-full">
         {props.hidden ? searchFilters() : ""}
-        <div className="flex alignCenter justifyEvenly">
+        <div className="flex items-center justify-around w-full">
           <input
             type="search"
             value={props.searchValue}
             onChange={(e) => props.setSearchValue(e.target.value)}
           />
           {AutoSuggest(props.searchValue)}
+          <div className="flex items-start">
           {Button({
             text: "Search",
             handleButtonClick: (e) => {
@@ -263,14 +265,12 @@ export function SearchBar(props: Search) {
               searchResults();
             },
           })}
-          <i
-            className={`${
-              props.hidden
-                ? "fa-solid fa-caret-up clearButton"
-                : "fa-solid fa-caret-down clearButton"
-            }`}
-            onClick={() => props.setHidden(!props.hidden)}
-          ></i>
+          {
+            props.hidden
+                ? <IoIosArrowUp className="button" onClick={()=>props.setHidden(false)}/>
+                : <IoIosArrowDown className="button" onClick={()=>props.setHidden(true)}/>
+          }
+          </div>
         </div>
       </section>
     </form>
