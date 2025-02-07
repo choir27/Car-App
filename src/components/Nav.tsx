@@ -1,13 +1,13 @@
 import { useState, useEffect, useContext } from "react";
 import { ButtonLink, ButtonSubmit } from "../components/Button";
-import { handleLogout } from "../hooks/AuthHooks";
+import { handleLogout } from "../hooks/hooks/AuthHooks";
 import { Link } from "react-router-dom";
 import EmployeeNav from "./EmployeeNav";
 import { CartItem } from "../middleware/Interfaces/Cart";
 import { nav } from "../middleware/Interfaces/General";
 import { cacheEmail } from "../middleware/Cache";
 import { APIContext, DarkModeContext } from "../middleware/Context";
-import { DarkMode } from "../hooks/DarkMode";
+import { DarkMode } from "../hooks/hooks/DarkMode";
 import { FaShoppingCart } from "react-icons/fa";
 
 export default function Nav(props: nav) {

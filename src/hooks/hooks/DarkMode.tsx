@@ -1,7 +1,7 @@
 import { FaMoon } from "react-icons/fa";
 import { MdWbSunny } from "react-icons/md";
 import { useContext } from "react";
-import { DarkModeContext } from "../middleware/Context"
+import { DarkModeContext } from "../../middleware/Context"
 
 export function DarkMode(){
     const { toggleDarkMode, setToggleDarkMode } = useContext(DarkModeContext);

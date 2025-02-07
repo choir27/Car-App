@@ -1,6 +1,6 @@
 import Nav from "../../components/Nav";
-import { handleLogin } from "../../hooks/AuthHooks";
-import { Input } from "../../hooks/InputHooks";
+import { handleLogin } from "../../hooks/hooks/AuthHooks";
+import { Input } from "../../hooks/hooks/InputHooks";
 import { ButtonSubmit } from "../../components/Button";
 import Footer from "../../components/Footer";
 import { DarkModeContext } from "../../middleware/Context";

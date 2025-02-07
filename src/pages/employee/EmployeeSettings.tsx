@@ -7,7 +7,7 @@ import {
   handleDeleteAccount,
   updateAccountName,
   updateAccountPassword,
-} from "../../hooks/AuthHooks";
+} from "../../hooks/hooks/AuthHooks";
 import { Input } from "../../hooks/Inputs/GeneralInput";
 import { APIContext } from "../../middleware/Context";
 

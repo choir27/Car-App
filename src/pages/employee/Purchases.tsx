@@ -5,10 +5,10 @@ import BarGraph from "../../components/Graphs/BarGraph";
 import LineGraph from "../../components/Graphs/LineGraph";
 import HorizontalBarGraph from "../../components/Graphs/HorizontalBarGraph";
 import List from "../../components/Graphs/List";
-import { GetPurchasedProfit, GetPurchasedQuantities,GetPurchasedDates } from "../../hooks/PurchasesHooks";
+import { GetPurchasedProfit, GetPurchasedQuantities,GetPurchasedDates } from "../../hooks/hooks/PurchasesHooks";
 import { Button } from "../../components/Button";
 import { PurchasedItem } from "../../middleware/Interfaces/Purchases";
-import { GetPurchases } from "../../hooks/ApiCalls";
+import { GetPurchases } from "../../hooks/hooks/ApiCalls";
 
 export default function Purchases() {
   const [purchases, setPurchases] = useState<PurchasedItem[]>([]);

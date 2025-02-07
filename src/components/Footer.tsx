@@ -1,4 +1,4 @@
-import { getYear } from "../hooks/ReservationHooks";
+import { getYear } from "../hooks/hooks/ReservationHooks";
 import {FaLinkedin, FaTwitter, FaInstagram, FaGithub} from "react-icons/fa";
 import { DarkModeContext } from "../middleware/Context";
 import { useContext } from "react";

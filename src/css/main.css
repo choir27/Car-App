@@ -224,6 +224,10 @@ label{
   display: flex;
 }
 
+.flex-wrap{
+  flex-wrap: wrap;
+}
+
 .flex-row {
   flex-direction: row;
 }
@@ -287,6 +291,8 @@ label{
 }
 
 .employeeNav{
+  right: 17rem;
+  box-shadow: 10px 5px 5px rgb(61, 53, 53);
   margin-top: 2rem;
   display: flex;
   align-items: center;
@@ -301,6 +307,9 @@ label{
 /****************/
 /**** Display ****/
 /****************/
+.relative{
+  position: relative;
+}
 
 .hidden {
   display: none;

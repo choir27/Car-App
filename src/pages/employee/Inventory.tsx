@@ -13,7 +13,8 @@ export default function Inventory() {
   return (
     <main id="inventory">
       <Nav pageHeading={"Current Inventory"} />
-      <section className="itemContainer flex">
+      <section className={`mx-2 flex flex-wrap items-start justify-around bg-white p-4 shadow-2xs ${
+          toggleDarkMode === "dark" ? "light" : "dark"}`}>
         {CurrentInventory({
           cart: cart,
           inventory: inventory,

@@ -6,19 +6,19 @@ import {
   GenerateNewEmployee,
   handleLogin,
   handleSignUp,
-} from "../../hooks/AuthHooks";
-import { Input } from "../../hooks/InputHooks";
+} from "../../hooks/hooks/AuthHooks";
+import { Input } from "../../hooks/hooks/InputHooks";
 import {
   EmployeeButtons,
   RenderEmployeeAppointments,
   RenderEmployeeProfit,
-} from "../../hooks/EmployeeHooks";
+} from "../../hooks/hooks/EmployeeHooks";
 import PaginatedButtons from "../../components/Graphs/PaginatedButtons";
-import { toggleDisplay } from "../../hooks/ToggleDisplay";
+import { toggleDisplay } from "../../hooks/hooks/ToggleDisplay";
 import { cacheEmail } from "../../middleware/Cache";
 import { APIContext, DarkModeContext } from "../../middleware/Context";
 import { User } from "../../middleware/Interfaces/Auth";
-import { GetUsers } from "../../hooks/ApiCalls";
+import { GetUsers } from "../../hooks/hooks/ApiCalls";
 
 export function EmployeeHub() {
   const { user, purchases, employee } = useContext(APIContext);

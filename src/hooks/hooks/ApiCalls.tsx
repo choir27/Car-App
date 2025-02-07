@@ -1,23 +1,23 @@
-import api from "../api/api.jsx";
+import api from "../../api/api.jsx";
 import {
   Car,
   CarSelectData,
   Appointment,
-} from "../middleware/Interfaces/Reservation";
-import {  CartItem} from "../middleware/Interfaces/Cart"
-import { InventoryItem} from "../middleware/Interfaces/Inventory"
-import { PurchasedItem } from "../middleware/Interfaces/Purchases.js";
-import { Profile } from "../middleware/Interfaces/General.js";
-import {User} from "../middleware/Interfaces/Auth"
+} from "../../middleware/Interfaces/Reservation.js";
+import {  CartItem} from "../../middleware/Interfaces/Cart.js"
+import { InventoryItem} from "../../middleware/Interfaces/Inventory.js"
+import { PurchasedItem } from "../../middleware/Interfaces/Purchases.js";
+import { Profile } from "../../middleware/Interfaces/General.js";
+import {User} from "../../middleware/Interfaces/Auth.js"
 import { toast } from "react-toastify";
 import {
   cacheEmail,
   SetCacheEdit,
   cacheAppointmentID,
-} from "../middleware/Cache.js";
+} from "../../middleware/Cache.js";
 import { Query } from "appwrite";
 import axios from "axios";
-import { carData } from "../api/data.jsx";
+import { carData } from "../../api/data.jsx";
 
 //Get Cart data
 export async function GetCart(setCart: (e: CartItem[]) => void) {

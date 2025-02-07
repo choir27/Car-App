@@ -15,7 +15,7 @@ export default function InventoryShop() {
 
       <div className="flex justifyCenter"></div>
 
-      <section className="itemContainer flex">
+      <section className="grid">
         {DefaultInventory({
           itemQuantity: itemQuantity,
           setItemQuantity: (e: number) => setItemQuantity(e),

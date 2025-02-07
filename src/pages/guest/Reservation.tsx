@@ -8,10 +8,10 @@ import {
   SelectCarModelInput,
   SelectCarYearInput,
   handleCreateAppointment,
-} from "../../hooks/ReservationHooks";
-import { ChooseTwoInput, TextBoxInput, Input } from "../../hooks/InputHooks";
+} from "../../hooks/hooks/ReservationHooks";
+import { ChooseTwoInput, TextBoxInput, Input } from "../../hooks/hooks/InputHooks";
 import Footer from "../../components/Footer";
-import { GetCarData } from "../../hooks/ApiCalls";
+import { GetCarData } from "../../hooks/hooks/ApiCalls";
 import { APIContext, DarkModeContext } from "../../middleware/Context";
 import "./reservation.css";
 

@@ -1,5 +1,5 @@
 import { Button } from "../../components/Button";
-import { RenderCartQuantity, EditCart, handleDeleteCartItem } from "../CartHooks";
+import { RenderCartQuantity, EditCart, handleDeleteCartItem } from "../hooks/CartHooks";
 import { CartItem, Cart } from "../../middleware/Interfaces/Cart";
 
 export default function RenderFinalCartItem({

@@ -6,9 +6,13 @@ import {
 } from "../../middleware/Interfaces/Inventory";
 import {CartItem} from "../../middleware/Interfaces/Cart"
 import { renderInventoryQuantityOptions } from "../Inventory/RenderInventoryQuantityOptions";
+import { useContext } from "react";
+import { APIContext, DarkModeContext } from "../../middleware/Context";
 
 //Render the current inventory avaiable, checking for duplicates in the cart
 export function CurrentInventory(props: DisplayCurrentInventory) {
+  const {toggleDarkMode} = useContext(DarkModeContext);
+
   const itemQuantity: { [key: string]: number } = {};
 
   props.cart.forEach((item: CartItem) => (itemQuantity[item.name] = 0));
@@ -35,12 +39,12 @@ export function CurrentInventory(props: DisplayCurrentInventory) {
     return (
       <section
         key={inventoryItems.$id}
-        className={"flex flex-col item borderSeperation"}
+        className={`m-2 p-2 flex flex-col border-radius-10px ${toggleDarkMode === "light" ? "lightBtn" : "darkBtn"}`}
       >
         <h2>{inventoryItems.name}</h2>
         <h2>Quantity: {quantityTotal}</h2>
         <h2>${inventoryItems.price}</h2>
-        <p>{inventoryItems.description}</p>
+        {/* <p>{inventoryItems.description}</p> */}
         {quantityTotal
           ? renderInventoryQuantityOptions({
               itemName: inventoryItems.name,
@@ -51,7 +55,7 @@ export function CurrentInventory(props: DisplayCurrentInventory) {
           : ""}
         {quantityTotal
           ? Button({
-              classNames: "clearButton",
+              classNames: `${toggleDarkMode === "light" ? "lightBtn" : "darkBtn"}`,
               text: "Add To Cart",
               handleButtonClick: () => {
                 handleAddToCart({

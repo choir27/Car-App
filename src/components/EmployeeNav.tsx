@@ -14,7 +14,7 @@ export default function EmployeeNav() {
         Employee Nav
       </h3>
 
-      <div className={`employeeNav ${hidden ? "flex" : "hidden"}`}>
+      <div className={`employeeNav ${hidden ? "" : "hidden"}`}>
         {ButtonLink({
           classNames: `${
             toggleDarkMode === "light" ? "lightBtn" : "darkBtn"

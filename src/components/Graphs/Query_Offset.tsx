@@ -1,5 +1,5 @@
 import React from "react";
-import { GetPurchases } from "../../hooks/ApiCalls";
+import { GetPurchases } from "../../hooks/hooks/ApiCalls";
 
 export default function Query_Offset(
   itemLength: number,
