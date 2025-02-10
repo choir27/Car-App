@@ -9,7 +9,7 @@ import {
   updateAccountPassword,
 } from "../../hooks/hooks/AuthHooks";
 import { Input } from "../../hooks/Inputs/GeneralInput";
-import { APIContext } from "../../middleware/Context";
+import { APIContext, DarkModeContext } from "../../middleware/Context";
 
 export default function EmployeeSettings(): React.JSX.Element {
   const { user } = useContext(APIContext);
@@ -20,68 +20,92 @@ export default function EmployeeSettings(): React.JSX.Element {
   const [password, setPassword] = useState<string>("");
   const [name, setName] = useState<string>("");
 
+  const {toggleDarkMode} = useContext(DarkModeContext);
+
   return (
     <main id="employeeSettings">
       <Nav pageHeading={"Settings"} />
-
-      <section className="flex justifyEvenly alignCenter">
-        <section className="flex flex-col alignCenter settings">
-          <section className="flex flex-col alignCenter justifyCenter">
+        <form className={`mx-2 p-4 shadow-2xs flex flex-col items-center" ${
+          toggleDarkMode === "dark" ? "light" : "dark"}`}>
+          <section className="flex flex-col items-center mb-4">
+            <h2 className="mb-2">Update Your Account Name</h2>
             {Input({
+              className:"mb-2",
               type: "text",
               name: "text",
               onChange: (e) => setName(e),
               placeholder: user?.name,
             })}
             {Button({
+              classNames: `${
+                toggleDarkMode === "light" ? "lightBtn" : "darkBtn"
+              }`,
               text: "Update User's Name",
               handleButtonClick: () => updateAccountName(name),
             })}
           </section>
 
-          <section className="flex flex-col alignCenter justifyCenter">
-            {Input({
-              type: "password",
-              name: "password",
-              onChange: (e) => setOldPassword(e),
-              placeholder: "Old Password Here",
-            })}
-            {Input({
-              type: "password",
-              name: "password",
-              onChange: (e) => setPassword(e),
-              placeholder: "New Password Here",
-            })}
-            {Button({
-              text: "Update User's Password",
-              handleButtonClick: () =>
-                updateAccountPassword(password, oldPassword),
-            })}
-          </section>
-
-          <section className="flex flex-col alignCenter justifyCenter">
+          
+          <section className="flex flex-col items-center mb-4">
+          <h2 className="mb-2">Update Your Account Email</h2>
             {Input({
               type: "email",
               name: "email",
+              className: "mb-2",
               onChange: (e) => setEmail(e),
               placeholder: user?.email,
             })}
             {Input({
               type: "password",
               name: "password",
+              className: "mb-2",
               onChange: (e) => setPassword(e),
               placeholder: "Type your password here",
             })}
             {Button({
+              classNames: `${
+                toggleDarkMode === "light" ? "lightBtn" : "darkBtn"
+              }`,
               text: "Update User's Email",
               handleButtonClick: () => updateAccountEmail(email, password),
             })}
           </section>
 
+          <section className="flex flex-col items-center mb-4">
+          <h2 className="mb-2">Update Your Account Password</h2>
+            {Input({
+              className: "mb-2",
+              type: "password",
+              name: "password",
+              onChange: (e) => setOldPassword(e),
+              placeholder: "Old Password Here",
+            })}
+            {Input({
+              className: "mb-2",
+              type: "password",
+              name: "password",
+              onChange: (e) => setPassword(e),
+              placeholder: "New Password Here",
+            })}
+            {Button({
+              classNames: `${
+                toggleDarkMode === "light" ? "lightBtn" : "darkBtn"
+              }`,
+              text: "Update User's Password",
+              handleButtonClick: () =>
+                updateAccountPassword(password, oldPassword),
+            })}
+          </section>
+
           {user?.email !== "helena24@gmail.com" &&
           user?.email !== "bobTheBuilder@gmail.com" ? (
-            <section className="flex flex-col alignCenter justifyCenter">
+            <section className="flex flex-col items-center">
+                <h2 className="mb-2">Delete your Account</h2>
+
               {Button({
+                classNames: `${
+                toggleDarkMode === "light" ? "lightBtn" : "darkBtn"
+              }`,
                 text: "Delete User's Account",
                 handleButtonClick: () => setDisplayDelete(!displayDelete),
               })}
@@ -115,8 +139,7 @@ export default function EmployeeSettings(): React.JSX.Element {
           ) : (
             ""
           )}
-        </section>
-      </section>
+        </form>
 
       <Footer />
     </main>

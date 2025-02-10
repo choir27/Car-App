@@ -72,5 +72,5 @@ export function DefaultInventory(props: DefaultInventoryDisplay) {
         </td>
       </tr>
     );
-  });
+  }).slice(props.startIndex, props.endIndex);
 }

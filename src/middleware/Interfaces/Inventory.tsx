@@ -17,6 +17,8 @@ export interface Item {
 }
 
 export interface DefaultInventoryDisplay {
+  startIndex: number,
+  endIndex: number,
   setItemQuantity: (e: number) => void;
   inventory: InventoryItem[];
   itemQuantity: number | undefined;
