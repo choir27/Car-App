@@ -3,11 +3,14 @@ import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
 import { DefaultInventory } from "../../hooks/Inventory/DefaultInventory";
 import { APIContext } from "../../middleware/Context";
+import "./shop.css";
+import { DarkModeContext } from "../../middleware/Context";
 
 export default function InventoryShop() {
   const [itemQuantity, setItemQuantity] = useState<number>();
 
   const { inventory } = useContext(APIContext);
+  const { toggleDarkMode } = useContext(DarkModeContext);
 
   return (
     <main id="inventory">
@@ -15,13 +18,20 @@ export default function InventoryShop() {
 
       <div className="flex justifyCenter"></div>
 
-      <section className="grid">
+      <table className="w-full">
+        <thead className={`${toggleDarkMode === "dark" ? "lightBtn" : "dark-btn"}`}>
+          <td className="text-3xl p-2">Item</td>
+          <td className="text-3xl p-2">Price</td>
+          <td className="text-3xl p-2">Quantity</td>
+          <td></td>
+          <td></td>
+        </thead>
         {DefaultInventory({
           itemQuantity: itemQuantity,
           setItemQuantity: (e: number) => setItemQuantity(e),
           inventory: inventory,
         })}
-      </section>
+      </table>
       <Footer />
     </main>
   );

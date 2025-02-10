@@ -1,3 +1,4 @@
+import {useContext} from "react";
 import { items } from "../../api/inventory";
 import { Button } from "../../components/Button";
 import {
@@ -6,9 +7,12 @@ import {
 } from "../../middleware/Interfaces/Inventory";
 import { HandlePurchaseItem } from "../Inventory/HandlePurchaseItem";
 import { renderQuantityOptions } from "../Inventory/RenderQuantityOptions";
+import { DarkModeContext } from "../../middleware/Context";
 
 //Render the store for purchase to add items to inventory
 export function DefaultInventory(props: DefaultInventoryDisplay) {
+  const { toggleDarkMode } = useContext(DarkModeContext);
+
   //iterate through static data in api/inventory
   return items.map((inventoryItem: any, i: number) => {
     //find item in static data currently in inventory database
@@ -35,16 +39,20 @@ export function DefaultInventory(props: DefaultInventoryDisplay) {
     const itemCategory = inventoryItem.category;
     const quantity = 1;
 
+    const lightMode = toggleDarkMode == "dark" ? "even-row" : "even-dark"
+    const darkMode = toggleDarkMode == "dark" ? "lightBtn" : "dark-btn"
+
     return (
-      <section key={i} className="flex flex-col item">
-        <div className="flex justifyBetween itemHeading">
-          <h2>{itemName}</h2>
-          <h3>${price}</h3>
-        </div>
-        <h3>Quantity: {findItem[0]?.quantity ? findItem[0]?.quantity : 0}</h3>
-        <p>{itemDescription}</p>
-        {renderQuantityOptions((e: number) => props.setItemQuantity(e))}
+      <tr key={i} className={`${i % 2 === 0 ? lightMode : darkMode} w-full`}>
+          <td className="p-2 text-2xl">{itemName}</td>
+          <td className="p-2 text-2xl">${price}</td>
+          <td className="p-2 text-2xl">Quantity: {findItem[0]?.quantity ? findItem[0]?.quantity : 0}</td>
+
+
+        <td className="p-2">{renderQuantityOptions((e: number) => props.setItemQuantity(e))}</td>
+        <td className="p-2">
         {Button({
+          classNames: `${toggleDarkMode === "light" ? "lightBtn" : "darkBtn"}`,
           text: "Purchase Item",
           handleButtonClick: () => {
             HandlePurchaseItem({
@@ -61,7 +69,8 @@ export function DefaultInventory(props: DefaultInventoryDisplay) {
             });
           },
         })}
-      </section>
+        </td>
+      </tr>
     );
   });
 }

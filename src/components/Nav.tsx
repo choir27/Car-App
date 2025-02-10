@@ -58,9 +58,9 @@ export default function Nav(props: nav) {
           )}
 
           {cacheEmail ? (
-            <li className="items-center flex">
-              {cart?.length && cartQuantity ? <span>{cartQuantity}</span> : ""}
-              <Link to="/cart">
+            <li className="cart flex items-center">
+              {cart?.length && cartQuantity ? <span className="cartQuantity">{cartQuantity}</span> : ""}
+              <Link to="/cart" className={`${currentUrl === "cart" ? "current-link" : "" }`}>
                 <FaShoppingCart />
               </Link>
             </li>

@@ -36,7 +36,7 @@ export function renderInventoryQuantityOptions(props: InventoryQuantity) {
   }
 
   return (
-    <select onChange={(e) => props.setItemQuantity(parseInt(e.target.value))}>
+    <select className="mb-2" onChange={(e) => props.setItemQuantity(parseInt(e.target.value))}>
       {options}
     </select>
   );

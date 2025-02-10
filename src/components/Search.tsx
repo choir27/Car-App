@@ -1,8 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import api from "../api/api.jsx";
 import { Button } from "../components/Button";
 import { Search } from "../middleware/Interfaces/General";
-import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import { DarkModeContext } from "../middleware/Context";
 
 //search
 //enter value into search
@@ -13,6 +13,8 @@ import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 //re-render manageAppointments page to show this
 
 export function SearchBar(props: Search) {
+  const { toggleDarkMode } = useContext(DarkModeContext);
+
   function includeResults(data: any[], dataFields: string[], check: boolean) {
     if (check) {
       const filteredData = data.filter((data: any) => {
@@ -128,13 +130,24 @@ export function SearchBar(props: Search) {
 
           let i = 0;
           const list = removeDuplicates.map((value: string) => {
-            return <option key={i++}>{value}</option>;
+            if(props.searchValue && value.toLowerCase().includes(props.searchValue.toLowerCase())){
+              return(
+                <span key={i++} className="text-2xl text-black">{value}</span>
+              )
+            }
           });
 
           const results = (
-            <select onChange={(e) => props.setSearchValue(e.target.value)}>
+            <>
+            {
+              props.searchValue?
+            <div className="h-24vh border-radius-10px p-2 flex flex-col absolute bg-white">
               {list}
-            </select>
+            </div>
+            :
+            ""
+            }
+            </>
           );
 
           props.setSuggestions(results);
@@ -173,10 +186,12 @@ export function SearchBar(props: Search) {
           a.service.localeCompare(b.service),
         );
         props.setData(sortData);
-      } else if (filter === "date") {
+      } else if (filter === "time") {
         const sortData = data.documents.sort((a: any, b: any) => {
           const aDate = new Date(a.date.split("D")[0]);
           const bDate = new Date(b.date.split("D")[0]);
+          console.log(aDate)
+          console.log(bDate)
           if (aDate < bDate) {
             return -1;
           } else if (aDate > bDate) {
@@ -196,21 +211,6 @@ export function SearchBar(props: Search) {
           a.lastName.localeCompare(b.lastName),
         );
         props.setData(sortData);
-      } else if (filter === "email") {
-        const sortData = data.documents.sort((a: any, b: any) =>
-          a.email.localeCompare(b.email),
-        );
-        props.setData(sortData);
-      } else if (filter === "type") {
-        const sortData = data.documents.sort((a: any, b: any) =>
-          a.type.localeCompare(b.type),
-        );
-        props.setData(sortData);
-      } else if (filter === "financeTotal") {
-        const sortData = data.documents.sort(
-          (a: any, b: any) => Number(a.financeTotal) - Number(b.financeTotal),
-        );
-        props.setData(sortData);
       }
     } catch (err) {
       console.error(err);
@@ -222,55 +222,45 @@ export function SearchBar(props: Search) {
   }
 
   function searchFilters() {
-    const buttons = props.filterArray.map((filter: string) => {
-      return Button({
-        key: filter,
-        text: `Filter By ${filter}`,
-        handleButtonClick: (e) => {
-          e.preventDefault();
-          filterByValue(filter);
-        },
-      });
+    const options = props.filterArray.map((filter: string) => {
+      return(
+      <option key = {filter} value={filter}>
+        Filter by {filter}
+      </option>
+      )
     });
 
     return (
-      <section className="filters flex justifyBetween alignCenter flex-col">
-        <i
-          className="fa-solid fa-xmark button"
-          id="button"
-          onClick={() => props.setHidden(!props.hidden)}
-        ></i>
-
-        {buttons}
-      </section>
+      <select onChange={(e)=>filterByValue(e.target.value)}>
+        {options}
+      </select>
     );
   }
 
   return (
     <form className="flex w-full">
       <section className="flex justify-between w-full">
-        {props.hidden ? searchFilters() : ""}
-        <div className="flex items-center justify-around w-full">
+        <div className="flex items-center justify-between w-full">
+          <div className="flex w-full">
           <input
             type="search"
             value={props.searchValue}
             onChange={(e) => props.setSearchValue(e.target.value)}
           />
           {AutoSuggest(props.searchValue)}
-          <div className="flex items-start">
           {Button({
+            classNames: `${toggleDarkMode === "light" ? "lightBtn" : "darkBtn"}`,
             text: "Search",
             handleButtonClick: (e) => {
               e.preventDefault();
               searchResults();
             },
           })}
-          {
-            props.hidden
-                ? <IoIosArrowUp className="button" onClick={()=>props.setHidden(false)}/>
-                : <IoIosArrowDown className="button" onClick={()=>props.setHidden(true)}/>
-          }
           </div>
+
+          
+          {searchFilters()}
+
         </div>
       </section>
     </form>

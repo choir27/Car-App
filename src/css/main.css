@@ -1,6 +1,10 @@
 /****************/
 /**** Font ****/
 /****************/
+.text-black{
+  color: black;
+}
+
 .text-right{
   text-align:right;
 }
@@ -260,6 +264,10 @@ label{
   align-items: start;
 }
 
+.items-end{
+  align-items: end;
+}
+
 .align-end{
   align-self: flex-end;
 }
@@ -303,10 +311,39 @@ label{
   border-radius: 10px;
 }
 
+.inventory{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.cartQuantity{
+  position: absolute;
+  background: red;
+  border-radius: 50%;
+  width: 5px;
+  height: 5px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  left: 3rem;
+  bottom: 1rem;
+  padding: .5rem;
+  font-size: 1rem;
+}
+
+.autoSuggest{
+  position: absolute;
+  z-index: 1;
+}
 
 /****************/
 /**** Display ****/
 /****************/
+
+.absolute{
+  position: absolute;
+}
+
 .relative{
   position: relative;
 }
@@ -334,12 +371,13 @@ body{
 
 .current-link{
   text-decoration: underline;
-  color: #323E84;
+  color: #e5ecfc;
 }
 
 .border-radius-10px{
   border-radius: 10px;
 }
+
 /****************/
 /**** Form ****/
 /****************/
