@@ -68,7 +68,7 @@ export function displayAppointments({
             apptCard
             ${toggleDarkMode === "dark" ? "lightBtn shadow-2xs" : "darkNav shadow-2xs"}
             ${classNameContainer} ${
-              checkExpired() && appointmentTime <= currentHours ? "" : "expired"
+              checkExpired() ? "" : "expired"
             }`}
         >
           <section className="flex items-start justify-between">
@@ -114,7 +114,7 @@ export function displayAppointments({
               : Button({
                   text: "Show Details",
                   handleButtonClick: () => setToggleDetails(true),
-                  classNames:`my-2 button ${toggleDarkMode === "light" ? "lightBtn" : "darkBtn"}`,
+                  classNames:`my-2`,
                 })}
 
             <div className="flex flex-col items-start">
@@ -139,7 +139,7 @@ export function displayAppointments({
           </section>
 
           <div className="flex alignCenter mt-2">
-            {checkExpired() && appointmentTime <= currentHours ? (
+            {checkExpired() ? (
               <button
                 className={`button ${toggleDarkMode === "light" ? "lightBtn" : "darkBtn"}`}
                 onClick={() =>

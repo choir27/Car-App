@@ -1,8 +1,8 @@
-import { useEffect, useContext } from "react";
+import { useEffect } from "react";
 import api from "../api/api.jsx";
 import { Button } from "../components/Button";
 import { Search } from "../middleware/Interfaces/General";
-import { DarkModeContext } from "../middleware/Context";
+import { Appointment } from "../middleware/Interfaces/Reservation.js";
 
 //search
 //enter value into search
@@ -13,11 +13,9 @@ import { DarkModeContext } from "../middleware/Context";
 //re-render manageAppointments page to show this
 
 export function SearchBar(props: Search) {
-  const { toggleDarkMode } = useContext(DarkModeContext);
-
-  function includeResults(data: any[], dataFields: string[], check: boolean) {
+  function includeResults(appointments: Appointment[], dataFields: string[], check: boolean) {
     if (check) {
-      const filteredData = data.filter((data: any) => {
+      const filteredData = appointments.filter((data: any) => {
         return Object.values(data).some((value) =>
           typeof value === "string"
             ? value.toLowerCase().includes(props.searchValue.toLowerCase())
@@ -31,9 +29,17 @@ export function SearchBar(props: Search) {
         ),
       );
 
-      return suggestedValues;
+      const finalResults: Appointment[] = [];
+
+      suggestedValues.forEach((value)=>{
+        if(finalResults.indexOf(value) === -1){
+          finalResults.push(value)
+        }
+      })
+
+      return finalResults;
     } else {
-      const filteredData = data.filter((data: any) => {
+      const filteredData = appointments.filter((data: any) => {
         return Object.values(data).some((value) =>
           typeof value === "string"
             ? value.toLowerCase().includes(props.searchValue.toLowerCase())
@@ -89,9 +95,10 @@ export function SearchBar(props: Search) {
         true,
       );
 
-      if (exactValues.length && exactValues) {
+      props.setSearchValue("");
+      if (exactValues.length && exactValues && props.searchValue) {
         props.setData(exactValues);
-      } else if (includeResults.length && includeValues) {
+      } else if (includeResults.length && includeValues && props.searchValue) {
         props.setData(includeValues);
       } else {
         props.setData([]);
@@ -127,26 +134,39 @@ export function SearchBar(props: Search) {
               ? removeDuplicates.push(value)
               : "",
           );
+          console.log(props.searchValue)
 
           let i = 0;
           const list = removeDuplicates.map((value: string) => {
-            if(props.searchValue && value.toLowerCase().includes(props.searchValue.toLowerCase())){
-              return(
-                <span key={i++} className="text-2xl text-black">{value}</span>
-              )
+            if (
+              props.searchValue &&
+              value.toLowerCase().includes(props.searchValue.toLowerCase())
+            ) {
+              return (
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    props.setSearchValue(value);
+                    searchResults();
+                  }}
+                  key={i++}
+                  className="auto-button"
+                >
+                  {value}
+                </button>
+              );
             }
           });
 
           const results = (
             <>
-            {
-              props.searchValue?
-            <div className="h-24vh border-radius-10px p-2 flex flex-col absolute bg-white">
-              {list}
-            </div>
-            :
-            ""
-            }
+              {props.searchValue ? (
+                <div className="h-24vh border-radius-10px p-2 flex flex-col absolute bg-white min-20 mt-6">
+                  {list}
+                </div>
+              ) : (
+                ""
+              )}
             </>
           );
 
@@ -190,8 +210,7 @@ export function SearchBar(props: Search) {
         const sortData = data.documents.sort((a: any, b: any) => {
           const aDate = new Date(a.date.split("D")[0]);
           const bDate = new Date(b.date.split("D")[0]);
-          console.log(aDate)
-          console.log(bDate)
+
           if (aDate < bDate) {
             return -1;
           } else if (aDate > bDate) {
@@ -223,18 +242,28 @@ export function SearchBar(props: Search) {
 
   function searchFilters() {
     const options = props.filterArray.map((filter: string) => {
-      return(
-      <option key = {filter} value={filter}>
-        Filter by {filter}
-      </option>
-      )
+      return (
+        <option key={filter} value={filter}>
+          Filter by {filter}
+        </option>
+      );
     });
 
     return (
-      <select onChange={(e)=>filterByValue(e.target.value)}>
-        {options}
-      </select>
+      <select onChange={(e) => filterByValue(e.target.value)}>{options}</select>
     );
+  }
+
+  async function clearSearch(
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) {
+    e.preventDefault();
+    const appointments = await api.listDocuments(
+      props.database,
+      props.collection,
+    );
+    props.setData(appointments.documents);
+    console.log(props.data);
   }
 
   return (
@@ -242,25 +271,29 @@ export function SearchBar(props: Search) {
       <section className="flex justify-between w-full">
         <div className="flex items-center justify-between w-full">
           <div className="flex w-full">
-          <input
-            type="search"
-            value={props.searchValue}
-            onChange={(e) => props.setSearchValue(e.target.value)}
-          />
-          {AutoSuggest(props.searchValue)}
-          {Button({
-            classNames: `${toggleDarkMode === "light" ? "lightBtn" : "darkBtn"}`,
-            text: "Search",
-            handleButtonClick: (e) => {
-              e.preventDefault();
-              searchResults();
-            },
-          })}
+            <input
+              type="search"
+              value={props.searchValue}
+              onChange={(e) => props.setSearchValue(e.target.value)}
+            />
+            {AutoSuggest(props.searchValue)}
+            {Button({
+              text: "Search",
+              handleButtonClick: (e) => {
+                e.preventDefault();
+                searchResults();
+              },
+            })}
+
+            {Button({
+              text: "Clear Search",
+              handleButtonClick: (e) => {
+                clearSearch(e);
+              },
+            })}
           </div>
 
-          
           {searchFilters()}
-
         </div>
       </section>
     </form>

@@ -56,9 +56,7 @@ export default function Demo() {
             handleButtonClick: () =>
               handleLogin({ email: email, name: name, password: password }),
             text: "Login",
-            className: `mt-2 ${
-              toggleDarkMode === "light" ? "lightBtn" : "darkBtn"
-            }`,
+            className: "mt-2"
           })}
         </form>
         </section>

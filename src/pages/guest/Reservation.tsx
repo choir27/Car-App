@@ -90,9 +90,7 @@ export default function Reservation() {
           })}
 
           <Button
-            classNames={`mt-2 ${
-              toggleDarkMode === "light" ? "lightBtn" : "darkBtn"
-            }`}
+            classNames="mt-2"
             text="Reserve Appointment"
             handleButtonClick={() =>
               handleCreateAppointment({

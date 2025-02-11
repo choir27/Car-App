@@ -169,31 +169,6 @@ export async function GetAccount(setUser: (e: User) => void) {
   }
 }
 
-//Get list of all user accounts
-export async function GetUsers(
-  setListOfUsers: (e: User[]) => void,
-  setLoading: (e: boolean) => void,
-) {
-  try {
-    // You can move the API endpoint URL to a separate constant for better maintainability
-    const apiUrl = "https://car-app-backend-0ejb.onrender.com/getUsers";
-
-    const response = await axios.get(apiUrl);
-
-    // Assuming the response format is { data: { users: [] } }
-    const { data } = response;
-
-    if (data && data.users && data.users.length) {
-      // Only update the list of users if data is available
-      setListOfUsers(data.users);
-      setLoading(true);
-    }
-  } catch (err) {
-    console.error(err);
-    // Handle errors gracefully and provide user-friendly feedback
-    // toast.error("Failed to fetch users. Please try again later.");
-  }
-}
 
 export async function GetCarData(props: CarSelectData) {
   try {

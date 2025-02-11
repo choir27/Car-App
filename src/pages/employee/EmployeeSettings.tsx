@@ -37,9 +37,6 @@ export default function EmployeeSettings(): React.JSX.Element {
               placeholder: user?.name,
             })}
             {Button({
-              classNames: `${
-                toggleDarkMode === "light" ? "lightBtn" : "darkBtn"
-              }`,
               text: "Update User's Name",
               handleButtonClick: () => updateAccountName(name),
             })}
@@ -63,9 +60,6 @@ export default function EmployeeSettings(): React.JSX.Element {
               placeholder: "Type your password here",
             })}
             {Button({
-              classNames: `${
-                toggleDarkMode === "light" ? "lightBtn" : "darkBtn"
-              }`,
               text: "Update User's Email",
               handleButtonClick: () => updateAccountEmail(email, password),
             })}
@@ -88,9 +82,6 @@ export default function EmployeeSettings(): React.JSX.Element {
               placeholder: "New Password Here",
             })}
             {Button({
-              classNames: `${
-                toggleDarkMode === "light" ? "lightBtn" : "darkBtn"
-              }`,
               text: "Update User's Password",
               handleButtonClick: () =>
                 updateAccountPassword(password, oldPassword),
@@ -103,9 +94,6 @@ export default function EmployeeSettings(): React.JSX.Element {
                 <h2 className="mb-2">Delete your Account</h2>
 
               {Button({
-                classNames: `${
-                toggleDarkMode === "light" ? "lightBtn" : "darkBtn"
-              }`,
                 text: "Delete User's Account",
                 handleButtonClick: () => setDisplayDelete(!displayDelete),
               })}

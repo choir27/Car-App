@@ -1,5 +1,8 @@
+import { Appointment } from "./Reservation";
+
 export interface Search {
     searchValue: string;
+    data: Appointment[];
     setSearchValue: (e: string) => void;
     setData: (e: any[]) => void;
     suggestions: React.JSX.Element | undefined;

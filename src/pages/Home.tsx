@@ -10,7 +10,6 @@ import { useContext } from "react";
 
 export default function Home() {
   const { toggleDarkMode } = useContext(DarkModeContext);
-  const toggleButton = toggleDarkMode === "light" ? "lightBtn" : "darkBtn"
 
   return (
     <>
@@ -43,12 +42,12 @@ export default function Home() {
               </div>
               {cacheEmail
                 ? ButtonLink({
-                    classNames: `mt-6 align-end ${toggleButton}`,
+                    classNames: `mt-6 align-end`,
                     domain: "/employee",
                     text: "Employee Hub",
                   })
                 : ButtonLink({
-                    classNames: `mt-6 align-end ${toggleButton}`,
+                    classNames: `mt-6 align-end`,
                     domain: "/reservation",
                     text: "Make Reservation",
                   })}

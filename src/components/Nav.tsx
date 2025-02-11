@@ -14,7 +14,6 @@ export default function Nav(props: nav) {
   const [cartQuantity, setCartQuantity] = useState<number>();
   const { cart } = useContext(APIContext);
   const { toggleDarkMode } = useContext(DarkModeContext);
-  const toggleButton = toggleDarkMode === "light" ? "lightBtn" : "darkBtn"
 
   useEffect(() => {
     if (cacheEmail && cart?.length) {
@@ -71,7 +70,6 @@ export default function Nav(props: nav) {
           {cacheEmail ? (
             <div className="items-center flex p-2">
               {ButtonSubmit({
-                className: `${toggleDarkMode === "light" ? "lightBtn" : "darkBtn"}`,
                 handleButtonClick: () => handleLogout(),
                 text: "Logout",
               })}
@@ -84,7 +82,7 @@ export default function Nav(props: nav) {
             ""
           ) : (
             <div className="items-center flex p-2">
-              {ButtonLink({ classNames: `${toggleButton} ${currentUrl === "reservation" ? "current-link" : "" }` ,domain: "/reservation", text: "Make Reservation" })}
+              {ButtonLink({ classNames: `${currentUrl === "reservation" ? "current-link" : "" }` ,domain: "/reservation", text: "Make Reservation" })}
             </div>
           )}
         </ul>

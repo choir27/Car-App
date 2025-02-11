@@ -15,7 +15,7 @@ export default function ManageAppointments() {
     "appointmentContainer",
   );
   const [currentPage, setCurrentPage] = useState(1);
-  const rowsPerPage = 4;
+  const rowsPerPage = 6;
 
   const [toggleDetails, setToggleDetails] = useState<boolean>(false);
   const [searchValue, setSearchValue] = useState<string>("");
@@ -53,6 +53,7 @@ export default function ManageAppointments() {
           suggestions: suggestions,
           setSuggestions: (e: React.JSX.Element) => setSuggestions(e),
           searchValue: searchValue,
+          data: appointments,
           setSearchValue: (e: string) => setSearchValue(e),
           setData: (e: Appointment[]) => setAppointments(e),
           filterArray: filterArray,
@@ -69,12 +70,14 @@ export default function ManageAppointments() {
             className="fa-solid fa-grip appointmentContainer"
             onClick={() => setClassNameContainer("appointmentContainer")}
           ></i>
-          <PaginatedButtons
-            currentPage={currentPage}
-            setCurrentPage={(e: number) => setCurrentPage(e)}
-            rowsPerPage={rowsPerPage}
-            cartLength={appointments.length}
-          />
+
+            <PaginatedButtons
+              currentPage={currentPage}
+              setCurrentPage={(e: number) => setCurrentPage(e)}
+              rowsPerPage={rowsPerPage}
+              cartLength={appointments.length}
+            />
+     
         </section>
 
         <section className="apptGrid">
@@ -85,7 +88,7 @@ export default function ManageAppointments() {
               startIndex,
               endIndex,
               toggleDetails,
-              setToggleDetails: (e: boolean)=> setToggleDetails(e),
+              setToggleDetails: (e: boolean) => setToggleDetails(e),
               toggleDarkMode,
             })
           ) : (

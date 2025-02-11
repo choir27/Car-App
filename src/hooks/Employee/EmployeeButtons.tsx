@@ -7,7 +7,6 @@ import { useContext } from "react";
 
 export function EmployeeButtons() {
   const { toggleDarkMode } = useContext(DarkModeContext);
-  const toggleButton = toggleDarkMode === "light" ? "lightBtn" : "darkBtn"
 
   return (
     <main className="flex flex-col justify-between">
@@ -20,21 +19,21 @@ export function EmployeeButtons() {
               ""
             ) : (
               <li className="textAlignCenter">
-                {ButtonLink({ classNames: toggleButton, domain: "/adminDemo", text: "Admin Demo" })}
+                {ButtonLink({ domain: "/adminDemo", text: "Admin Demo" })}
               </li>
             )}
             {cacheEmail ? (
               ""
             ) : (
               <li className="textAlignCenter">
-                {ButtonLink({ classNames: toggleButton, domain: "/demo", text: "Demo" })}
+                {ButtonLink({ domain: "/demo", text: "Demo" })}
               </li>
             )}
             {cacheEmail ? (
               ""
             ) : (
               <li className="textAlignCenter">
-                {ButtonLink({ classNames: toggleButton, domain: "/login", text: "Login" })}
+                {ButtonLink({ domain: "/login", text: "Login" })}
               </li>
             )}
           </ul>

@@ -17,15 +17,11 @@ import PaginatedButtons from "../../components/Graphs/PaginatedButtons";
 import { toggleDisplay } from "../../hooks/hooks/ToggleDisplay";
 import { cacheEmail } from "../../middleware/Cache";
 import { APIContext, DarkModeContext } from "../../middleware/Context";
-import { User } from "../../middleware/Interfaces/Auth";
-import { GetUsers } from "../../hooks/hooks/ApiCalls";
 
 export function EmployeeHub() {
-  const { user, purchases, employee } = useContext(APIContext);
+  const { user, purchases } = useContext(APIContext);
   const { toggleDarkMode } = useContext(DarkModeContext);
 
-  const [listOfUsers, setListOfUsers] = useState<User[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
   const [email, setEmail] = useState<string>("");
   const [generatedPassword, setGeneratedPassword] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -37,15 +33,6 @@ export function EmployeeHub() {
 
   const startIndex = (currentPage - 1) * rowsPerPage;
   const endIndex = startIndex + rowsPerPage;
-
-  const rows = 2;
-
-  useEffect(() => {
-    GetUsers(
-      (e: User[]) => setListOfUsers(e),
-      (e: boolean) => setLoading(e),
-    );
-  }, [listOfUsers]);
 
   return (
     <main id="auth">
@@ -87,9 +74,7 @@ export function EmployeeHub() {
                 handleButtonClick: () =>
                   handleLogin({ email: email, name: name, password: password }),
                 text: "Login",
-                className: `mt-2 ${
-                  toggleDarkMode === "light" ? "lightBtn" : "darkBtn"
-                }`,
+                className: "mt-2",
               })}
             </form>
           </section>
@@ -173,7 +158,7 @@ export function EmployeeHub() {
               {showPurchases ? (
                   <section className="flex flex-col align-center w-full">
                     {Button({
-                      classNames: `mb-2 ${toggleDarkMode === "light" ? "lightBtn" : "darkBtn"}`,
+                      classNames: "mb-2",
                       text: "Hide Sales History Hub",
                       handleButtonClick: () =>
                         toggleDisplay(
@@ -211,7 +196,7 @@ export function EmployeeHub() {
                           (e: boolean) => setShowPurchases(e),
                           showPurchases,
                         ),
-                        classNames: `align-end w-full ${toggleDarkMode === "light" ? "lightBtn" : "darkBtn"}`
+                        classNames: "align-end w-full"
                     })}
                   </section>
                 )}

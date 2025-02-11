@@ -52,7 +52,6 @@ export function DefaultInventory(props: DefaultInventoryDisplay) {
         <td className="p-2">{renderQuantityOptions((e: number) => props.setItemQuantity(e))}</td>
         <td className="p-2">
         {Button({
-          classNames: `${toggleDarkMode === "light" ? "lightBtn" : "darkBtn"}`,
           text: "Purchase Item",
           handleButtonClick: () => {
             HandlePurchaseItem({

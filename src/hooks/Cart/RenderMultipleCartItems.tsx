@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import { Button } from "../../components/Button";
 import { RenderCartQuantity, EditCart, handleDeleteCartItem } from "../hooks/CartHooks";
 import { CartItem, Cart } from "../../middleware/Interfaces/Cart";
+import { DarkModeContext } from "../../middleware/Context";
+import { RxCross2 } from "react-icons/rx";
 
 export default function RenderMultipleCartItems({
   i,
@@ -15,15 +18,15 @@ export default function RenderMultipleCartItems({
   checkCartQuantity: string;
   itemPriceTotal: number;
 }) {
+    const { toggleDarkMode } = useContext(DarkModeContext);
+  
   return (
     <section className="flex flex-col" key={i}>
       <div className="flex justifyBetween">
         <h2>
           {item.name}{" "}
-          <i
-            className="fa-solid fa-xmark button"
-            onClick={() => handleDeleteCartItem(item.$id)}
-          ></i>
+          <RxCross2 className={`${toggleDarkMode === "light" ? "lightBtn" : "darkBtn"} button`} onClick={()=>handleDeleteCartItem(item.$id)}/>
+
         </h2>
 
         <h2>

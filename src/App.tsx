@@ -49,6 +49,19 @@ export default function App() {
   const [user, setUser] = useState<User>(defaultUser);
   const [employee, setEmployee] = useState<Profile>(defaultEmployee);
   const [toggleDarkMode, setToggleDarkMode] = useState<string>("light");
+  
+  const sortedAppts = appointments.sort((a:any, b:any)=>{
+    const aDate = new Date(a.date.split("D")[0]);
+    const bDate = new Date(b.date.split("D")[0]);
+
+    if (aDate < bDate) {
+      return -1;
+    } else if (aDate > bDate) {
+      return 1;
+    } else {
+      return 0;
+    }
+  })
 
   useEffect(() => {
     if (cacheEmail) {
@@ -67,7 +80,7 @@ export default function App() {
       value={{
         inventory,
         cart,
-        appointments,
+        appointments: sortedAppts,
         setAppointments,
         purchases,
         user,

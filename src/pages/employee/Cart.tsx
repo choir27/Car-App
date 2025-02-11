@@ -4,13 +4,14 @@ import Footer from "../../components/Footer";
 import { RenderPaymentForm, RenderCart } from "../../hooks/hooks/CartHooks";
 import PaginatedButtons from "../../components/Graphs/PaginatedButtons";
 import { CardInfo } from "../../middleware/Interfaces/Cart";
-import { APIContext } from "../../middleware/Context";
+import { APIContext, DarkModeContext } from "../../middleware/Context";
 
 export default function Cart() {
   const { cart, inventory } = useContext(APIContext);
   const [cartItemQuantity, setCartItemQuantity] = useState<string>();
   const [cardInfo, setCardInfo] = useState<CardInfo>();
   const [currentPage, setCurrentPage] = useState(1);
+  const { toggleDarkMode } = useContext(DarkModeContext);
 
   const rowsPerPage = 2;
 
@@ -21,7 +22,7 @@ export default function Cart() {
     <main id="cart">
       <Nav pageHeading={"Cart"} />
 
-      <section className="cartContainer flex justifyBetween">
+      <section className={`mx-2 inventory p-4 shadow-2xs ${toggleDarkMode === "dark" ? "light" : "dark"}`}>
         <PaginatedButtons
           className={`flex flex-col alignCenter`}
           currentPage={currentPage}

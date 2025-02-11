@@ -98,6 +98,10 @@ label{
 /**** Spacing ****/
 /****************/
 
+.min-20{
+  width: 20%;
+}
+
 .w-full {
   width: 100%;
 }
@@ -283,6 +287,20 @@ label{
 /****************/
 /**** Components ****/
 /****************/
+.auto-button{
+  color: black;
+  cursor: pointer;
+  padding: 1rem;
+  border: none;
+  font-size: 2rem;
+  background: none;
+}
+
+.auto-button:hover{
+  background: #37383A;
+  color: white;
+  border-radius: 10px;
+}
 
 .button {
   font-size: 2rem;
