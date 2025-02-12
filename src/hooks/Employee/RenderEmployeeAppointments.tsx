@@ -20,6 +20,7 @@ export function RenderEmployeeAppointments(
         }
       }
 
+      if(cart.email === cacheEmail){
       return (
         <section
          key={`${cart.$createdAt}-${i}`}
@@ -29,6 +30,7 @@ export function RenderEmployeeAppointments(
           <h2>Total: ${cartTotal.toFixed(2)}</h2>
         </section>
       );
-    })
+      }
+    }).filter((value)=>value ? value : '')
     .slice(startIndex, endIndex);
 }

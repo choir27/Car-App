@@ -24,7 +24,7 @@ export async function EditCart(item: CartItem) {
       cartItem,
     );
 
-    window.location.reload();
+    // window.location.reload();
   } catch (err) {
     console.error(err);
     toast.error(`${err}`);

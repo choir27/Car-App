@@ -1,7 +1,7 @@
 import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
-import { useState, useContext, useEffect } from "react";
-import { ButtonSubmit, Button } from "../../components/Button";
+import { useState, useContext } from "react";
+import { ButtonSubmit, Button, ButtonLink } from "../../components/Button";
 import {
   GenerateNewEmployee,
   handleLogin,
@@ -48,6 +48,7 @@ export function EmployeeHub() {
             }`}
           >
             <form className="flex flex-col items-center justify-between">
+            <label className="my-1">Your Email</label>
               {Input({
                 type: "email",
                 name: "email",
@@ -55,6 +56,8 @@ export function EmployeeHub() {
                 placeholder: "Your Email",
                 className: "mb-4",
               })}
+                        
+              <label className="my-1">Your Full Name</label>
               {Input({
                 type: "text",
                 name: "name",
@@ -62,6 +65,8 @@ export function EmployeeHub() {
                 placeholder: "Your Full Name",
                 className: "mb-4",
               })}
+
+              <label className="my-1">Demo Password</label>
               {Input({
                 type: "password",
                 name: "password",
@@ -76,6 +81,8 @@ export function EmployeeHub() {
                 text: "Login",
                 className: "mt-2",
               })}
+
+              <p className="my-2">Don't have an account? <a className="text-white" href="/register">Register a new account here.</a></p>
             </form>
           </section>
         )}
@@ -83,56 +90,77 @@ export function EmployeeHub() {
         {user.$id ? (
           user?.$id === "678ac48e001184a52497" ||
           user?.$id === "64e51b2e84f09ed015ec" ? (
-            <section className="admin flex justifyCenter alignCenter">
-              <section className="flex flex-col alignCenter leftContainer">
-                <h3 className="textAlignCenter">Admin Hub</h3>
+            <section className={`mx-2 p-4 flex w-70 justify-around shadow-2xs ${toggleDarkMode === "dark" ? "light" : "dark"}`}>
+            <div className="flex flex-col items-start justify-between w-full">
+                <h2 className="flex justifyCenter heading">Admin Hub</h2>
 
-                <form className="flex flex-col alignCenter">
-                  {Input({
-                    type: "email",
-                    name: "email",
-                    onChange: (e) => setEmail(e),
-                    placeholder: "Employees Email",
-                  })}
-                  {Input({
-                    type: "text",
-                    name: "text",
-                    onChange: (e) => setName(e),
-                    placeholder: "Employees Name",
-                  })}
-                  {Input({
-                    type: "text",
-                    name: "password",
-                    value: generatedPassword,
-                    disabled: true,
-                    onChange: (e) => setPassword(e),
-                    placeholder: "Employees Password",
-                  })}
+                <div className="mt-6">
+                <h2 className="mb-2">Email:</h2>
+                <h3>{user.email}</h3>
+                </div>
 
-                  {generatedPassword
-                    ? ""
-                    : Button({
-                        text: "Automate Password for New Employee Account",
-                        handleButtonClick: () => {
-                          GenerateNewEmployee(
-                            (e: string) => setPassword(e),
-                            (e: string) => setGeneratedPassword(e),
-                          );
-                        },
-                      })}
+                <div className="mt-6">
+                <h2 className="mb-2">Total Sales Made:</h2>
+                <h3>${RenderEmployeeProfit(purchases)}</h3>
+                </div>
+               
+            </div>
 
-                  {ButtonSubmit({
+            {showPurchases ? (
+                <section className="flex flex-col align-center w-full">
+                  {Button({
+                    classNames: "mb-2",
+                    text: "Hide Sales History Hub",
                     handleButtonClick: () =>
-                      handleSignUp({
-                        email: email,
-                        name: name,
-                        password: password,
-                      }),
-                    text: "Create Employee Sign Up",
+                      toggleDisplay(
+                        (e: boolean) => setShowPurchases(e),
+                        showPurchases,
+                      ),
                   })}
-                </form>
-              </section>
-            </section>
+
+                  {RenderEmployeeAppointments(
+                    purchases,
+                    startIndex,
+                    endIndex,
+                  ).length ?
+                  <PaginatedButtons
+                    className={"flex mb-4"}
+                    currentPage={currentPage}
+                    cartLength={purchases.length}
+                    setCurrentPage={(e: number) => setCurrentPage(e)}
+                    rowsPerPage={rowsPerPage}
+                  />: ""}
+
+                  {RenderEmployeeAppointments(
+                    purchases,
+                    startIndex,
+                    endIndex,
+                  ).length ? RenderEmployeeAppointments(
+                    purchases,
+                    startIndex,
+                    endIndex,
+                  ) : <h2>No items could be found</h2>}
+                </section>
+              ) : (
+                ""
+              )}
+
+              {showPurchases ? (
+                ""
+              ) : (
+                <section className="w-full flex-col flex">
+                  {Button({
+                    text: "Show Sales History",
+                    handleButtonClick: () =>
+                      toggleDisplay(
+                        (e: boolean) => setShowPurchases(e),
+                        showPurchases,
+                      ),
+                      classNames: "align-end w-full"
+                  })}
+                </section>
+              )}
+          </section>
           ) : (
             <section className={`mx-2 p-4 flex w-70 justify-around shadow-2xs ${toggleDarkMode === "dark" ? "light" : "dark"}`}>
               <div className="flex flex-col items-start justify-between w-full">

@@ -1,10 +1,11 @@
-import React, {useContext} from "react";
+import React from "react";
 import { Button } from "../../components/Button";
 import { CartItem, Cart } from "../../middleware/Interfaces/Cart";
-import { RenderFinalCartItem, RenderMultipleCartItems, RenderCartItem, handleMakeCartPurchase, CartItemCard } from "../hooks/CartHooks";
+import { RenderCartItem, handleMakeCartPurchase, CartItemCard } from "../hooks/CartHooks";
 
 //render cart, cart total, item totals, and item quantities
 export function RenderCart(props: Cart) {
+
   const totalOfCart: React.JSX.Element[] = [];
 
   let total = "";
@@ -53,7 +54,7 @@ export function RenderCart(props: Cart) {
           itemPriceTotal,
         });
       } else if (props.cart.length > 1 && i !== props.cart.length - 1) {
-        return RenderMultipleCartItems({
+        return RenderCartItem({
           i,
           item,
           props,
@@ -62,12 +63,11 @@ export function RenderCart(props: Cart) {
         });
       } else if (i === props.cart.length - 1) {
         totalOfCart.push(
-          <div className="flex flex-col alignCenter" key="cartTotal">
-            <div className="flex justifyCenter cartTotal" key={total}>
-              <h2>Total: </h2> <h2>${total}</h2>
-            </div>
+          <div className="purchase-btn flex flex-col items-end w-full" key="cartTotal">
+              <h2>Total: ${total}</h2>
 
             {Button({
+              classNames: "mt-2 purchase-pos",
               text: "Purchase Items",
               handleButtonClick: () =>
                 handleMakeCartPurchase({
@@ -80,7 +80,7 @@ export function RenderCart(props: Cart) {
           </div>,
         );
 
-        return RenderFinalCartItem({
+        return RenderCartItem({
           i,
           item,
           props,

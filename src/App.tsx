@@ -31,6 +31,7 @@ import {
   Home,
   Employee,
   Demo,
+  Register,
   AdminDemo,
   Reservation,
   Cart,
@@ -92,6 +93,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route element={<PublicRoutes />}>
+              <Route path="/register" element={<Register/>} />
               <Route path="/employee" element={<Employee />} />
               <Route path="/login" element={<EmployeeHub />} />
               <Route path="/demo" element={<Demo />} />

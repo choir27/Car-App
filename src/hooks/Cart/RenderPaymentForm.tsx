@@ -2,15 +2,32 @@ import Assets from "../../components/Assets";
 import { CardInfo } from "../../middleware/Interfaces/Cart";
 
 export function RenderPaymentForm(
+  {cardInfo, setCardInfo}:
+  {
   cardInfo: CardInfo | undefined,
   setCardInfo: (e: CardInfo) => void,
+  }
 ) {
   return (
-    <section className="flex payment alignCenter flex-col">
-      <form className="flex flex-col alignCenter">
-        <input type="text" defaultValue={cardInfo?.cardNumber} disabled />
-        <input type="text" defaultValue={cardInfo?.expirationDate} disabled />
+    <section className="flex items-center flex-col w-40">
+      <form className="flex flex-col items-start justify-between">
+        <label className="my-1">Card Number</label>
         <input
+          className="mb-2 w-full"
+          type="text"
+          defaultValue={cardInfo?.cardNumber}
+          disabled
+        />
+        <label className="my-1">Expiration Date</label>
+        <input
+          className="mb-2 w-full"
+          type="text"
+          defaultValue={cardInfo?.expirationDate}
+          disabled
+        />
+        <label className="my-1">Security Number</label>
+        <input
+          className="mb-2 w-full"
           type="text"
           defaultValue={cardInfo?.securityNumber}
           maxLength={4}
@@ -18,7 +35,7 @@ export function RenderPaymentForm(
         />
       </form>
 
-      <section className="flex justifyBetween">
+      <section className="flex justify-between items-center p-2 w-full">
         <div
           className="imageContainer"
           onClick={() =>

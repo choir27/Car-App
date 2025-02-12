@@ -61,16 +61,7 @@ export default function ManageAppointments() {
           collection: import.meta.env.VITE_REACT_APP_COLLECTION_ID,
         })}
 
-        <section className="flex justifyCenter">
-          <i
-            className="fa-solid fa-list appointmentContainer"
-            onClick={() => setClassNameContainer("listAppointmentContainer")}
-          ></i>
-          <i
-            className="fa-solid fa-grip appointmentContainer"
-            onClick={() => setClassNameContainer("appointmentContainer")}
-          ></i>
-
+        <section className="flex">
             <PaginatedButtons
               currentPage={currentPage}
               setCurrentPage={(e: number) => setCurrentPage(e)}

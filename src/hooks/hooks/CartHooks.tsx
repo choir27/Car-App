@@ -6,8 +6,6 @@ import { handleMakeCartPurchase } from "../Cart/HandleMakeCartPurchase";
 import { RenderCart } from "../Cart/RenderCart";
 import RenderCartItem from "../Cart/RenderCartItem";
 import { RenderCartQuantity } from "../Cart/RenderCartQuantity";
-import RenderFinalCartItem from "../Cart/RenderFinalCartItem";
-import RenderMultipleCartItems from "../Cart/RenderMultipleCartItems";
 import { RenderPaymentForm } from "../Cart/RenderPaymentForm";
 
 export {
@@ -19,7 +17,5 @@ export {
     RenderCart,
     RenderCartItem,
     RenderCartQuantity,
-    RenderFinalCartItem,
-    RenderMultipleCartItems,
     RenderPaymentForm
 }

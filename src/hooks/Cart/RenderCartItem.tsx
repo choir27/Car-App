@@ -1,11 +1,15 @@
 import { useContext } from "react";
 import { Button } from "../../components/Button";
-import { RenderCartQuantity, EditCart, handleDeleteCartItem } from "../hooks/CartHooks";
+import {
+  RenderCartQuantity,
+  EditCart,
+  handleDeleteCartItem,
+} from "../hooks/CartHooks";
 import { CartItem, Cart } from "../../middleware/Interfaces/Cart";
-import { RxCross2 } from "react-icons/rx";
 import { DarkModeContext } from "../../middleware/Context";
+import { FaTrashAlt } from "react-icons/fa";
 
-export default function RenderCartItem({
+export default function RenderMultipleCartItems({
   i,
   item,
   props,
@@ -19,46 +23,61 @@ export default function RenderCartItem({
   itemPriceTotal: number;
 }) {
   const { toggleDarkMode } = useContext(DarkModeContext);
-  
-  return (
-    <section className="flex flex-col alignCenter" key={i}>
-      <div className="flex justifyBetween alignCenter">
-        <div className="flex alignCenter">
-          <h2>{item.name}</h2>
-          <RxCross2 className={`${toggleDarkMode === "light" ? "lightBtn" : "darkBtn"} button`} onClick={()=>handleDeleteCartItem(item.$id)}/>
-        </div>
 
-        <h2>
-          Quantity:{" "}
-          {RenderCartQuantity({
-            name: item.name,
-            quantity: item.quantity,
-            inventory: props.inventory,
-            cartItemQuantity: props.cartItemQuantity,
-            setCartItemQuantity: (e: string) => props.setCartItemQuantity(e),
-          })}
-          {Button({
-            text: "Update",
-            handleButtonClick: () =>
-              EditCart({
-                name: item.name,
-                price: item.price,
-                email: item.email,
-                quantity: checkCartQuantity,
-                manufacturer: item.manufacturer,
-                description: item.description,
-                category: item.category,
-                $id: item.$id,
-                itemID: item.itemID,
-              }),
-          })}
-        </h2>
+  return (
+    <section
+      className={`flex flex-col mb-6 p-2 border-radius-10px w-80 ${toggleDarkMode === "dark" ? "lightBtn shadow-2xs" : "darkNav shadow-2xs"}`}
+      key={i}
+    >
+      <div className="flex mb-4 w-full justify-between">
+        <h2>{item.name} </h2>
 
         <h2>
           $
           {parseInt(item?.quantity) > 1
             ? itemPriceTotal.toFixed(2)
             : item.price}
+        </h2>
+      </div>
+
+      <div className="flex items-left justify-between w-full">
+        <div className="flex items-center w-60 justify-between">
+          <h2>Quantity: </h2>
+          <h2>
+            {" "}
+            {RenderCartQuantity({
+              name: item.name,
+              quantity: item.quantity,
+              inventory: props.inventory,
+              cartItemQuantity: props.cartItemQuantity,
+              setCartItemQuantity: (e: string) => props.setCartItemQuantity(e),
+            })}{" "}
+          </h2>
+          <h2>
+            {" "}
+            {Button({
+              text: "Update",
+              handleButtonClick: () =>
+                EditCart({
+                  name: item.name,
+                  price: item.price,
+                  email: item.email,
+                  quantity: checkCartQuantity,
+                  manufacturer: item.manufacturer,
+                  description: item.description,
+                  category: item.category,
+                  $id: item.$id,
+                  itemID: item.itemID,
+                }),
+            })}
+          </h2>
+        </div>
+        <h2>
+          {" "}
+          <FaTrashAlt
+            className={`${toggleDarkMode === "light" ? "lightBtn" : "darkBtn"} button`}
+            onClick={() => handleDeleteCartItem(item.$id)}
+          />
         </h2>
       </div>
     </section>

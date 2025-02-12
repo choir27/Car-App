@@ -22,16 +22,19 @@ export default function Cart() {
     <main id="cart">
       <Nav pageHeading={"Cart"} />
 
-      <section className={`mx-2 inventory p-4 shadow-2xs ${toggleDarkMode === "dark" ? "light" : "dark"}`}>
+      <section className={`flex flex-col items-start mx-2 p-4 shadow-2xs ${toggleDarkMode === "dark" ? "light" : "dark"}`}>
+
         <PaginatedButtons
-          className={`flex flex-col alignCenter`}
+          className={`flex flex-wrap`}
           currentPage={currentPage}
           cartLength={cart.length}
           setCurrentPage={(e: number) => setCurrentPage(e)}
           rowsPerPage={rowsPerPage}
         />
 
-        <section className={`flex flex-col justifyCenter`}>
+
+        <div className="flex w-full">
+        <section className={`w-full items-start flex flex-col justifyCenter`}>
           {RenderCart({
             cart: cart,
             inventory: inventory,
@@ -44,7 +47,8 @@ export default function Cart() {
           })}
         </section>
 
-        {RenderPaymentForm(cardInfo, (e: CardInfo) => setCardInfo(e))}
+        {RenderPaymentForm({cardInfo, setCardInfo: (e: CardInfo) => setCardInfo(e)})}
+        </div>
       </section>
 
       <Footer />
