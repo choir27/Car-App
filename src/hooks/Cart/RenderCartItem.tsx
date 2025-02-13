@@ -26,10 +26,10 @@ export default function RenderMultipleCartItems({
 
   return (
     <section
-      className={`flex flex-col mb-6 p-2 border-radius-10px w-80 ${toggleDarkMode === "dark" ? "lightBtn shadow-2xs" : "darkNav shadow-2xs"}`}
+      className={`flex flex-col items-end mb-6 p-2 border-radius-10px w-80 ${toggleDarkMode === "dark" ? "lightBtn shadow-2xs" : "darkNav shadow-2xs"}`}
       key={i}
     >
-      <div className="flex mb-4 w-full justify-between">
+      <div className="flex mb-4 w-full justify-between items-end">
         <h2>{item.name} </h2>
 
         <h2>
@@ -40,45 +40,38 @@ export default function RenderMultipleCartItems({
         </h2>
       </div>
 
-      <div className="flex items-left justify-between w-full">
+      <div className="flex items-end justify-between w-full">
         <div className="flex items-center w-60 justify-between">
           <h2>Quantity: </h2>
-          <h2>
-            {" "}
-            {RenderCartQuantity({
-              name: item.name,
-              quantity: item.quantity,
-              inventory: props.inventory,
-              cartItemQuantity: props.cartItemQuantity,
-              setCartItemQuantity: (e: string) => props.setCartItemQuantity(e),
-            })}{" "}
-          </h2>
-          <h2>
-            {" "}
-            {Button({
-              text: "Update",
-              handleButtonClick: () =>
-                EditCart({
-                  name: item.name,
-                  price: item.price,
-                  email: item.email,
-                  quantity: checkCartQuantity,
-                  manufacturer: item.manufacturer,
-                  description: item.description,
-                  category: item.category,
-                  $id: item.$id,
-                  itemID: item.itemID,
-                }),
-            })}
-          </h2>
+          {RenderCartQuantity({
+            name: item.name,
+            quantity: item.quantity,
+            inventory: props.inventory,
+            cartItemQuantity: props.cartItemQuantity,
+            setCartItemQuantity: (e: string) => props.setCartItemQuantity(e),
+          })}
+          {Button({
+            text: "Update",
+            handleButtonClick: () =>
+              EditCart({
+                name: item.name,
+                price: item.price,
+                email: item.email,
+                quantity: checkCartQuantity,
+                manufacturer: item.manufacturer,
+                description: item.description,
+                category: item.category,
+                $id: item.$id,
+                itemID: item.itemID,
+              }),
+          })}
         </div>
-        <h2>
-          {" "}
-          <FaTrashAlt
-            className={`${toggleDarkMode === "light" ? "lightBtn" : "darkBtn"} button`}
-            onClick={() => handleDeleteCartItem(item.$id)}
-          />
-        </h2>
+        <button
+          onClick={() => handleDeleteCartItem(item.$id)}
+          className={`${toggleDarkMode === "light" ? "lightBtn" : "darkBtn"} button`}
+        >
+          <FaTrashAlt />
+        </button>
       </div>
     </section>
   );

@@ -16,7 +16,7 @@ export default function PaginatedButtons(props: buttons) {
             (_, i) => (
               <button
                 key={`button-${i}`}
-                className={`button mr-2 mb-2 ${toggleDarkMode === "light" ? "lightBtn" : "darkBtn"} ${props.currentPage === i + 1 ? "selectedPage" : ""}`}
+                className={`button mr-2 mb-2 lightBtn ${props.currentPage === i + 1 ? "selectedPage" : ""}`}
                 onClick={() => handlePageChange(i + 1)}
               >
                 {i + 1}
@@ -35,7 +35,7 @@ export default function PaginatedButtons(props: buttons) {
                 return (
                   <button
                     key={`button-${i}`}
-                    className={`button mr-2 mb-2 ${toggleDarkMode === "light" ? "lightBtn" : "darkBtn"} ${props.currentPage === i + 1 ? "selectedPage" : ""}`}
+                    className={`button mr-2 mb-2 lightBtn ${props.currentPage === i + 1 ? "selectedPage" : ""}`}
                     onClick={() => handlePageChange(i + 1)}
                   >
                     {i + 1}

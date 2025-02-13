@@ -18,7 +18,6 @@ import { CartItem } from "./middleware/Interfaces/Cart";
 import { Appointment } from "./middleware/Interfaces/Reservation";
 import { PurchasedItem } from "./middleware/Interfaces/Purchases";
 import {
-  GetEmployee,
   GetInventory,
   GetCart,
   GetAppointmentData,
@@ -71,7 +70,6 @@ export default function App() {
       GetAppointmentData((e: Appointment[]) => setAppointments(e));
       GetPurchases((e: PurchasedItem[]) => setPurchases(e));
       GetAccount((e: User) => setUser(e));
-      GetEmployee((e: Profile) => setEmployee(e));
     }
   }, []);
 

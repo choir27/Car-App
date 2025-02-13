@@ -59,27 +59,6 @@ export async function GetEditAppointmentData() {
   }
 }
 
-//Get Employee profiles database data
-export async function GetEmployee(setEmployee: (e: Profile) => void) {
-  try {
-    const data = await api.listDocuments(
-      import.meta.env.VITE_REACT_APP_DATABASE_ID,
-      import.meta.env.VITE_REACT_APP_PROFILE_COLLECTION_ID,
-    );
-
-    if (data.documents.length) {
-      const findUser = data.documents.filter(
-        (user: Profile) => cacheEmail === user.email,
-      )[0];
-
-      setEmployee(findUser);
-    }
-  } catch (err) {
-    console.error(err);
-    toast.error(`${err}`);
-  }
-}
-
 //Get inventory data
 export async function GetInventory(setInventory: (e: InventoryItem[]) => void) {
   try {

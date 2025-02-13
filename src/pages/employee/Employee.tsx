@@ -1,11 +1,9 @@
 import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
 import { useState, useContext } from "react";
-import { ButtonSubmit, Button, ButtonLink } from "../../components/Button";
+import { ButtonSubmit, Button } from "../../components/Button";
 import {
-  GenerateNewEmployee,
   handleLogin,
-  handleSignUp,
 } from "../../hooks/hooks/AuthHooks";
 import { Input } from "../../hooks/hooks/InputHooks";
 import {
@@ -23,7 +21,6 @@ export function EmployeeHub() {
   const { toggleDarkMode } = useContext(DarkModeContext);
 
   const [email, setEmail] = useState<string>("");
-  const [generatedPassword, setGeneratedPassword] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [name, setName] = useState<string>("");
   const [showPurchases, setShowPurchases] = useState<boolean>(false);
@@ -66,7 +63,7 @@ export function EmployeeHub() {
                 className: "mb-4",
               })}
 
-              <label className="my-1">Demo Password</label>
+              <label className="my-1">Your Password</label>
               {Input({
                 type: "password",
                 name: "password",

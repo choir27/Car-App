@@ -61,7 +61,7 @@ export default function ManageAppointments() {
           collection: import.meta.env.VITE_REACT_APP_COLLECTION_ID,
         })}
 
-        <section className="flex">
+        <section className="flex mt-2">
             <PaginatedButtons
               currentPage={currentPage}
               setCurrentPage={(e: number) => setCurrentPage(e)}

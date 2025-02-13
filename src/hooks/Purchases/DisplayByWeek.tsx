@@ -27,6 +27,7 @@ export function DisplayByWeek(props: DisplayBy) {
       currentYear: getYear(),
       i,
     });
+    i++
   }
 
   return RenderDisplayByWeek({ props, currentWeek });

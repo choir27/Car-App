@@ -1,7 +1,6 @@
 import React from "react";
-import { Button } from "../../components/Button";
 import { CartItem, Cart } from "../../middleware/Interfaces/Cart";
-import { RenderCartItem, handleMakeCartPurchase, CartItemCard } from "../hooks/CartHooks";
+import { RenderCartItem, CartItemCard } from "../hooks/CartHooks";
 
 //render cart, cart total, item totals, and item quantities
 export function RenderCart(props: Cart) {
@@ -63,20 +62,8 @@ export function RenderCart(props: Cart) {
         });
       } else if (i === props.cart.length - 1) {
         totalOfCart.push(
-          <div className="purchase-btn flex flex-col items-end w-full" key="cartTotal">
+          <div className="purchase-btn flex flex-col items-start w-full" key="cartTotal">
               <h2>Total: ${total}</h2>
-
-            {Button({
-              classNames: "mt-2 purchase-pos",
-              text: "Purchase Items",
-              handleButtonClick: () =>
-                handleMakeCartPurchase({
-                  inventory: props.inventory,
-                  cart: props.cart,
-                  cardInfo: props.cardInfo,
-                  total: total,
-                }),
-            })}
           </div>,
         );
 

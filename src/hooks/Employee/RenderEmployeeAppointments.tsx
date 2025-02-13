@@ -8,6 +8,7 @@ export function RenderEmployeeAppointments(
 ) {
   return purchases
     .map((cart: PurchasedItem, i: number) => {
+      console.log(cart)
       let cartTotal = 0;
 
       for (let i = 0; i < cart.cartItems.length; i++) {
@@ -18,9 +19,8 @@ export function RenderEmployeeAppointments(
 
           cartTotal += itemTotal;
         }
-      }
 
-      if(cart.email === cacheEmail){
+      if(cartItem.email === cacheEmail){
       return (
         <section
          key={`${cart.$createdAt}-${i}`}
@@ -31,6 +31,8 @@ export function RenderEmployeeAppointments(
         </section>
       );
       }
+    }
+
     }).filter((value)=>value ? value : '')
     .slice(startIndex, endIndex);
 }

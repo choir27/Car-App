@@ -49,7 +49,7 @@ export default function InventoryShop() {
         </table>
 
         <PaginatedButtons
-          className="flex"
+          className="flex mt-2"
           currentPage={currentPage}
           cartLength={items.length}
           setCurrentPage={(e: number) => setCurrentPage(e)}

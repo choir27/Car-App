@@ -1,8 +1,10 @@
+import { useContext } from "react";
 import { DisplayBy } from "../../middleware/Interfaces/Purchases";
 import { DisplayDate } from "../../middleware/Interfaces/Reservation"
 import { getYear, getMonth } from "../Reservation/DatesStatic";
 import { GetPurchasedDates } from "./PurchasedDates";
 import PaginatedButtons from "../../components/Graphs/PaginatedButtons";
+import { DarkModeContext } from "../../middleware/Context";
 
 export function RenderDisplayByWeek({
   props,
@@ -11,6 +13,9 @@ export function RenderDisplayByWeek({
   props: DisplayBy;
   currentWeek: number[];
 }) {
+
+  const {toggleDarkMode} = useContext(DarkModeContext);
+
   function filterDate(date: string | undefined) {
     return currentWeek.filter((day: number) => day === Number(date));
   }
@@ -22,20 +27,24 @@ export function RenderDisplayByWeek({
       filterDate(date?.date.split("-")[2])[0],
   );
 
+  
+  const lightMode = toggleDarkMode == "dark" ? "even-row" : "even-dark"
+  const darkMode = toggleDarkMode == "dark" ? "lightBtn" : "dark-btn"
+
   const tableData = filteredDates
     .map((date: DisplayDate | undefined, i: number) => {
       return (
-        <tr key={`week-${i}`} className={`${i % 2 === 0 ? "even" : "odd"}`}>
-          <td>{date?.date}</td>
-          <td>{date?.quantityTotal}</td>
-          <td>${date?.totalProfit}</td>
+        <tr key={`week-${i}`} className={`${i % 2 === 0 ? lightMode : darkMode} w-full`}>
+          <td className="text-3xl p-2">{date?.date}</td>
+          <td className="text-3xl p-2">{date?.quantityTotal}</td>
+          <td className="text-3xl p-2">${date?.totalProfit}</td>
         </tr>
       );
     })
     .slice(props.startIndex, props.endIndex);
 
   return (
-    <section>
+    <section className="w-full">
       <PaginatedButtons
         className="flex"
         currentPage={props.currentPage}
@@ -43,12 +52,13 @@ export function RenderDisplayByWeek({
         setCurrentPage={(e: number) => props.setCurrentPage(e)}
         rowsPerPage={props.rowsPerPage}
       />
-      <table>
+
+      <table className="w-full">
         <thead>
-          <tr>
-            <th>Date</th>
-            <th>Quantities Sold</th>
-            <th>Profit Made</th>
+          <tr className={`${toggleDarkMode === "dark" ? "lightBtn" : "dark-btn"}`}>
+            <th className="text-3xl p-2">Date</th>
+            <th className="text-3xl p-2">Quantities Sold</th>
+            <th className="text-3xl p-2">Profit Made</th>
           </tr>
         </thead>
         <tbody>{tableData}</tbody>

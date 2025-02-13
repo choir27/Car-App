@@ -61,16 +61,11 @@ export default function LineGraph(props: GraphLabels) {
         setCurrentPage={(e: number) => props.setCurrentPage(e)}
         rowsPerPage={props.rowsPerPage}
       />
+
+      <Line data={data} options={options} />
       {Query_Offset(props.length, props.limit, (e: number) =>
         props.setLimit(e),
       )}
-      <Line data={data} options={options} />
-      <PaginatedButtons
-        currentPage={props.currentPage}
-        cartLength={props.cartLength}
-        setCurrentPage={(e: number) => props.setCurrentPage(e)}
-        rowsPerPage={props.rowsPerPage}
-      />
     </section>
   );
 }

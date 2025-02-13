@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
 import BarGraph from "../../components/Graphs/BarGraph";
@@ -6,9 +6,11 @@ import LineGraph from "../../components/Graphs/LineGraph";
 import HorizontalBarGraph from "../../components/Graphs/HorizontalBarGraph";
 import List from "../../components/Graphs/List";
 import { GetPurchasedProfit, GetPurchasedQuantities,GetPurchasedDates } from "../../hooks/hooks/PurchasesHooks";
-import { Button } from "../../components/Button";
 import { PurchasedItem } from "../../middleware/Interfaces/Purchases";
 import { GetPurchases } from "../../hooks/hooks/ApiCalls";
+import { DarkModeContext } from "../../middleware/Context";
+import { FaChartBar, FaChartLine } from "react-icons/fa6";
+import { FaRegChartBar, FaList } from "react-icons/fa";
 
 export default function Purchases() {
   const [purchases, setPurchases] = useState<PurchasedItem[]>([]);
@@ -21,6 +23,8 @@ export default function Purchases() {
 
   const startIndex = (currentPage - 1) * rowsPerPage;
   const endIndex = startIndex + rowsPerPage;
+
+  const {toggleDarkMode} = useContext(DarkModeContext);
 
   useEffect(() => {
     GetPurchases((e: PurchasedItem[]) => setPurchases(e), limit);
@@ -37,31 +41,28 @@ export default function Purchases() {
     <main id="purchase">
       <Nav pageHeading={"Purchase History"} />
       {loading ? (
-        <section className="flex flex-col alignCenter justifyBetween">
-          <section className="flex justifyBetween buttons">
-            {Button({
-              text: "",
-              handleButtonClick: () => setDisplay("bar"),
-              classNames: "fa-solid fa-chart-column",
-            })}
-            {Button({
-              text: "",
-              handleButtonClick: () => setDisplay("line"),
-              classNames: "fa-solid fa-chart-line",
-            })}
-            {Button({
-              text: "",
-              handleButtonClick: () => setDisplay("horizontalBar"),
-              classNames: "fa-solid fa-chart-bar",
-            })}
-            {Button({
-              text: "",
-              handleButtonClick: () => setDisplay("list"),
-              classNames: "fa-solid fa-list",
-            })}
+        <div className="flex items-center justify-center">
+        <section className={`flex flex-col items-center mx-2 p-4 shadow-2xs ${toggleDarkMode === "dark" ? "light" : "dark"}`}>
+          <section className="flex justify-center mb-2">
+            <button onClick = {() => setDisplay("bar")}
+              className = {`mr-2 button lightBtn ${display === "bar" ? "selectedPage" : ""}`}>
+                <FaRegChartBar/>
+            </button>
+            <button onClick = {() => setDisplay("line")}
+              className = {`mr-2 button lightBtn ${display === "line" ? "selectedPage" : ""}`}>
+              <FaChartLine/>
+            </button>
+            <button onClick = {() => setDisplay("horizontalBar")}
+              className = {`mr-2 button lightBtn ${display === "horizontalBar" ? "selectedPage" : ""}`}>
+              <FaChartBar/>
+              </button>
+            <button onClick = {() => setDisplay("list")}
+              className = {`button lightBtn ${display === "list" ? "selectedPage" : ""}`}>
+              <FaList/>
+            </button>
           </section>
 
-          <section className="graph">
+          <section className="flex justify-center w-full">
             {display === "bar" ? (
               <BarGraph
                 setLimit={(e: number) => setLimit(e)}
@@ -82,7 +83,7 @@ export default function Purchases() {
             )}
           </section>
 
-          <section className="graph">
+          <section className="flex justify-center w-full">
             {display === "line" ? (
               <LineGraph
                 setLimit={(e: number) => setLimit(e)}
@@ -103,7 +104,7 @@ export default function Purchases() {
             )}
           </section>
 
-          <section className="graph">
+          <section className="flex justify-center w-full">
             {display === "horizontalBar" ? (
               <HorizontalBarGraph
                 setLimit={(e: number) => setLimit(e)}
@@ -124,7 +125,7 @@ export default function Purchases() {
             )}
           </section>
 
-          <section className="graph">
+          <section className="flex justify-center w-full">
             {display === "list" ? (
               <List
                 setCurrentPage={(e: number) => setCurrentPage(e)}
@@ -138,6 +139,7 @@ export default function Purchases() {
             )}
           </section>
         </section>
+        </div>
       ) : (
         <h1 className="textAlignCenter">Loading...</h1>
       )}

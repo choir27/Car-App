@@ -9,16 +9,6 @@ export function CartItemCard({ total, props }: { total: string; props: Cart }) {
         <h2>Total: </h2> <h2>${total}</h2>
       </div>
 
-      {Button({
-        text: "Purchase Items",
-        handleButtonClick: () =>
-          handleMakeCartPurchase({
-            inventory: props.inventory,
-            cart: props.cart,
-            cardInfo: props.cardInfo,
-            total: total,
-          }),
-      })}
     </div>
   );
 }

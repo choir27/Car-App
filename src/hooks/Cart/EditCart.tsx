@@ -14,7 +14,7 @@ export async function EditCart(item: CartItem) {
       name: item.name,
       price: item.price,
       email: cacheEmail,
-      quantity: item.quantity,
+      quantity: parseInt(item.quantity),
     };
 
     await api.updateDocument(

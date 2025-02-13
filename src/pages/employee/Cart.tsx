@@ -47,7 +47,16 @@ export default function Cart() {
           })}
         </section>
 
-        {RenderPaymentForm({cardInfo, setCardInfo: (e: CardInfo) => setCardInfo(e)})}
+        {RenderPaymentForm({cardInfo, setCardInfo: (e: CardInfo) => setCardInfo(e), cart: {
+            cart: cart,
+            inventory: inventory,
+            cartItemQuantity: cartItemQuantity,
+            setCartItemQuantity: (e: string) => setCartItemQuantity(e),
+            cardInfo: cardInfo,
+            setCardInfo: (e: CardInfo) => setCardInfo(e),
+            startIndex: startIndex,
+            endIndex: endIndex,
+          }})}
         </div>
       </section>
 

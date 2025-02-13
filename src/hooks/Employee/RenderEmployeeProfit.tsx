@@ -7,7 +7,6 @@ export function RenderEmployeeProfit(purchases: PurchasedItem[]) {
   purchases.forEach((cart: PurchasedItem) => {
     for (let i = 0; i < cart.cartItems.length; i++) {
       const cartItem: PurchasedItem = JSON.parse(cart.cartItems[i]);
-
       if (cartItem.email === cacheEmail) {
         const itemTotal = Number(cartItem.price) * parseInt(cartItem.quantity);
 

@@ -295,6 +295,10 @@ label {
 /****************/
 /**** Components ****/
 /****************/
+.cartSelect{
+  width: 20%;
+}
+
 .auto-button {
   color: black;
   cursor: pointer;
@@ -342,18 +346,26 @@ label {
   grid-template-columns: 1fr 1fr 1fr;
 }
 
+.cart:hover{
+  opacity: 60%;
+  cursor: pointer;
+}
+
 .cartQuantity {
-  position: absolute;
+  text-align: center;
   background: red;
   border-radius: 50%;
-  width: 5px;
-  height: 5px;
+  min-width: 10px;
+  min-height: 10px;
+  width: auto;
+  height: auto;
   display: flex;
+  justify-content: center;
   align-items: center;
   position: relative;
   left: 3rem;
   bottom: 1rem;
-  padding: 0.5rem;
+  padding: 0.2rem;
   font-size: 1rem;
 }
 
@@ -367,7 +379,7 @@ label {
   right: 6rem;
 }
 
-.imageContainer {
+.imageContainer, select {
   cursor: pointer;
 }
 
@@ -484,5 +496,23 @@ nav .lightBtn * {
 
 .selectedPage {
   background-color: #141937;
+  color: white;
+}
+
+table{
+  border-collapse: collapse;
+}
+
+.even-row{
+  background: #b0b7df;
+}
+
+.even-dark{
+  background: #141937;
+  color: white;
+}
+
+.dark-btn{
+  background: #2c2f41;
   color: white;
 }

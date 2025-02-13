@@ -17,6 +17,7 @@ export function RenderCartQuantity(props: renderCartQuantity) {
   if (props.quantity) {
     return (
       <select
+      className="cartSelect"
         defaultValue={
           props.cartItemQuantity ? props.cartItemQuantity : props.quantity
         }

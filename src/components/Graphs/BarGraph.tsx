@@ -67,17 +67,11 @@ export default function BarGraph(props: GraphLabels) {
         setCurrentPage={(e: number) => props.setCurrentPage(e)}
         rowsPerPage={props.rowsPerPage}
       />
+
+      <Bar data={data} />
       {Query_Offset(props.length, props.limit, (e: number) =>
         props.setLimit(e),
       )}
-      <Bar data={data} />
-      <PaginatedButtons
-        className="flex"
-        currentPage={props.currentPage}
-        cartLength={props.cartLength}
-        setCurrentPage={(e: number) => props.setCurrentPage(e)}
-        rowsPerPage={props.rowsPerPage}
-      />
     </section>
   );
 }

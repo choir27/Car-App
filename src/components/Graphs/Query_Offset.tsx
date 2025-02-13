@@ -13,7 +13,7 @@ export default function Query_Offset(
       buttons.push(
         <button
           key={i}
-          className="clearButton"
+          className="lightBtn button"
           onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
             e.preventDefault();
             setLimit(i + 25);
@@ -27,7 +27,7 @@ export default function Query_Offset(
       buttons.push(
         <button
           key={i}
-          className="clearButton clicked"
+          className="lightBtn button selectedPage"
           onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
             e.preventDefault();
             setLimit(i + 25);
@@ -42,8 +42,8 @@ export default function Query_Offset(
 
   return (
     <section>
-      <section className="flex alignCenter">
-        <h2>Configure Range of Items Displayed</h2>
+      <section className="flex flex-col items-start mt-2">
+        <h2 className="mb-2">Configure Range of Items Displayed</h2>
         <section className="flex alignCenter">{buttons}</section>
       </section>
     </section>

@@ -1,15 +1,18 @@
 import Assets from "../../components/Assets";
 import { CardInfo } from "../../middleware/Interfaces/Cart";
+import { PurchaseButton } from "./PurchaseButton";
+import {Cart} from "../../middleware/Interfaces/Cart"
 
 export function RenderPaymentForm(
-  {cardInfo, setCardInfo}:
+  {cardInfo, setCardInfo, cart}:
   {
   cardInfo: CardInfo | undefined,
   setCardInfo: (e: CardInfo) => void,
+  cart: Cart
   }
 ) {
   return (
-    <section className="flex items-center flex-col w-40">
+    <section className="flex items-start flex-col w-40">
       <form className="flex flex-col items-start justify-between">
         <label className="my-1">Card Number</label>
         <input
@@ -35,7 +38,7 @@ export function RenderPaymentForm(
         />
       </form>
 
-      <section className="flex justify-between items-center p-2 w-full">
+      <section className="flex justify-between items-start w-full">
         <div
           className="imageContainer"
           onClick={() =>
@@ -85,6 +88,8 @@ export function RenderPaymentForm(
           />
         </div>
       </section>
+
+      {PurchaseButton({props: cart})}
     </section>
   );
 }

@@ -67,16 +67,11 @@ export default function HorizontalBarGraph(props: GraphLabels) {
         setCurrentPage={(e: number) => props.setCurrentPage(e)}
         rowsPerPage={props.rowsPerPage}
       />
+      <Bar options={options} data={data} />
+
       {Query_Offset(props.length, props.limit, (e: number) =>
         props.setLimit(e),
       )}
-      <Bar options={options} data={data} />
-      <PaginatedButtons
-        currentPage={props.currentPage}
-        cartLength={props.cartLength}
-        setCurrentPage={(e: number) => props.setCurrentPage(e)}
-        rowsPerPage={props.rowsPerPage}
-      />
     </section>
   );
 }

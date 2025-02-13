@@ -12,16 +12,16 @@ export default function List(props: ListLabels) {
 
   return (
     <section>
-      <div className="flex buttons justifyBetween">
-        {Button({ text: "Week", handleButtonClick: () => setDisplay("week") })}
-        {Button({
+      <div className="flex justify-center mb-2">
+        {Button({ classNames:`lightBtn mr-2 ${display === "week" ? "selectedPage" : ""}`, text: "Week", handleButtonClick: () => setDisplay("week") })}
+        {Button({ classNames:`lightBtn mr-2 ${display === "month" ? "selectedPage" : ""}`,
           text: "Month",
           handleButtonClick: () => setDisplay("month"),
         })}
-        {Button({ text: "Year", handleButtonClick: () => setDisplay("year") })}
+        {Button({ classNames:`lightBtn mr-2 ${display === "year" ? "selectedPage" : ""}`, text: "Year", handleButtonClick: () => setDisplay("year") })}
       </div>
-
-      {display === "week"
+        
+        {display === "week"
         ? DisplayByWeek({
             purchases: purchases,
             startIndex: props.startIndex,
@@ -31,6 +31,8 @@ export default function List(props: ListLabels) {
             setCurrentPage: (e: number) => props.setCurrentPage(e),
           })
         : ""}
+
+
       {display === "month"
         ? DisplayByMonth({
             purchases: purchases,
@@ -41,6 +43,7 @@ export default function List(props: ListLabels) {
             setCurrentPage: (e: number) => props.setCurrentPage(e),
           })
         : ""}
+
       {display === "year"
         ? DisplayByYear({
             purchases: purchases,

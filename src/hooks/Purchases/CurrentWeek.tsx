@@ -49,5 +49,4 @@ export function currentWeekLogic({
       currentWeek.push(++currentDay);
     }
   }
-  i++;
 }
