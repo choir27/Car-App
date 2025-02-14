@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
 import { displayAppointments } from "../../hooks/ManageAppointments/DisplayAppointments";

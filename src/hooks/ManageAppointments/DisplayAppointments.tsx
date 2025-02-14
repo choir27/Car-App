@@ -9,7 +9,6 @@ import {
   getMonth,
   getDay,
   getYear,
-  getHours,
 } from "../Reservation/DatesStatic";
 import { Button } from "../../components/Button";
 
@@ -33,7 +32,6 @@ export function displayAppointments({
   const currentMonth = getMonth();
   const currentDay = getDay();
   const currentYear = getYear();
-  const currentHours = getHours();
 
   return appointments
     .map((appointment: Appointment, i: number) => {
@@ -109,22 +107,15 @@ export function displayAppointments({
               {appointment.firstName} {appointment.lastName}
             </h3>
 
-            {toggleDetails
-              ? ""
-              : Button({
-                  text: "Show Details",
-                  handleButtonClick: () => setToggleDetails(true),
-                  classNames:`my-2`,
-                })}
-
+            <Button
+               text = {`${toggleDetails ? "Hide Details" : "Show Details"}`}
+               handleButtonClick = { () => toggleDetails ? setToggleDetails(false) : setToggleDetails(true)}
+               classNames ={`my-2`}
+            />
+            
             <div className="flex flex-col items-start">
               {toggleDetails ? (
                 <>
-                  {Button({
-                    text: "Hide Details",
-                    handleButtonClick: () => setToggleDetails(false),
-                    classNames: "w-full my-2",
-                  })}
                   <ul>
                     <li className="mb-2">Service: {appointment.service}</li>
                     <li className="mb-2">Car Make: {appointment.carMake}</li>

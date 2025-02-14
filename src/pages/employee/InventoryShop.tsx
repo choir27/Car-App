@@ -3,7 +3,6 @@ import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
 import { DefaultInventory } from "../../hooks/Inventory/DefaultInventory";
 import { APIContext } from "../../middleware/Context";
-import "./shop.css";
 import { DarkModeContext } from "../../middleware/Context";
 import PaginatedButtons from "../../components/Graphs/PaginatedButtons";
 import { items } from "../../api/inventory";
@@ -30,7 +29,8 @@ export default function InventoryShop() {
         }`}
       >
         <table className="w-full">
-          <thead
+          <thead>
+          <tr
             className={`${toggleDarkMode === "dark" ? "lightBtn" : "dark-btn"}`}
           >
             <td className="text-3xl p-2">Item</td>
@@ -38,7 +38,9 @@ export default function InventoryShop() {
             <td className="text-3xl p-2">Quantity</td>
             <td></td>
             <td></td>
+          </tr>
           </thead>
+          <tbody>
           {DefaultInventory({
             startIndex,
             endIndex,
@@ -46,6 +48,7 @@ export default function InventoryShop() {
             setItemQuantity: (e: number) => setItemQuantity(e),
             inventory: inventory,
           })}
+          </tbody>
         </table>
 
         <PaginatedButtons
