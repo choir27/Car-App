@@ -70,6 +70,8 @@ export interface TimeDateAppointments {
   setTime: (e: string) => void;
   appointments: Appointment[];
   setDate: (e: string) => void;
+  time: number;
+  date: number;
 }
 
 export interface ChangeTime {

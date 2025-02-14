@@ -39,6 +39,7 @@ import {
   EmployeeSettings,
   ManageAppointments,
   Purchases,
+  EditAppointment
 } from "./Pages";
 
 export default function App() {
@@ -99,6 +100,7 @@ export default function App() {
               <Route path="/reservation" element={<Reservation />} />
             </Route>
             <Route element={<PrivateRoutes />}>
+              <Route path="/editAppointment" element={<EditAppointment/>} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/inventory" element={<Inventory />} />
               <Route path="/inventoryShop" element={<InventoryShop />} />

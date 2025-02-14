@@ -9,7 +9,11 @@ import {
   SelectCarYearInput,
   handleCreateAppointment,
 } from "../../hooks/hooks/ReservationHooks";
-import { ChooseTwoInput, TextBoxInput, Input } from "../../hooks/hooks/InputHooks";
+import {
+  ChooseTwoInput,
+  TextBoxInput,
+  Input,
+} from "../../hooks/hooks/InputHooks";
 import Footer from "../../components/Footer";
 import { GetCarData } from "../../hooks/hooks/ApiCalls";
 import { APIContext, DarkModeContext } from "../../middleware/Context";
@@ -38,6 +42,7 @@ export default function Reservation() {
   const [stayLeave, setStay_Leave] = useState<string>("");
   const [service, setService] = useState<string>("");
   const { toggleDarkMode } = useContext(DarkModeContext);
+  const [currPage, setCurrPage] = useState<number>(1);
 
   useEffect(() => {
     GetCarData({
@@ -58,63 +63,28 @@ export default function Reservation() {
           toggleDarkMode === "dark" ? "light" : "dark"
         }`}
       >
-        <section className="flex items-center flex-col w-full">
+        <section
+          className={`flex items-center flex-col w-full ${currPage == 1 ? "" : "hidden"}`}
+        >
           {DisplayTimeDateAppointments({
+            time: 0,
+            date: 0,
             setTime: (e: string) => setTime(e),
             appointments: appointments,
             setDate: (e: string) => setDate(e),
           })}
 
-          <section className="flex items-center">
-            {ChooseTwoInput({
-              text1: "Drop off car",
-              text2: "Wait for car",
-              name: "stayLeave",
-              onChange: (e: string) => setStay_Leave(e),
-              className: "my-2",
-            })}
-
-            {ChooseTwoInput({
-              text1: "Contact by Email",
-              text2: "Contact by Phone",
-              name: "contact",
-              onChange: (e: string) => setContact(e),
-            })}
-          </section>
-          <label className="m-2">Additional Comments</label>
-          {TextBoxInput({
-            width: 50,
-            height: 10,
-            onChange: (e: string) => setComment(e),
-            placeholder: "Additional Comments",
-          })}
-
           <Button
-            classNames="mt-2"
-            text="Reserve Appointment"
-            handleButtonClick={() =>
-              handleCreateAppointment({
-                service: service,
-                firstName: firstName,
-                lastName: lastName,
-                date: date,
-                time: time,
-                carModel: carModel,
-                carMake: carMake,
-                carYear: carYear,
-                email: email,
-                phone: phone,
-                zipCode: zipCode,
-                contact: contact,
-                comment: comment,
-                stayLeave: stayLeave,
-              })
-            }
+            text={"Next page"}
+            handleButtonClick={() => setCurrPage(2)}
+            classNames={"align-end"}
           />
         </section>
 
-        <section className="w-full flex flex-col items-center justify-around">
-          <div className="flex flex-col">
+        <section
+          className={`w-full flex flex-col items-center justify-around ${currPage == 2 ? "" : "hidden"}`}
+        >
+          <div className="flex w-full justify-around">
             <div className="flex flex-col mb-4">
               <label className="my-1 text-left">
                 Choose Service For Your Car
@@ -168,22 +138,26 @@ export default function Reservation() {
             </div>
 
             <div className="flex flex-col">
-              <label className="my-1">First Name</label>
-              {Input({
-                className: "mb-2",
-                type: "text",
-                onChange: (e: string) => setFirstName(e),
-                placeholder: "First Name",
-              })}
-
-              <label className="my-1">Last Name</label>
-              {Input({
-                className: "mb-2",
-                type: "text",
-                onChange: (e: string) => setLastName(e),
-                placeholder: "Last Name",
-              })}
-
+              <div className="flex">
+                <div className="flex flex-col">
+                  <label className="my-1">First Name</label>
+                  {Input({
+                    className: "mb-2",
+                    type: "text",
+                    onChange: (e: string) => setFirstName(e),
+                    placeholder: "First Name",
+                  })}
+                </div>
+                <div className="flex flex-col">
+                  <label className="my-1">Last Name</label>
+                  {Input({
+                    className: "mb-2",
+                    type: "text",
+                    onChange: (e: string) => setLastName(e),
+                    placeholder: "Last Name",
+                  })}
+                </div>
+              </div>
               <label className="my-1">Email Address</label>
               {Input({
                 className: "mb-2",
@@ -212,7 +186,88 @@ export default function Reservation() {
               })}
             </div>
           </div>
+
+          <section className="flex items-end justify-end w-full">
+            <Button
+              text={"Previous page"}
+              handleButtonClick={() => setCurrPage(1)}
+            />
+
+            <Button
+              text={"Next page"}
+              handleButtonClick={() => setCurrPage(3)}
+            />
+          </section>
         </section>
+
+        {currPage === 3 ? (
+          <section className="flex flex-col w-full">
+            <div className="flex justify-between w-full">
+              <section className="flex flex-col w-50 items-center">
+                <label className="my-1 text-left">Vehicle Drop Off</label>
+                {ChooseTwoInput({
+                  text1: "Drop off car",
+                  text2: "Wait for car",
+                  name: "stayLeave",
+                  onChange: (e: string) => setStay_Leave(e),
+                  className: "my-2",
+                })}
+
+                <label className="my-1 text-left">
+                  Preferred Method of Contact
+                </label>
+
+                {ChooseTwoInput({
+                  text1: "Contact by Email",
+                  text2: "Contact by Phone",
+                  name: "contact",
+                  onChange: (e: string) => setContact(e),
+                })}
+              </section>
+
+              <div className="flex flex-col">
+                <label className="m-2">Additional Comments</label>
+                {TextBoxInput({
+                width: 20,
+                height: 5,
+                  onChange: (e: string) => setComment(e),
+                  placeholder: "Additional Comments",
+                })}
+              </div>
+            </div>
+
+            <section className="flex items-end justify-end w-full">
+              <Button
+                text={"Previous page"}
+                handleButtonClick={() => setCurrPage(2)}
+              />
+              <Button
+                classNames="mt-2"
+                text="Reserve Appointment"
+                handleButtonClick={() =>
+                  handleCreateAppointment({
+                    service: service,
+                    firstName: firstName,
+                    lastName: lastName,
+                    date: date,
+                    time: time,
+                    carModel: carModel,
+                    carMake: carMake,
+                    carYear: carYear,
+                    email: email,
+                    phone: phone,
+                    zipCode: zipCode,
+                    contact: contact,
+                    comment: comment,
+                    stayLeave: stayLeave,
+                  })
+                }
+              />
+            </section>
+          </section>
+        ) : (
+          ""
+        )}
       </section>
 
       <Footer />

@@ -5,14 +5,16 @@ export default function RenderTimeButton({
   i,
   time,
   props,
+  clickedClassName
 }: {
   i: number;
   time: string[];
   props: TimeDateAppointments;
+  clickedClassName?: string;
 }) {
   return (
     <button
-      className={`t-${i} time`}
+      className={`t-${i} time ${clickedClassName}`}
       key={i}
       onClick={(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
         handleChangeTime({

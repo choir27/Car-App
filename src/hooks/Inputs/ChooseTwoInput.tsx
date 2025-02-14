@@ -3,7 +3,7 @@ import { ChooseInput } from "../../middleware/Interfaces/Inputs";
 export function ChooseTwoInput(props: ChooseInput) {
   return (
     <section
-      className={`${props.className}`}
+      className={`${props.className} flex justify-between w-full`}
     >
       <div className="mb-2">
         <input

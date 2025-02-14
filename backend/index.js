@@ -4,6 +4,10 @@ const cors = require("cors");
 const clientRoutes = require("./routes/client")
 require("dotenv").config();
 
+const PORT = 8000
+
+firebaseapp
+
 app.use(cors());
 
 app.use(cors({
@@ -19,6 +23,6 @@ app.use(express.json());
 app.use("/", clientRoutes);
 
 //Server Running
-app.listen(process.env.PORT, () => {
-  console.log(`Server is running on PORT ${process.env.PORT}`);
+app.listen(PORT || process.env.PORT , () => {
+  console.log(`Server is running on PORT ${PORT}`);
 });

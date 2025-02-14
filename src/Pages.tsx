@@ -7,6 +7,9 @@ export const Register = lazy(() => import("./pages/guest/Register"));
 export const ManageAppointments = lazy(
   () => import("./pages/employee/ManageAppointments"),
 );
+export const EditAppointment = lazy(
+  () => import("./pages/employee/EditAppointment")
+);
 
 export const Employee = lazy(() => import("./pages/employee/Employee"));
 export const EmployeeSettings = lazy(

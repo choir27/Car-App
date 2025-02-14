@@ -44,7 +44,7 @@ export function DisplayTimeDateAppointments(
     //set a state called selectedDate and save the current date to its value
     //if a different date is selected, change the selected date as the current value of setSelectedDate
     //use the selectedDate value to show the different appointment times that are avaiable for the respective date
-    
+    const apptDate = (props.date.toString()).split("D")[0];
     CheckHolidays({month: 10, day: 13, dayOfWeek: 1, year: 2025})
 
     if (currentDayOfWeek > 6) {
@@ -52,10 +52,9 @@ export function DisplayTimeDateAppointments(
       week = 0
     }
 
-    // if it's the current date
+    //if its the appt date
     if (
-      `${getMonth()}/${getDay()}/${getYear()}` ===
-      `${newMonth}/${newDay}/${newYear}`
+    apptDate === `${newMonth}/${newDay}/${newYear}`
     ) {      
       calendar.push(
         CalendarCard({
@@ -128,7 +127,11 @@ export function DisplayTimeDateAppointments(
 
   //render clear buttons of appointment dates
   const renderTimeButtons = miliaryTimes.map((time, i) => {
-    return RenderTimeCard({ i, time, props });
+    if(props.time.toString() === time[1]){
+    return RenderTimeCard({ i, time, props, clickedClassName: "clicked"});
+    }else{
+      return RenderTimeCard({ i, time, props}); 
+    }
   });
 
   return (
