@@ -86,6 +86,7 @@ export function handleCreateAppointment(props: Appointment): false | undefined {
   }
 
   handleSubmitData({
+    $id: "",
     service: props.service,
     firstName: props.firstName,
     lastName: props.lastName,

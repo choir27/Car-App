@@ -39,7 +39,7 @@ export interface SelectOptions {
 //interface type for appointments
 export interface Appointment {
   $createdAt?: string;
-  $id?: string;
+  $id: string;
   date: string;
   time: string;
   carModel: string;
@@ -68,10 +68,12 @@ export interface RenderCalendar {
 
 export interface TimeDateAppointments {
   setTime: (e: string) => void;
+  appointmentId?: string;
+  edit?: boolean;
   appointments: Appointment[];
   setDate: (e: string) => void;
-  time: number;
-  date: number;
+  time: number | string;
+  date: number | string;
 }
 
 export interface ChangeTime {

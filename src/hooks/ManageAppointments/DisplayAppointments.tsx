@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Appointment } from "../../middleware/Interfaces/Reservation";
 import { SetCacheID } from "../../middleware/Cache";
 import { handleDeleteAppointment } from "./HandleDeleteAppointment";
 import { NotifyClient } from "./NotifyClient";
@@ -11,6 +10,8 @@ import {
   getYear,
 } from "../Reservation/DatesStatic";
 import { Button } from "../../components/Button";
+import {Appointment} from "../../middleware/Interfaces/Reservation";
+
 
 export function displayAppointments({
   appointments,
@@ -83,7 +84,7 @@ export function displayAppointments({
             <div className="flex items-start justify-between w-full pl-2">
               <Link
                 to="/editAppointment"
-                onClick={() => SetCacheID(appointment.$id || "")}
+                onClick={() => SetCacheID(appointment.$id)}
               >
                 <FaEdit className={`button ${toggleDarkMode === "light" ? "lightBtn" : "darkBtn"}`} />
               </Link>

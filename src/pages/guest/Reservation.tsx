@@ -218,8 +218,8 @@ export default function Reservation() {
                 </label>
 
                 {ChooseTwoInput({
-                  text1: "Contact by Email",
-                  text2: "Contact by Phone",
+                  text1: "Email",
+                  text2: "Phone",
                   name: "contact",
                   onChange: (e: string) => setContact(e),
                 })}
@@ -246,6 +246,7 @@ export default function Reservation() {
                 text="Reserve Appointment"
                 handleButtonClick={() =>
                   handleCreateAppointment({
+                    $id: "",
                     service: service,
                     firstName: firstName,
                     lastName: lastName,

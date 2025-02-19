@@ -43,7 +43,7 @@ export default function ManageAppointments() {
       <Nav pageHeading="Manage Appointments" />
 
       <section
-        className={`mx-2 p-4 flex flex-col tems-start justify-between shadow-2xs ${
+        className={`mx-2 p-4 flex flex-col items-start justify-between shadow-2xs ${
           toggleDarkMode === "dark" ? "light" : "dark"
         }`}
       >

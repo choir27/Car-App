@@ -4,11 +4,11 @@ import {
   CarSelectData,
   Appointment,
 } from "../../middleware/Interfaces/Reservation.js";
-import {  CartItem} from "../../middleware/Interfaces/Cart.js"
-import { InventoryItem} from "../../middleware/Interfaces/Inventory.js"
+import { CartItem } from "../../middleware/Interfaces/Cart.js";
+import { InventoryItem } from "../../middleware/Interfaces/Inventory.js";
 import { PurchasedItem } from "../../middleware/Interfaces/Purchases.js";
 import { Profile } from "../../middleware/Interfaces/General.js";
-import {User} from "../../middleware/Interfaces/Auth.js"
+import { User } from "../../middleware/Interfaces/Auth.js";
 import { toast } from "react-toastify";
 import {
   cacheEmail,
@@ -39,20 +39,19 @@ export async function GetCart(setCart: (e: CartItem[]) => void) {
 }
 
 //Get data for apppointment we want to edit
-export async function GetEditAppointmentData() {
+export async function GetEditAppointmentData({setAppointment}:{setAppointment: (e:Appointment | null)=>void}) {
   try {
     const data = await api.listDocuments(
       import.meta.env.VITE_REACT_APP_DATABASE_ID,
       import.meta.env.VITE_REACT_APP_COLLECTION_ID,
     );
 
-    if (data.documents.length) {
-      const findAppointment = data.documents.filter(
-        (appointment: Appointment) => appointment.$id === cacheAppointmentID,
-      );
+    const findAppointment = data.documents.filter(
+      (appointment: Appointment) => appointment.$id === sessionStorage.getItem("id"),
+    );
 
-      SetCacheEdit(JSON.stringify(findAppointment[0]));
-    }
+    setAppointment(findAppointment[0]);
+    SetCacheEdit(findAppointment[0]);
   } catch (err) {
     console.error(err);
     toast.error(`${err}`);
@@ -147,7 +146,6 @@ export async function GetAccount(setUser: (e: User) => void) {
     toast.error(`${err}`);
   }
 }
-
 
 export async function GetCarData(props: CarSelectData) {
   try {

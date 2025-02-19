@@ -55,6 +55,7 @@ export interface ChooseInput {
 export interface Choose {
   text1: string;
   text2: string;
+  className?: string;
   name: string;
   onChange: (e: string) => void;
   defaultValue: string | undefined;
